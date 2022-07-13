@@ -1,0 +1,19 @@
+<?php
+/**
+ * @param $existing
+ * @param $type
+ * @param $theme
+ * @param $path
+ *
+ * @return array
+ */
+function singpost_content_sidebar_links_theme($existing, $type, $theme, $path){
+	return [
+		'singpost_content_sidebar_links' => [
+			'template'  => 'singpost-sidebar-links',
+			'variables' => [
+				'paragraph' => []
+			]
+		]
+	];
+}

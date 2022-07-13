@@ -1,0 +1,175 @@
+<?php
+
+use Drupal\Core\Database\Database;
+
+/**
+ * Implements hook_schema().
+ */
+function singpost_toolbox_calculate_postage_schema(){
+	$database = Drupal::database();
+
+	$schema = [];
+
+	if (!$database->schema()->tableExists('singpost_dimension')){
+		$schema['singpost_dimension'] = dimensionTable();
+	}
+
+	if (!$database->schema()->tableExists('singpost_delivery_service')){
+		$schema['singpost_delivery_service'] = deliveryServiceTable();
+	}
+
+	return $schema;
+}
+
+/**
+ * @return array
+ */
+function dimensionTable(){
+	return [
+		'fields'      => [
+			'id'         => [
+				'type'     => 'serial',
+				'unsigned' => TRUE,
+				'not null' => TRUE,
+			],
+			'size_code'  => [
+				'type'     => 'varchar',
+				'length'   => 255,
+				'not null' => TRUE,
+			],
+			'text'       => [
+				'type'   => 'varchar',
+				'length' => 255,
+			],
+			'value'      => [
+				'type'   => 'varchar',
+				'length' => 255,
+			],
+			'length'     => [
+				'type'   => 'varchar',
+				'length' => 255,
+			],
+			'width'      => [
+				'type'   => 'varchar',
+				'length' => 255,
+			],
+			'height'     => [
+				'type'   => 'varchar',
+				'length' => 255,
+			],
+			'weight'     => [
+				'type' => 'int',
+			],
+			'published'  => [
+				'type'    => 'int',
+				'default' => 1,
+			],
+			'created_at' => [
+				'type' => 'int'
+			],
+			'created_by' => [
+				'type' => 'int'
+			],
+			'updated_at' => [
+				'type' => 'int'
+			],
+			'updated_by' => [
+				'type' => 'int'
+			],
+		],
+		'primary key' => ['id'],
+	];
+}
+
+/**
+ * @return array
+ */
+function deliveryServiceTable(){
+	return [
+		'fields'      => [
+			'id'                    => [
+				'type'     => 'serial',
+				'unsigned' => TRUE,
+				'not null' => TRUE,
+			],
+			'delivery_service_name' => [
+				'type'     => 'varchar',
+				'length'   => 255,
+				'not null' => TRUE
+			],
+			'display_name'          => [
+				'type'   => 'varchar',
+				'length' => 255,
+			],
+			'url'                   => [
+				'type' => 'text',
+				'size' => 'big',
+			],
+			'maximum_dimension'     => [
+				'type'   => 'varchar',
+				'length' => 255,
+			],
+			'recommended'           => [
+				'type' => 'int'
+			],
+			'compensation'          => [
+				'type'   => 'varchar',
+				'length' => 255,
+			],
+			'disabled'              => [
+				'type' => 'int'
+			],
+			'published'             => [
+				'type'    => 'int',
+				'default' => 1,
+			],
+			'created_at'            => [
+				'type' => 'int'
+			],
+			'created_by'            => [
+				'type' => 'int'
+			],
+			'updated_at'            => [
+				'type' => 'int'
+			],
+			'updated_by'            => [
+				'type' => 'int'
+			],
+		],
+		'primary key' => ['id'],
+	];
+}
+
+function singpost_toolbox_calculate_postage_update_8002(){
+	$field_content = [
+		'type' => 'int',
+	];
+	$schema        = Database::getConnection()->schema();
+	$schema->addField('singpost_delivery_service', 'is_tracked', $field_content);
+}
+
+function singpost_toolbox_calculate_postage_update_9001(){
+	$field_content_image = [
+		'type'   => 'varchar',
+		'length' => 255
+	];
+	$schema        = Database::getConnection()->schema();
+	$schema->addField('singpost_delivery_service', 'service_image', $field_content_image);
+}
+
+/**
+ * Implements hook_uninstall().
+ *
+ * @param $is_syncing
+ */
+function singpost_toolbox_calculate_postage_uninstall($is_syncing){
+	$database = Drupal::database();
+
+	if ($database->schema()->tableExists('singpost_dimension')){
+		$database->schema()->dropTable('singpost_dimension');
+	}
+
+	if ($database->schema()->tableExists('singpost_delivery_service')){
+		$database->schema()->dropTable('singpost_delivery_service');
+	}
+}

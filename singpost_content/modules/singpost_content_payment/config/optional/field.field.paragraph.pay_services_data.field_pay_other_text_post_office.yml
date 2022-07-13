@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_pay_other_text_post_office
+    - paragraphs.paragraphs_type.pay_services_data
+id: paragraph.pay_services_data.field_pay_other_text_post_office
+field_name: field_pay_other_text_post_office
+entity_type: paragraph
+bundle: pay_services_data
+label: 'Pay Other Text Post Office'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

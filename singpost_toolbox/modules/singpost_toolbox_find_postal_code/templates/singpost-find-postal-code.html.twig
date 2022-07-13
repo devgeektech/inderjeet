@@ -1,0 +1,71 @@
+{% spaceless %}
+<div class="track-trace-sec">
+    <div class="track-trace-sec__desk track-trace-sec__desk--postal find-postal-code {{ 'fpc' ~ list_result.help.postion }}">
+       <!-- <ul class="nav" role="tablist" aria-orientation="horizontal">
+            <li class="nav-item">
+                <a class="nav-link {{ ((list_form.active.street) or ((list_form.active.street == false) and (list_form.active.landmark == false) and (list_form.active.pobox == false)) ? 'active' : '') }}" id="fpc-street-tab{{ list_result.help.postion }}" data-toggle="pill" href="#fpc-street{{ list_result.help.postion }}" role="tab" aria-controls="fpc-street{{ list_result.help.postion }}" aria-selected="false">
+                    Street
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ (list_form.active.landmark ? 'active' : '') }}" id="fpc-landmark-tab{{ list_result.help.postion }}" data-toggle="pill" href="#fpc-landmark{{ list_result.help.postion }}" role="tab" aria-controls="fpc-landmark{{ list_result.help.postion }}" aria-selected="false">
+                    Landmark
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ (list_form.active.pobox ? 'active' : '') }}" id="fpc-pobox-tab{{ list_result.help.postion }}" data-toggle="pill" href="#fpc-pobox{{ list_result.help.postion }}" role="tab" aria-controls="fpc-pobox{{ list_result.help.postion }}" aria-selected="false">
+                    PO Box
+                </a>
+            </li>
+        </ul> -->
+
+
+        <ul class="nav nav-pills tab-position{{ list_result.help.postion }}" role="tablist" aria-orientation="horizontal" id="pills-tab">
+                <li class="track-trace-sec__tab nav-item" role="presentation">
+                    <a href="#fpc-street{{ list_result.help.postion }}" class="track-trace-sec__btn {{ ((list_form.active.street) or ((list_form.active.street == false) and (list_form.active.landmark == false) and (list_form.active.pobox == false)) ? 'active' : '') }}" id="fpc-street-tab{{ list_result.help.postion }}" data-toggle="pill"
+                        role="tab" aria-controls="fpc-street{{ list_result.help.postion }}" aria-selected="true">Street
+                    </a>
+                </li>
+
+                <li class="track-trace-sec__tab nav-item" role="presentation">
+                    <a href="#fpc-landmark{{ list_result.help.postion }}" class="track-trace-sec__btn {{ (list_form.active.landmark ? 'active' : '') }}" id="fpc-landmark-tab{{ list_result.help.postion }}" data-toggle="pill"
+                        role="tab" aria-controls="fpc-landmark{{ list_result.help.postion }}" aria-selected="false">LANDMARK</a>
+                </li>
+
+                <li class="track-trace-sec__tab nav-item" role="presentation">
+                    <a href="#fpc-pobox{{ list_result.help.postion }}" class="track-trace-sec__btn {{ (list_form.active.pobox ? 'active' : '') }}" id="fpc-pobox-tab{{ list_result.help.postion }}" data-toggle="pill" role="tab"
+                        aria-controls="fpc-pobox{{ list_result.help.postion }}" aria-selected="false">PO BOX</a>
+                </li>
+            </ul>
+        <div class="tab-content" id="tab-content">
+
+            <div class="tab-pane fade {{ ((list_form.active.street) or ((list_form.active.landmark == false) and (list_form.active.pobox == false) and (list_form.active.street == false)) ? 'active show' : '') }}" id="fpc-street{{ list_result.help.postion }}" role="tabpanel" aria-labelledby="fpc-street-tab{{ list_result.help.postion }}">
+                <div class="tab-item" data-parent="#tab-content" role="tabpanel" aria-labelledby="heading-fpc-street">
+                    {{ list_form.street }}
+                    {% if list_form.active.street %}
+                        {{ render_var({ '#theme': 'singpost_find_postal_code_result', '#results': list_result.results, '#help': list_result.help }) }}
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="tab-pane fade {{ (list_form.active.landmark ? 'active show' : '') }}" id="fpc-landmark{{ list_result.help.postion }}" role="tabpanel" aria-labelledby="fpc-landmark-tab{{ list_result.help.postion }}">
+                <div class="tab-item" data-parent="#tab-content" role="tabpanel" aria-labelledby="heading-fpc-landmark">
+                    {{ list_form.landmark }}
+                    {% if list_form.active.landmark %}
+                        {{ render_var({ '#theme': 'singpost_find_postal_code_result', '#results': list_result.results, '#help': list_result.help }) }}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tab-pane fade {{ (list_form.active.pobox ? 'active show' : '') }}" id="fpc-pobox{{ list_result.help.postion }}" role="tabpanel" aria-labelledby="fpc-pobox-tab{{ list_result.help.postion }}">
+                <div class="tab-item" data-parent="#tab-content" role="tabpanel" aria-labelledby="heading-fpc-pobox">
+                    {{ list_form.pobox }}
+                    {% if list_form.active.pobox %}
+                        {{ render_var({ '#theme': 'singpost_find_postal_code_result', '#results': list_result.results, '#help': list_result.help }) }}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="track-trace-sec__track-tab-footer">Need help finding the full address? You may try our <a href="/find-postal-code" class="track-trace-sec__link">Advanced Search.</a></div>
+    </div>
+    </div>
+{% endspaceless %}

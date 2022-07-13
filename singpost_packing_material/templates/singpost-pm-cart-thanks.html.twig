@@ -1,0 +1,47 @@
+{% spaceless %}
+{% set urls = url('<current>') %}
+
+ <!-- thank you module start -->
+    <div class="sgp-thank-u">
+        <div class="content-wrapper-small">
+            <div class="sgp-header-arrow">
+                <div class="sgp-header-arrow__head-sec">
+                    {# <p class="sgp-small-title">Donec quam felis</p> #}
+                    <h1 class="sgp-h2">Thank you for your Purchase</h1>
+                </div>
+                <p class="sgp-header-arrow__desc">Your order has been received.</p>
+                <p class="sgp-header-arrow__desc">A copy of the electronic receipt has been sent to your email, please check your email.</p>
+            </div>
+            <div class="sgp-thank-u__cnt">
+                <div class="sgp-thank-u__order">
+                    <p class="sgp-thank-u__order-label">Order No.</p>
+                    <div class="sgp-thank-u__order-no">P{{ data.order_id }}</div>
+                </div>
+                <ul class="sgp-list sgp-list--dash">
+                    <li>You will receive a confirmation email after submitting an online order.</li>
+                    <li>We will be contacting you within 3 working days to confirm your order and payment method.</li>
+                    <li>No online payment is required when submitting your orders.</li>
+                </ul>
+            </div>
+            <div class="sgp-thank-u__btn" back_url="{{ back_url }}">
+                <a href="{{ url('<front>') }}packing-materials" title="Continue Shopping" class="sgp-btn">
+                    <span class="sgp-btn__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"><g transform="translate(-11625 16862)"><path d="M7.219-10.5a.634.634,0,0,1,.506.246.574.574,0,0,1,.123.547L6.617-4.02a.694.694,0,0,1-.232.369.6.6,0,0,1-.4.15H-2.57L-2.3-2.187H5.414a.634.634,0,0,1,.506.246.574.574,0,0,1,.123.547l-.027.137A1.671,1.671,0,0,1,6.562,0a1.691,1.691,0,0,1-.506,1.244,1.691,1.691,0,0,1-1.244.506,1.691,1.691,0,0,1-1.244-.506A1.691,1.691,0,0,1,3.062,0a1.673,1.673,0,0,1,.246-.875H-.684A1.673,1.673,0,0,1-.438,0,1.691,1.691,0,0,1-.943,1.244a1.691,1.691,0,0,1-1.244.506,1.691,1.691,0,0,1-1.244-.506A1.675,1.675,0,0,1-3.938.014,1.653,1.653,0,0,1-3.445-1.2l-1.914-9.734H-7.547a.316.316,0,0,1-.232-.1.316.316,0,0,1-.1-.232v-.656a.316.316,0,0,1,.1-.232.316.316,0,0,1,.232-.1h2.734a.635.635,0,0,1,.424.15.694.694,0,0,1,.232.369l.219,1.23ZM-2.188.656A.633.633,0,0,0-1.723.465.633.633,0,0,0-1.531,0a.633.633,0,0,0-.191-.465.633.633,0,0,0-.465-.191.633.633,0,0,0-.465.191A.633.633,0,0,0-2.844,0a.633.633,0,0,0,.191.465A.633.633,0,0,0-2.188.656Zm7,0A.633.633,0,0,0,5.277.465.633.633,0,0,0,5.469,0a.633.633,0,0,0-.191-.465.633.633,0,0,0-.465-.191.633.633,0,0,0-.465.191A.633.633,0,0,0,4.156,0a.633.633,0,0,0,.191.465A.633.633,0,0,0,4.812.656Zm.629-5.469L6.4-9.187H-3.664l.848,4.375Z" transform="translate(11640 -16842)"></path><rect transform="translate(11625 -16862)" fill="none"></rect></g></svg>
+                    </span>Continue Shopping
+                </a>
+                <a href="{{ url('<front>') }}" class="sgp-btn">
+                    <span class="sgp-btn__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29">
+                            <g data-name="Group 5257" transform="translate(-966 -615)">
+                              <rect id="Rectangle_1197" data-name="Rectangle 1197" width="29" height="29" transform="translate(966 615)" fill="none"/>
+                              <path data-name="Path 1019" d="M7.355-5.66a.161.161,0,0,1,.082.137.294.294,0,0,1-.055.164l-.547.684a.257.257,0,0,1-.15.068.167.167,0,0,1-.15-.041l-.41-.328V.438a.421.421,0,0,1-.437.438H1.094A.209.209,0,0,1,.943.807.209.209,0,0,1,.875.656v-3.5H-.875v3.5a.209.209,0,0,1-.068.15.209.209,0,0,1-.15.068H-5.688A.426.426,0,0,1-6,.752.426.426,0,0,1-6.125.438V-4.977l-.41.328a.167.167,0,0,1-.15.041.257.257,0,0,1-.15-.068l-.547-.684a.294.294,0,0,1-.055-.164.161.161,0,0,1,.082-.137l6.672-5.469A1.05,1.05,0,0,1,0-11.375a1.05,1.05,0,0,1,.684.246L4.812-7.766V-9.406a.209.209,0,0,1,.068-.15.209.209,0,0,1,.15-.068h.875a.209.209,0,0,1,.15.068.209.209,0,0,1,.068.15v2.734ZM4.812-.437V-6.07L.137-9.9a.2.2,0,0,0-.273,0L-4.813-6.07V-.437h2.625v-3.5a.209.209,0,0,1,.068-.15.209.209,0,0,1,.15-.068H1.969a.209.209,0,0,1,.15.068.209.209,0,0,1,.068.15v3.5Z" transform="translate(980.438 634.375)"/>
+                            </g>
+                          </svg>
+                    </span>Back To Homepage
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- thank you module end -->
+    
+{% endspaceless %}

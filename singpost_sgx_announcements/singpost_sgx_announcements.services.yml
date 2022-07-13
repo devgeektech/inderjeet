@@ -1,0 +1,6 @@
+services:
+  singpost.sgx.announcement.model:
+    class: Drupal\singpost_sgx_announcements\Model\SgxAnnouncement
+  singpost.sgx.announcement.service:
+    class: Drupal\singpost_sgx_announcements\Services\SgxAnnouncementService
+    arguments: ['@singpost.sgx.announcement.model']

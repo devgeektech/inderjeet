@@ -1,0 +1,23 @@
+uuid: c6b061cd-e326-45b6-a56e-6281fc2b4f93
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - node
+id: node.field_banner
+field_name: field_banner
+entity_type: node
+type: file
+settings:
+  display_field: false
+  display_default: false
+  uri_scheme: public
+  target_type: file
+module: file
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

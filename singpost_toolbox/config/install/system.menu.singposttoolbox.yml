@@ -1,0 +1,9 @@
+id: singposttoolbox
+label: 'Quick Tool'
+description: 'Links related to SingPost Toolbox module.'
+langcode: en
+locked: true
+dependencies:
+  enforced:
+    module:
+      - singpost_toolbox

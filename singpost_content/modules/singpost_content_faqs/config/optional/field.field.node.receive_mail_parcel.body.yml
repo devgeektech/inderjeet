@@ -1,0 +1,23 @@
+uuid: 97fb9916-da58-46c5-b807-ebeaa300f7ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.receive_mail_parcel
+  module:
+    - text
+id: node.receive_mail_parcel.body
+field_name: body
+entity_type: node
+bundle: receive_mail_parcel
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

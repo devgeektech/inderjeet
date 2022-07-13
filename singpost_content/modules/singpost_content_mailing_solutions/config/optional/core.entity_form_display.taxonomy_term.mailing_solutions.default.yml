@@ -1,0 +1,43 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.mailing_solutions
+  module:
+    - path
+    - text
+id: taxonomy_term.mailing_solutions.default
+targetEntityType: taxonomy_term
+bundle: mailing_solutions
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      placeholder: ''
+      rows: 5
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 4
+    region: content
+    third_party_settings: {  }
+hidden: {  }

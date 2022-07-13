@@ -1,0 +1,29 @@
+{% if(data.total_normal == '0.00') or (data.total_early == '0.00') %}
+    <span class="sgp-bulk-mail-calc-error error">This function is currently unavailable. We apologise for the inconvenience caused. Please try again later. Alternatively, you can refer to the Domestic or International Bulk Mail Brochure, for more details.</span>
+{% else %}
+<div class="sgp-bulk-mail-calc__result" style="width:100%">
+    <div class="sgp-bulk-mail-calc__result-check">&nbsp;</div>
+    <div class="sgp-bulk-mail-calc__result-head">Result:</div>
+    <div class="sgp-rate-table">
+        <table>
+            <tbody><tr>
+                <th class="sgp-rate-table__main-head">Estimated Postage Cost (with GST)</th>
+                <th class="sgp-rate-table__main-head">Unit Rate</th>
+                <th class="sgp-rate-table__main-head">Total Postage</th>
+            </tr>
+            <tr>
+                <td>Bulk Mail Rate</td>
+                <td>${{ data.unit_rate }}</td>
+                <td>${{ data.total_normal }}</td>
+            </tr>
+            <tr>
+                <td><span class="sgp-bulk-mail-calc__result-tool">Early Posting Rate
+                <span class="sgp-tool-tip"><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='14' height='14' viewBox='0 0 14 14'><defs><clipPath id='clip-path'><rect id='Rectangle_1176' data-name='Rectangle 1176' width='14' height='14' transform='translate(-1148 -12179)' fill='%23fff' stroke='%23707070' stroke-width='1'/></clipPath></defs><g id='Group_5003' data-name='Group 5003' transform='translate(1148 12179)'><g id='Mask_Group_7' data-name='Mask Group 7' clip-path='url(%23clip-path)'><g id='Group_5002' data-name='Group 5002' transform='translate(-6.219 61.031)'><path id='Path_1025' data-name='Path 1025' d='M7-12.031a6.573,6.573,0,0,1,3.391.916,6.852,6.852,0,0,1,2.475,2.475,6.573,6.573,0,0,1,.916,3.391,6.573,6.573,0,0,1-.916,3.391A6.852,6.852,0,0,1,10.391.615,6.573,6.573,0,0,1,7,1.531,6.573,6.573,0,0,1,3.609.615,6.852,6.852,0,0,1,1.135-1.859,6.573,6.573,0,0,1,.219-5.25a6.573,6.573,0,0,1,.916-3.391,6.852,6.852,0,0,1,2.475-2.475A6.573,6.573,0,0,1,7-12.031ZM7,.219A5.307,5.307,0,0,0,9.734-.52a5.515,5.515,0,0,0,2-2,5.307,5.307,0,0,0,.738-2.734,5.307,5.307,0,0,0-.738-2.734,5.515,5.515,0,0,0-2-2A5.307,5.307,0,0,0,7-10.719a5.307,5.307,0,0,0-2.734.738,5.515,5.515,0,0,0-2,2A5.307,5.307,0,0,0,1.531-5.25,5.307,5.307,0,0,0,2.27-2.516a5.515,5.515,0,0,0,2,2A5.307,5.307,0,0,0,7,.219ZM7-9.023a1.1,1.1,0,0,0-.807.342,1.1,1.1,0,0,0-.342.807,1.1,1.1,0,0,0,.342.807A1.1,1.1,0,0,0,7-6.727a1.1,1.1,0,0,0,.807-.342,1.1,1.1,0,0,0,.342-.807,1.1,1.1,0,0,0-.342-.807A1.1,1.1,0,0,0,7-9.023ZM8.531-2.078v-.656a.316.316,0,0,0-.1-.232.316.316,0,0,0-.232-.1H7.875V-5.8a.316.316,0,0,0-.1-.232.316.316,0,0,0-.232-.1H5.8a.316.316,0,0,0-.232.1.316.316,0,0,0-.1.232v.656a.316.316,0,0,0,.1.232.316.316,0,0,0,.232.1h.328v1.75H5.8a.316.316,0,0,0-.232.1.316.316,0,0,0-.1.232v.656a.316.316,0,0,0,.1.232.316.316,0,0,0,.232.1H8.2a.316.316,0,0,0,.232-.1A.316.316,0,0,0,8.531-2.078Z' transform='translate(-1142 -12228)' fill='%23c31126'/></g></g></g></svg>{{ data.tooltip.value | t }}</span></span></td>
+                <td>${{ data.unit_rate_early }}</td>
+                <td>${{ data.total_early }}</td>
+            </tr>
+        </tbody></table>
+    </div>
+</div>
+
+{% endif %}

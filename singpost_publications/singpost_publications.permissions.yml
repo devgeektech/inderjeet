@@ -1,0 +1,6 @@
+administer publication admin:
+  title: 'View Listing'
+administer publication form:
+  title: 'Add/Update/Publish/Unpublish/BulkAction'
+administer publication delete:
+  title: 'Delete'

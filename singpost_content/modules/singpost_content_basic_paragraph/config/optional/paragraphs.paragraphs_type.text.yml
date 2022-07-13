@@ -1,0 +1,10 @@
+uuid: 7c7d62f2-8d7e-4c77-b805-55d9721685a2
+langcode: en
+status: true
+dependencies: { }
+id: text
+label: Text
+icon_uuid: null
+icon_default: null
+description: 'Formatted text'
+behavior_plugins: {  }

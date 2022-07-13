@@ -1,0 +1,5 @@
+locate_us.add:
+  title: Add Locate Us Type
+  route_name: singpost.toolbox.locate_us.admin.type.add
+  appears_on:
+    - singpost.toolbox.locate_us.admin.type

@@ -1,0 +1,72 @@
+<?php
+
+require_once __DIR__ . '/includes/helpers.inc';
+use Drupal\Core\Url;
+
+function singpost_base_theme($existing, $type, $theme, $path){
+	$items['custom_html_block'] = [
+		'template'  => 'custom-html-block',
+		'variables' => [
+			'html'              => NULL,
+			'block_title'       => NULL,
+			'block_class'       => NULL,
+			'block_inner_class' => NULL
+		]
+	];
+
+	return $items;
+}
+
+function singpost_base_menu_local_tasks_alter(&$data, $route_name, \Drupal\Core\Cache\RefinableCacheableDependencyInterface &$cacheability) {
+
+  // Add a tab linking to node/add to all pages.
+	$current_user = \Drupal::currentUser();
+	$roles = $current_user->getRoles();
+	$route_name = \Drupal::routeMatch()->getRouteName();
+    $route_ar = array('entity.user.canonical' ,'entity.user.edit_form' , 'simplenews.newsletter_subscriptions_user');
+	if ( in_array($route_name, $route_ar) && !in_array("administrator", $roles) ) {
+	  $data['tabs'][0]['user.logout'] = [
+	    '#theme' => 'menu_local_task',
+	    '#link' => [
+	      'title' => t('Logout'),
+	      'url' => Url::fromRoute('user.logout'),
+	      'localized_options' => [
+	        'attributes' => [
+	          'title' => t('Logout'),
+	        ],
+	      ],
+	    ],
+	  ];
+
+	  // The tab we're adding is dependent on a user's access to add content.
+	  $cacheability
+	    ->addCacheContexts([
+	    'user.permissions',
+	  ]);
+	}
+
+}
+
+if (!function_exists('is_valid_xml')){
+	/**
+	 * @param $xml
+	 *
+	 * @return array
+	 */
+	function is_valid_xml($xml){
+		if (!empty($xml)){
+			//validation for track and track form for captcha
+			if ($xml == 'captcha_error'){
+				return [FALSE, t("Verification expired. Please input security code again.")]; //this is not valid
+			}
+			$doc = @simplexml_load_string($xml);
+			if ($doc){
+				return [TRUE, '']; //this is valid
+			}else{
+				return [FALSE, t("Some error occurred, please try again.")]; //this is not valid
+			}
+		}else{
+			return [FALSE, t("This function is currently unavailable. We apologise for the inconvenience caused. Please try again later.")]; //this is for service unavailable.
+		}
+	}
+}

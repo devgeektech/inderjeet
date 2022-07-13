@@ -1,0 +1,82 @@
+uuid: e16787af-ff63-4c7f-af17-a23530869238
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_collapsible_paragph_body
+    - paragraphs.paragraphs_type.collapsible_paragraph
+    - paragraphs.paragraphs_type.sidebar_links
+  module:
+    - entity_reference_revisions
+id: paragraph.collapsible_paragraph.field_collapsible_paragph_body
+field_name: field_collapsible_paragph_body
+entity_type: paragraph
+bundle: collapsible_paragraph
+label: Paragraph
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 1
+    target_bundles:
+      sidebar_links: sidebar_links
+    target_bundles_drag_drop:
+      block:
+        weight: 19
+        enabled: false
+      card:
+        weight: 20
+        enabled: false
+      card_container:
+        weight: 21
+        enabled: false
+      collapsible:
+        weight: 22
+        enabled: false
+      collapsible_nodes:
+        weight: 23
+        enabled: false
+      collapsible_paragraph:
+        weight: 24
+        enabled: false
+      collapsible_text:
+        weight: 25
+        enabled: false
+      directors_executives:
+        weight: 26
+        enabled: false
+      download_form:
+        weight: 27
+        enabled: false
+      faq_answers:
+        weight: 28
+        enabled: false
+      faq_question:
+        weight: 29
+        enabled: false
+      latest_webcast:
+        weight: 30
+        enabled: false
+      link:
+        weight: 31
+        enabled: false
+      modal:
+        weight: 32
+        enabled: false
+      pay_services_data:
+        weight: 33
+        enabled: false
+      sidebar_links:
+        enabled: true
+        weight: 34
+      text:
+        weight: 35
+        enabled: false
+      well:
+        weight: 36
+        enabled: false
+field_type: entity_reference_revisions

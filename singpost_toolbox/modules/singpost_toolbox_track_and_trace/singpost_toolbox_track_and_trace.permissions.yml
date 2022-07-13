@@ -1,0 +1,8 @@
+administer singpost toolbox tnt configuration:
+  title: 'Configuration Track and Trace'
+administer singpost toolbox tnt status manage:
+  title: 'TnT Status - View Listing'
+administer singpost toolbox tnt status form:
+  title: 'TnT Status - Add/Update/Publish/Unpublish'
+administer singpost toolbox tnt status delete:
+  title: 'TnT Status - Delete'

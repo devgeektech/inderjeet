@@ -1,0 +1,20 @@
+singpost.config.toolbox:
+  title: 'Toolbox'
+  parent: singpost.config.base
+  description: 'All settings for Toolbox module.'
+  route_name: singpost.toolbox.config.index
+  weight: -10
+
+singpost.config.toolbox.auth:
+  title: 'Toolbox'
+  parent: singpost.config.toolbox
+  description: 'Settings for Toolbox.'
+  route_name: singpost.toolbox.config.auth
+  weight: 10
+
+singpost.toolbox.manage:
+  title: 'Toolbox'
+  parent: singpost.admin.base
+  description: 'Toolbox Manage'
+  route_name: singpost.toolbox.manage
+  weight: 100

@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.calendar_events.field_calendar_events_body
+    - node.type.calendar_events
+  module:
+    - text
+    - user
+id: node.calendar_events.default
+targetEntityType: node
+bundle: calendar_events
+mode: default
+content:
+  field_calendar_events_body:
+    weight: 101
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  search_api_excerpt: true

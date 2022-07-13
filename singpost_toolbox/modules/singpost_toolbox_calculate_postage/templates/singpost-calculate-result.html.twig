@@ -1,0 +1,141 @@
+{% spaceless %}
+    <div class="content-wrapper-small">
+    <div class="sgp-calc-postage__tiles sgp-calc-postage__tiles--services">
+    {% if data is empty %}
+        {% if data is iterable and data is empty %}
+            <div class="errormsg text-danger">
+                {{ error_message|raw }}
+            </div>
+        {% endif %}
+        {{ content|raw }}
+    {% else %}
+        <h2 class="sgp-h3">Please select one of the following services</h2>
+        <div class="sgp-calc-postage__tiles-outer">
+        {% set count_service = 0 %}
+            {% for item in data %}
+            {% set count_service = count_service + 1 %}
+                <div class="sgp-tile sgp-tile--parcel" id="service_{{count_service}}">
+                    <div class="sgp-tile__img-sec">
+                        {% if item.recommended %}
+                            <div class="sgp-tag">Recommended</div>
+                        {% endif %}
+                        <label class="sgp-checkbox">
+                            <input type="radio" name="calculate_service" value="service_{{count_service}}" />
+                            <svg viewBox="0 0 24 24" filter="url(#goo-light)">
+                                <defs><filter id="goo-light" x="-50%" width="200%" y="-50%" height="200%" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceGraphic" stdDeviation="1.25" result="blur" /><feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -7" result="cm" /></filter></defs>
+                                <path class="tick" d="M4.5 10L10.5 16L24.5 1" />
+                                <circle class="dot" cx="10.5" cy="15.5" r="1.5" />
+                                <circle class="drop" cx="25" cy="-1" r="2" />
+                            </svg>
+                            <span class="sgp-checkbox__custom"></span>
+                        </label>
+                        
+                        
+                       {% if item.service_image == '#' or item.service_image == '' %}
+                       <img class="hj" src="{{ url('<front>')}}{{ base_path ~ directory }}/assets/images/no_image.png" alt="">
+                       {% else %}
+                            <div class="sgp-tile__img-sec sgp-zoom-wrap" style="background-image: url({{ item.service_image}})">
+                                <img src="{{ item.service_image}}" alt="Image" class="sgp-zoom-image out">
+                            </div>
+                       {% endif %}
+
+        
+                        
+                        {% if item.ItemTracking == "Yes" %}
+                            <span class="sgp-tile__tag sgp-tile__tag--red" id="tracking_js" track-data="yes">
+                            <img src="{{ url('<front>')}}{{ base_path ~ directory }}/assets/images/svg/tick-white.svg" alt="">Tracking</span>
+                        {% else %}
+                        <span id="tracking_js" track-data="no"></span>
+                        {% endif %}
+                    </div>
+                    <div class="sgp-tile__cnt-sec">
+                        {# <p class="sgp-tile__small-title">BASIC SERVICES (LOCAL)</p> #}
+                        <h4 class="sgp-h4" id="service_name-js">{{ item.display_name is empty ? item.DeliveryServiceName : item.display_name }}</h4>
+                        <p class="sgp-tile__desc sgp-tile__desc--two-col"><span class="sgp-tile__desc-black">Max. Weight:</span><span>{{ item.WeightLimit }}	</span>
+                        </p>
+                        <p class="sgp-tile__desc sgp-tile__desc--two-col"><span class="sgp-tile__desc-black">Max. Dimensions:</span><span>{{ item.maximum_dimension ?? '-' }}	</span></p>
+                        <!--<p class="sgp-tile__desc sgp-tile__desc--two-col"><span class="sgp-tile__desc-black">Max. Dimensions:</span><span>240 x 162 x 6 mm (Regular)</span></p> -->
+                        <p class="sgp-tile__desc sgp-tile__desc--two-col {{ (item.DeliveryTime > 1) ? 'plural' : 'singular' }}"><span class="sgp-tile__desc-black">Working Days:</span><span id="cal_ap_working_js">{{ item.DeliveryTime }}</span></p>
+
+                        {% if item.Compensation == 'Included' %}
+                            <p class="sgp-tile__desc sgp-tile__desc--two-col"><span class="sgp-tile__desc-black">Compensation</span>
+                                {% if item.compensation == 'None' or item.compensation is empty %}
+                                    <span class="sp-tooltip" data-placement="top" data-toggle="tooltip" title="" data-original-title="{{ tooltips.compensation.default }}"><i class="fas fa-info-circle"></i></span>
+                                {% endif %}
+                                {% if item.compensation == 'Registered' %}
+                                    <span class="sp-tooltip" data-placement="top" data-toggle="tooltip" title="" data-original-title="{{ tooltips.compensation.registered }}">
+                                        <i class="fas fa-info-circle"></i>
+                                    </span>
+                                {% endif %}
+                                {% if item.compensation == 'Smartpac' %}
+                                    <span class="sp-tooltip" data-placement="top" data-toggle="tooltip" title="" data-original-title="{{ tooltips.compensation.smartpac }}">
+                                        <i class="fas fa-info-circle"></i>
+                                    </span>
+                                {% endif %}
+                                {% if item.compensation == 'A.M Mail' %}
+                                    <span class="sp-tooltip" data-placement="top" data-toggle="tooltip" title="" data-original-title="{{ tooltips.compensation.am_mail }}">
+                                        <i class="fas fa-info-circle"></i>
+                                    </span>
+                                {% endif %}
+                            </p>
+                            {% endif %}
+                            {% if item.is_tracked %}
+                            <p class="sgp-tile__desc sgp-tile__desc--two-col"><span class="sgp-tile__desc-black">Tracked Package</span>
+                                <span class="sp-tooltip" data-placement="top" data-toggle="tooltip" title="" data-original-title="{{ tooltips.tracked_package }}">
+                                            <i class="fas fa-info-circle"></i>
+                                </span>
+                            </p>
+                            {% endif %}
+                            {% if item.AdviseDeliveryCharges != '$0.00' %}
+                            <p class="sgp-tile__desc sgp-tile__desc--two-col"><span class="sgp-tile__desc-black">Advice of Receipt</span>
+                                <span class="sp-tooltip" data-placement="top" data-toggle="tooltip" title="" data-original-title="{{ tooltips.advice_of_receipt }}">
+                                    <i class="fas fa-info-circle"></i>
+                                </span>
+                            {% endif %}
+                            {% if item.DoorStepPickup is not empty %}
+                            <p class="sgp-tile__desc sgp-tile__desc--two-col"><span class="sgp-tile__desc-black">Doorstep Pickup</span>
+                                <span class="sp-tooltip" data-placement="top" data-toggle="tooltip" title="" data-original-title="{{ tooltips.doorstep_pickup }}">
+                                    <i class="fas fa-info-circle"></i>
+                                </span>
+                            {% endif %}
+                        <div class="sgp-pdp">
+                            <p class="sgp-pdp__price">
+                                <span class="sgp-pdp__price-current">S{{ item.rates ?? '-' }}</span>
+                                {% if form is not empty and item.DeliveryServiceName == 'Speedpost Express' or item.display_name == 'Speedpost Express' %}
+                                    <span class="sgp-pdp__price-range">{{ tooltips.minimum_price|raw }} &nbsp;to&nbsp;{{ maximum_price }}&nbsp;</span>
+                                    {% if tooltips.book_now_tooltip is not empty %}
+                                        <span class="sp-tooltip" data-placement="top" data-toggle="tooltip" title="" data-original-title="{{ tooltips.book_now_tooltip }}">
+                                            <i class="fas fa-info-circle"></i>
+                                        </span>
+                                    {% endif %}
+                                 {% endif %}
+                            </p>
+                            <div class="spg-postal-popup">
+                                {% if form is not empty and item.DeliveryServiceName == 'Speedpost Express' or item.display_name == 'Speedpost Express' %}
+                                <button class="sgp-link-btn sgp-link-btn--border">Calculate</button>
+                                    <div class="spg-postal-popup__expan">
+                                        <button class="spg-postal-popup__close">
+                                            <img src="{{ url('<front>')}}{{ base_path ~ directory }}/assets/images/blue-close-icon.svg" alt="">
+                                        </button>
+                                        {{form}}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sgp-tile__btn-sec">
+                        <a href="{{ item.url ?? '#' }}" class="sgp-link-btn sgp-link-btn--box" title="View Details">VIEW DETAILS<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><g id="Group_5253" data-name="Group 5253" transform="translate(10625 24131)"><rect id="Rectangle_1171" data-name="Rectangle 1171" width="18" height="18" transform="translate(-10625 -24131)" fill="none"></rect><path id="Path_1023" data-name="Path 1023" d="M5.961-11.211a.4.4,0,0,1,.246-.082.3.3,0,0,1,.219.082l5.715,5.742a.26.26,0,0,1,.109.219.26.26,0,0,1-.109.219L6.426.711a.3.3,0,0,1-.219.082A.4.4,0,0,1,5.961.711L5.414.164a.3.3,0,0,1-.082-.219A.4.4,0,0,1,5.414-.3L9.652-4.539H.328a.316.316,0,0,1-.232-.1A.316.316,0,0,1,0-4.867v-.766a.316.316,0,0,1,.1-.232.316.316,0,0,1,.232-.1h9.32L5.414-10.2a.4.4,0,0,1-.082-.246.3.3,0,0,1,.082-.219Z" transform="translate(-10622 -24116.707)"></path></g></svg></a>
+                    </div>
+                </div>
+            {% endfor %}
+    </div>
+                <div class="sgp-calc-postage__tiles-btn">
+                <a href="/calculate-postage?reset=1" title="Reset" class="sgp-link-btn sgp-link-btn--border">Reset<svg xmlns="http://www.w3.org/2000/svg" width="13.563" height="13.563" viewBox="0 0 13.563 13.563">
+                    <path id="Path_1021" data-name="Path 1021" d="M13.453-12.031a.316.316,0,0,1,.232.1.316.316,0,0,1,.1.232v4.375a.316.316,0,0,1-.1.232.316.316,0,0,1-.232.1H9.078a.316.316,0,0,1-.232-.1.316.316,0,0,1-.1-.232V-7.6a.316.316,0,0,1,.1-.232.316.316,0,0,1,.232-.1H12.2a5.722,5.722,0,0,0-2.133-2.311A5.716,5.716,0,0,0,7-11.1a5.713,5.713,0,0,0-2.939.793A5.837,5.837,0,0,0,1.928-8.176,5.717,5.717,0,0,0,1.148-5.25a5.713,5.713,0,0,0,.793,2.939A5.837,5.837,0,0,0,4.074-.178,5.717,5.717,0,0,0,7,.6a5.687,5.687,0,0,0,2.119-.4A5.954,5.954,0,0,0,10.91-.9a.381.381,0,0,1,.232-.082.327.327,0,0,1,.232.109l.191.191a.314.314,0,0,1,.082.232.273.273,0,0,1-.109.232A6.746,6.746,0,0,1,9.461,1.066,6.633,6.633,0,0,1,7,1.531,6.573,6.573,0,0,1,3.609.615,6.886,6.886,0,0,1,1.135-1.846,6.526,6.526,0,0,1,.219-5.236a6.675,6.675,0,0,1,.9-3.4,6.746,6.746,0,0,1,2.461-2.475,6.6,6.6,0,0,1,3.4-.916,6.675,6.675,0,0,1,3.4.9,6.642,6.642,0,0,1,2.461,2.461V-11.7a.316.316,0,0,1,.1-.232.316.316,0,0,1,.232-.1Z" transform="translate(-0.219 12.031)"></path>
+                    </svg></a>
+                <a href="#calculate_top" title="Continue" id="continue-btn" class="sgp-link-btn sgp-link-btn--box">Continue<svg xmlns="http://www.w3.org/2000/svg" width="12.25" height="7" viewBox="0 0 12.25 7"><path d="M8.5-8.641a.327.327,0,0,1,.232-.109.327.327,0,0,1,.232.109l3.172,3.172a.26.26,0,0,1,.109.219.26.26,0,0,1-.109.219L8.969-1.859a.327.327,0,0,1-.232.109A.327.327,0,0,1,8.5-1.859l-.191-.191A.26.26,0,0,1,8.2-2.27a.34.34,0,0,1,.109-.246l2.3-2.27H.328a.316.316,0,0,1-.232-.1A.316.316,0,0,1,0-5.113v-.273a.316.316,0,0,1,.1-.232.316.316,0,0,1,.232-.1H10.609l-2.3-2.27A.34.34,0,0,1,8.2-8.23a.26.26,0,0,1,.109-.219Z" transform="translate(0 8.75)"></path></svg></a>
+            </div>
+    {% endif %}
+    </div>
+    </div>
+{% endspaceless %}

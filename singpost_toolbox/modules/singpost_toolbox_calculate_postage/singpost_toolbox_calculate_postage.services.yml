@@ -1,0 +1,12 @@
+services:
+  singpost.delivery_service.model:
+    class: Drupal\singpost_toolbox_calculate_postage\Model\DeliveryServiceModel
+  singpost.delivery_service.service:
+    class: Drupal\singpost_toolbox_calculate_postage\Services\DeliveryService
+    arguments: ['@singpost.delivery_service.model']
+
+  singpost.toolbox.calculate.model.dimension:
+    class: Drupal\singpost_toolbox_calculate_postage\Model\Dimension
+  singpost.toolbox.calculate.service.dimension:
+    class: Drupal\singpost_toolbox_calculate_postage\Services\DimensionService
+    arguments: [ '@singpost.toolbox.calculate.model.dimension' ]

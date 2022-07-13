@@ -1,0 +1,55 @@
+singpost.toolbox.track_and_trace.index:
+  path: '/track-items'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_track_and_trace\Frontend\Controller\TrackAndTraceController::index'
+    _title: 'Track & Trace'
+  requirements:
+    _access: 'TRUE'
+
+singpost.toolbox.track_and_trace.config:
+  path: '/admin/config/singpost/toolbox/track-and-trace'
+  defaults:
+    _form: '\Drupal\singpost_toolbox_track_and_trace\Form\Config\TrackAndTraceConfig'
+    _title: 'Track and Trace settings'
+  requirements:
+    _permission: 'administer singpost toolbox tnt configuration'
+
+singpost.toolbox.track_and_trace.status:
+  path: '/admin/singpost/toolbox/status'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_track_and_trace\Controller\StatusController::index'
+    _title: 'TnT Status Manage'
+  requirements:
+    _permission: 'administer singpost toolbox tnt status manage'
+
+singpost.toolbox.track_and_trace.status.add:
+  path: '/admin/singpost/toolbox/status/add'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_track_and_trace\Controller\StatusController::add'
+    _title: 'Create TnT Status'
+  requirements:
+    _permission: 'administer singpost toolbox tnt status form'
+
+singpost.toolbox.track_and_trace.status.edit:
+  path: '/admin/singpost/toolbox/status/edit/{id}'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_track_and_trace\Controller\StatusController::edit'
+    _title: 'Update TnT Status'
+  requirements:
+    _permission: 'administer singpost toolbox tnt status form'
+
+singpost.toolbox.track_and_trace.status.change_status:
+  path: '/admin/singpost/toolbox/status/change-status'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_track_and_trace\Controller\StatusController::changeStatus'
+    _title: 'Update TnT Status'
+  requirements:
+    _permission: 'administer singpost toolbox tnt status form'
+
+singpost.toolbox.track_and_trace.status.delete:
+  path: '/admin/singpost/toolbox/status/delete/{id}'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_track_and_trace\Controller\StatusController::delete'
+    _title: 'Delete TnT Status'
+  requirements:
+    _permission: 'administer singpost toolbox tnt status delete'

@@ -1,0 +1,19 @@
+uuid: c0a95c45-088c-4c70-806c-fb83a2e4b444
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_card_css_class
+    - paragraphs.paragraphs_type.card
+id: paragraph.card.field_card_css_class
+field_name: field_card_css_class
+entity_type: paragraph
+bundle: card
+label: 'CSS Class'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

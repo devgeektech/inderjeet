@@ -1,0 +1,36 @@
+{% spaceless %}
+    {% if data is not empty %}
+        {% for item in data %}
+            <div class="pm-post-office">
+                <h5 class="cate-title">{{ item['category_name'] }}</h5>
+                <div class="d-none d-lg-block text-center cate-img">
+                    <img class="feature-img" alt="" src="{{ item['feature_img'] }}">
+                </div>
+                <div class="table-responsive">
+                    <table class="tbl-list-product table table-border-custom font-weight-bold text-center">
+                        <thead>
+                        <tr class="bg-grey-custom text-uppercase">
+                            <th class="border-0">ITEMS</th>
+                            <th class="border-0">DIMENSIONS</th>
+                            <th class="border-0">ESTIMATED WEIGHT</th>
+                            <th class="border-0">RETAIL PRICE</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% if item['products'] is not empty %}
+                            {% for product in item['products'] %}
+                                <tr>
+                                    <td>{{ product.title }}</td>
+                                    <td>{{ product.dimension }}</td>
+                                    <td>{{ product.estimated_weight ? product.estimated_weight ~ (product.unit ? ' per ' ~ product.unit : '') : '' }}</td>
+                                    <td>{{ (product.price and product.bundle) ? '$' ~ (product.price/product.bundle)|number_format(2) }} {{ product.unit ? ' per ' ~ product.unit : '' }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endspaceless %}

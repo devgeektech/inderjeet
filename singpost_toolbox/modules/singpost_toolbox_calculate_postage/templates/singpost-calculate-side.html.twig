@@ -1,0 +1,38 @@
+{# 
+    <div class="calculate-side">
+        <ul class="nav" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="cal-tab-overseas" data-toggle="pill" href="#nav-overseas" role="tab" aria-controls="nav-overseas" aria-selected="false">
+                    Overseas
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="cal-tab-singapore" data-toggle="pill" href="#nav-singapore" role="tab" aria-controls="nav-singapore" aria-selected="false">
+                    Singapore
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content" id="tab-content">
+            <div class="tab-pane fade active show" id="nav-overseas" role="tabpanel" aria-labelledby="cal-tab-overseas">
+                <div class="tab-item" data-parent="#tab-content" role="tabpanel" aria-labelledby="heading-overseas">
+                    {{ forms.overseas }}
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-singapore" role="tabpanel" aria-labelledby="cal-tab-singapore">
+                <div class="tab-item" data-parent="#tab-content" role="tabpanel" aria-labelledby="heading-singapore">
+                    {{ forms.combined }}
+                </div>
+            </div>
+        </div>
+    </div> #}
+
+
+{% spaceless %}
+<div class="track-trace-sec__tab-cont track-trace-sec--weight">
+        {{ forms.combined }}
+   {# <input type="text" placeholder="Weight (g / kg)" class="track-trace-sec__input-text"> #} 
+    <!-- <a href="#" title="CALCULATE NOW" btn-text="CALCULATE NOW" class="track-trace-sec__btn">CALCULATE NOW</a> -->
+  {#  <a href="" title="Calculate Now" class="sgp-link-btn sgp-link-btn--box">CALCULATE NOW<svg xmlns="http://www.w3.org/2000/svg" width="12.25" height="7" viewBox="0 0 12.25 7"><path d="M8.5-8.641a.327.327,0,0,1,.232-.109.327.327,0,0,1,.232.109l3.172,3.172a.26.26,0,0,1,.109.219.26.26,0,0,1-.109.219L8.969-1.859a.327.327,0,0,1-.232.109A.327.327,0,0,1,8.5-1.859l-.191-.191A.26.26,0,0,1,8.2-2.27a.34.34,0,0,1,.109-.246l2.3-2.27H.328a.316.316,0,0,1-.232-.1A.316.316,0,0,1,0-5.113v-.273a.316.316,0,0,1,.1-.232.316.316,0,0,1,.232-.1H10.609l-2.3-2.27A.34.34,0,0,1,8.2-8.23a.26.26,0,0,1,.109-.219Z" transform="translate(0 8.75)"/></svg></a> #}
+</div>
+<div class="track-trace-sec__track-tab-footer">For further assistance, you may try our <a href="/calculate-postage" title="Advanced Calculator" class="track-trace-sec__link">Advanced Calculator</a>.</div>
+{% endspaceless %}

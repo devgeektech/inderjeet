@@ -1,0 +1,45 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pay_services_data
+    - node.type.payment
+    - paragraphs.paragraphs_type.pay_services_data
+  module:
+    - entity_reference_revisions
+id: node.payment.field_pay_services_data
+field_name: field_pay_services_data
+entity_type: node
+bundle: payment
+label: 'Pay Services Data'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      pay_services_data: pay_services_data
+    target_bundles_drag_drop:
+      how_to_pay:
+        weight: 7
+        enabled: false
+      pay_services_data:
+        enabled: true
+        weight: 8
+      ptoc_container:
+        weight: 9
+        enabled: false
+      ptoc_image:
+        weight: 10
+        enabled: false
+      ptoc_links:
+        weight: 11
+        enabled: false
+      ptoc_text:
+        weight: 12
+        enabled: false
+field_type: entity_reference_revisions

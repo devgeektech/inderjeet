@@ -1,0 +1,13 @@
+singpost.audit_trail.admin:
+  title: 'Audit Trail'
+  description: 'View events that have recently been logged of SingPost system.'
+  route_name: singpost.audit_trail.admin
+  parent: singpost.admin.base
+  weight: 0
+
+singpost.config.audit_trail:
+  title: 'Audit Trail settings'
+  parent: singpost.config.base
+  description: 'Setting for Audit Trail.'
+  route_name: singpost.audit_trail.config
+  weight: 20

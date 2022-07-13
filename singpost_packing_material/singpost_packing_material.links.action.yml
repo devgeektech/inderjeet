@@ -1,0 +1,11 @@
+pm.category.add:
+  title: Add Category
+  route_name: singpost.pm.category.add
+  appears_on:
+    - singpost.pm.category.manage
+
+pm.product.add:
+  title: Add Product
+  route_name: singpost.pm.product.add
+  appears_on:
+    - singpost.pm.product.manage

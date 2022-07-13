@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_custom_block
+    - paragraphs.paragraphs_type.block
+  module:
+    - block_field
+id: paragraph.block.field_custom_block
+field_name: field_custom_block
+entity_type: paragraph
+bundle: block
+label: 'Custom Block'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    plugin_id: custom_html_block
+    settings: {  }
+default_value_callback: ''
+settings:
+  selection: blocks
+  selection_settings:
+    plugin_ids:
+      custom_html_block: custom_html_block
+field_type: block_field

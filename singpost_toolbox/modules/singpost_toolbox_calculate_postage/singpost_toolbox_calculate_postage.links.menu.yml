@@ -1,0 +1,27 @@
+singpost.calculate.delivery_service.manage:
+  title: 'Delivery Service'
+  parent: singpost.toolbox.manage
+  description: 'Create and manage Delivery Service for Calculate Postage form.'
+  route_name: singpost.toolbox.calculate.delivery_service.manage
+  weight: 20
+
+singpost.calculate.dimension.manage:
+  title: 'Dimension'
+  parent: singpost.toolbox.manage
+  description: 'Create and manage Dimension for Calculate Postage form.'
+  route_name: singpost.toolbox.calculate.dimension.manage
+  weight: 30
+
+singpost.config.toolbox.calculate:
+  title: 'Calculate Postage'
+  parent: singpost.config.toolbox
+  description: 'All settings for Calculate Postage.'
+  route_name: singpost.toolbox.calculate.config
+  weight: 60
+
+singpost.toolbox.calculate_postage.index:
+  title: 'Calculate Postage'
+  menu_name: singposttoolbox
+  description: 'Calculate Postage module frontend page.'
+  route_name: singpost.toolbox.calculate.singapore.index
+  weight: 10

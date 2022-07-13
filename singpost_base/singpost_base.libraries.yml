@@ -1,0 +1,16 @@
+base:
+  js:
+    assets/js/base.js: { minified: true }
+  dependencies:
+    - core/jquery
+
+datetimepicker:
+  css:
+    theme:
+      assets/vendor/bootstrap-datetimepicker/css/glyphicon.min.css: {}
+      assets/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css: {}
+  js:
+    assets/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js: {}
+    assets/js/datetimepicker.js: { minified: true }
+  dependencies:
+    - core/jquery

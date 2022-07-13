@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function singpost_toolbox_redirect_redeliver_theme($existing, $type, $theme, $path){
+	return [
+		'singpost_redirect_redeliver_success' => [
+			'template'  => 'singpost-redirect-redeliver-success',
+			'variables' => [
+				'data' => [],
+			]
+		]
+	];
+}

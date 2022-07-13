@@ -1,0 +1,10 @@
+name: SingPost Toolbox
+description: 'Allows administrators to add configuration for SingPost toolbox.'
+package: SingPost
+type: module
+core_version_requirement: ^8.8 || ^9
+dependencies:
+  - singpost_base
+  - clientside_validation_jquery
+
+configure: singpost.toolbox

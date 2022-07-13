@@ -1,0 +1,8 @@
+name: SingPost Content - Card Paragraph
+type: module
+description: 'Add Card paragraph type.'
+package: SingPost
+core_version_requirement: ^8 || ^9
+dependencies:
+  - paragraphs:paragraphs
+  - singpost_content

@@ -1,0 +1,23 @@
+singpost.toolbox.redirect_redeliver.config:
+  path: '/admin/config/singpost/toolbox/redirect-redeliver'
+  defaults:
+    _form: '\Drupal\singpost_toolbox_redirect_redeliver\Form\Config\RedirectRedeliverConfigForm'
+    _title: 'Redirect Redeliver settings'
+  requirements:
+    _permission: 'administer singpost toolbox redirect redeliver configuration'
+
+singpost.toolbox.redirect_redeliver.index:
+  path: '/redirect-redeliver'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_redirect_redeliver\Controller\RedirectRedeliverController::index'
+    _title: 'Redirect / Redeliver'
+  requirements:
+    _access: 'TRUE'
+
+singpost.toolbox.redirect_redeliver.success:
+  path: '/redirect-redeliver/success'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_redirect_redeliver\Controller\RedirectRedeliverController::success'
+    _title: 'Success'
+  requirements:
+    _access: 'TRUE'

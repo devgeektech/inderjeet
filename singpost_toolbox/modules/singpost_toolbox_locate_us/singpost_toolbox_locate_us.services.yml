@@ -1,0 +1,6 @@
+services:
+  singpost.toolbox.locate_us.model:
+    class: Drupal\singpost_toolbox_locate_us\Model\LocateUsType
+  singpost.toolbox.locate_us.service:
+    class: Drupal\singpost_toolbox_locate_us\Services\LocateUsService
+    arguments: [ '@singpost.toolbox.locate_us.model' ]

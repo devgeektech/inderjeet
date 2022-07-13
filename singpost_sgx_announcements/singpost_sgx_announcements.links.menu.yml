@@ -1,0 +1,6 @@
+singpost.sgx.announcements.admin:
+  title: 'SGX Announcements'
+  description: 'Manage website SGX announcements'
+  parent: singpost.admin.base
+  route_name: singpost.sgx.announcements.admin
+  weight: 200

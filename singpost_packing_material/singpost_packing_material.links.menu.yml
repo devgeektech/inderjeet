@@ -1,0 +1,34 @@
+singpost.pm.config:
+  title: 'Packing Material'
+  parent: singpost.admin.base
+  description: 'SingPost Packing Material'
+  route_name: singpost.pm.config
+  weight: 100
+
+singpost.pm.category:
+  title: 'Category'
+  parent: singpost.pm.config
+  description: 'All Packing Material Category'
+  route_name: singpost.pm.category.manage
+  weight: 10
+
+singpost.pm.product:
+  title: 'Product'
+  parent: singpost.pm.config
+  description: 'All Packing Material Product'
+  route_name: singpost.pm.product.manage
+  weight: 20
+
+singpost.pm.order:
+  title: 'Order'
+  parent: singpost.pm.config
+  description: 'All Packing Material Order'
+  route_name: singpost.pm.order.manage
+  weight: 30
+
+singpost.pm.setting:
+  title: 'Packing Material settings'
+  parent: singpost.config.base
+  description: 'Setting for Packing Material'
+  route_name: singpost.pm.setting
+  weight: 80

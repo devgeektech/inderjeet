@@ -1,0 +1,19 @@
+uuid: 11ee8200-abc4-4fe3-aeb2-2fe4b53180c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_well_css_class
+    - paragraphs.paragraphs_type.well
+id: paragraph.well.field_well_css_class
+field_name: field_well_css_class
+entity_type: paragraph
+bundle: well
+label: 'CSS Class'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

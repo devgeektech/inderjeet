@@ -1,0 +1,10 @@
+uuid: cb2b956e-7ea6-4366-9f02-f930f17712ee
+langcode: en
+status: true
+dependencies: { }
+id: collapsible_nodes
+label: 'Collapsible Nodes'
+icon_uuid: null
+icon_default: null
+description: 'Collapsible a node content'
+behavior_plugins: {  }

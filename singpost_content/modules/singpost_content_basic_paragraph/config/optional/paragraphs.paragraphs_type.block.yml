@@ -1,0 +1,8 @@
+langcode: en
+status: true
+id: block
+label: Block
+icon_uuid: null
+icon_default: null
+description: 'Custom block'
+behavior_plugins: {  }

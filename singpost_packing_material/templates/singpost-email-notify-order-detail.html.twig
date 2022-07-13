@@ -1,0 +1,48 @@
+{% spaceless %}
+    <table style="width: 100%;">
+        <tr>
+            <th>Name </th>
+            <th>Item Image</th>
+            <th>Bundle Quantity</th>
+            <th>Total Quantity</th>
+            <th>Usual Price</th>
+            <th>Discounted Price</th>
+        </tr>
+        {% if data.items is not empty %}
+            {% for item in data.items %}
+                <tr>
+                    <td style="text-align: center;">{{ item.title }}</td>
+                    
+                    {% if item.product_id.image_url %}
+                        <td style="width: 25%; text-align: center;">
+                            <img style="width: 100%;" src="{{ item.product_id.image_url }}">
+                        </td>
+                    {% else %}
+                        <td>No Images</td>
+                    {% endif %}
+                    <td style="text-align: center;">{{ item.product_id.bundle }}</td>
+                    <td style="text-align: center;">{{ item.product_id.bundle * item.quantity }}</td>
+                    <td style="text-align: center;">${{ item.quantity * item.product_id.price }}</td>
+                    <td style="text-align: center;">${{ item.quantity * item.product_id.discounted_price }}</td>
+                </tr>
+            {% endfor %}
+            <tr></tr>
+        {% endif %}
+        <tr>
+            <td colspan="2"></td>
+            <td><strong>Subtotal:</strong></td>
+            <td colspan="2"><strong>S$</strong>{{ data.subtotal }}</td>
+        </tr>
+        <tr>
+            <td colspan="2"></td>
+            <td><strong>Discounts:</strong></td>
+            <td colspan="2"><strong>S$</strong>{{ data.discount }}</td>
+        </tr>
+        <tr>
+            <td colspan="2"></td>
+            <td><strong>Grand Total:</strong></td>
+            <td colspan="2"><strong>S$</strong>{{ data.total }}</td>
+        </tr>
+    </table>
+
+{% endspaceless %}

@@ -1,0 +1,49 @@
+{% spaceless %}
+	<div class="sgp-locate-us" id="step-0">
+		<div class="content-wrapper">
+			<div class="sgp-locate-us__sec-1 locate-us-default">
+				<form class="{{ form["#attributes"].class.0 }}" method="post">
+					<div class="sgp-locate-us__inner">
+						<div class="sgp-locate-us__load-more"><img src="{{ url('<front>')}}{{ base_path ~ directory }}/assets/images/arrow-up-blue.svg" alt=""></div>
+						<h4 class="sgp-h4">Find</h4>
+						<p class="mt-2 mb-2">For full list of post office, <a href="/list-of-post-offices" class="sgp-link">click here.</a>
+							<div>
+								<div class="sgp-locate-us__outlet">
+									{% for item in list_type %}
+										<div class="sgp-locate-us__outlet-tile locate-us-type-input">
+											{{ form.locate_us_type[item.id] }}
+											<label class="locate-us-type-box {{ (item.id == id) ? 'active' : '' }}" for="locate-us-type-{{ item.id }}">
+												<img src="{{ file_url(icon[item.id]) }}" alt="" class="sgp-locate-us__outlet-logo">
+												<p>{{ item.icon_text }}</p>
+											</label>
+										</div>
+									{% endfor %}
+								</div>
+								<div class="sgp-locate-us__filter">
+									<div class="sgp-locate-us__filter-item">
+										<h5 class="sgp-h5">Nearby</h5>
+										{{ form.row.keyword }}
+										{# <img src="{{ url('<front>')}}{{ base_path ~ directory }}/assets/images/location-point.svg" alt="icon" class="sgp-text-box__icon" id="cur-loc-icon"> #}
+										{{ form.row.place_id }}
+									</div>
+								</div>
+								<div class="sgp-locate-us__btn-sec">
+									{{ form.row.actions.submit }}</div>
+							</div>
+						</p>
+					</div>
+					{{ form.form_build_id }}
+					{{ form.form_token }}
+					{{ form.form_id }}
+					{{ form.recaptcha }}
+					{{ form.g_recaptcha_response_locate_us }}
+				</form>
+			</div>
+			<!-- Map start -->
+			<div class="sgp-locate-us__sec-2 active" class="loading" id="map2">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127638.408781873!2d103.80583546136326!3d1.3564413826863015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!3m2!1sen!2sin!4v1651035843324!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+			</div>
+			<!-- Map end -->
+		</div>
+	</div>
+{% endspaceless %}

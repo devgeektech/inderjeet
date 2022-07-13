@@ -1,0 +1,34 @@
+{% spaceless %}
+    <div class="calculate-local {{ 'calculate-' ~ help.position }}">
+        <div class="collapse-group">
+            <div class="accordion" id="calculate-local-accordion">
+                <div class="card">
+                    <div class="card-header" id="heading-calculate-local">
+                        <h4 class="heading">
+                            <a title="Calculate Postage/Shipping Rates" href="#" class="collapsed" data-toggle="collapse" data-target="#collapse-calculate-local">
+                                Calculate Postage/Shipping Rates
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse-calculate-local" class="collapse {{ (((help.active.package or help.active.mail) and help.local) or (help.active.overseas and not help.local )) ? 'show' : '' }}" aria-labelledby="heading-calculate-local">
+                        <div class="card-body">
+                            <ul class="menu list-of-links links-menu-tab bg-grey-custom">
+                                <li class="menu-item active">
+                                    <a title="Send" href="{{ help.links.Send }}" class="is-active">Send</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a title="Receive" href="{{ help.links.Receive }}">Receive</a>
+                                </li>
+                            </ul>
+                            {% if help.local %}
+                                {{ render_var({ '#theme': 'singpost_calculate_local', '#forms': forms, '#help': help }) }}
+                            {% else %}
+                                {{ render_var({ '#theme': 'singpost_calculate_overseas', '#forms': forms, '#help': help }) }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endspaceless %}

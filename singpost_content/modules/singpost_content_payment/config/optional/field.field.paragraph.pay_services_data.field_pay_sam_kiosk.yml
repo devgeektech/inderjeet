@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_pay_sam_kiosk
+    - paragraphs.paragraphs_type.pay_services_data
+  module:
+    - options
+id: paragraph.pay_services_data.field_pay_sam_kiosk
+field_name: field_pay_sam_kiosk
+entity_type: paragraph
+bundle: pay_services_data
+label: 'Pay SAM Kiosk'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 'Yes'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

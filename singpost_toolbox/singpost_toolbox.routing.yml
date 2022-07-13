@@ -1,0 +1,31 @@
+singpost.toolbox.config.index:
+  path: '/admin/config/singpost/toolbox'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'All Toolbox settings'
+  requirements:
+    _permission: 'administer singpost toolbox configuration'
+
+singpost.toolbox.config.auth:
+  path: '/admin/config/singpost/toolbox/auth'
+  defaults:
+    _form: '\Drupal\singpost_toolbox\Form\Config\ToolboxConfigForm'
+    _title: 'Toolbox settings'
+  requirements:
+    _permission: 'administer singpost toolbox configuration'
+
+singpost.toolbox.manage:
+  path: '/admin/singpost/toolbox'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Toolbox Manage'
+  requirements:
+    _permission: 'administer singpost toolbox configuration'
+
+singpost.toolbox.protection_flag:
+  path: '/protection-flag'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox\Controller\ToolboxController::index'
+    _title: 'Protection Flag'
+  requirements:
+    _access: 'TRUE'

@@ -1,0 +1,23 @@
+singpost.audit_trail.config:
+  path: '/admin/config/singpost/audit-trail'
+  defaults:
+    _form: '\Drupal\singpost_audit_trail\Form\Config\AuditTrailForm'
+    _title: 'Audit trail settings'
+  requirements:
+    _permission: 'administer audit trail configuration'
+
+singpost.audit_trail.admin:
+  path: '/admin/singpost/audit-trail'
+  defaults:
+    _controller: '\Drupal\singpost_audit_trail\Controller\AuditTrailController::index'
+    _title: 'Audit Trail'
+  requirements:
+    _permission: 'administer audit trail'
+
+singpost.audit_trail.view:
+  path: '/admin/singpost/audit-trail/view/{id}'
+  defaults:
+    _controller: '\Drupal\singpost_audit_trail\Controller\AuditTrailController::view'
+    _title: 'View Audit Trail'
+  requirements:
+    _permission: 'aadminister audit trail'

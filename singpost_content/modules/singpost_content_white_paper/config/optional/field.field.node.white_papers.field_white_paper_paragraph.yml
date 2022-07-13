@@ -1,0 +1,40 @@
+uuid: aa80b0c7-da12-4fcf-a27d-78441ac0465e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_white_paper_paragraph
+    - node.type.white_papers
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: vKfc48M1SaRQFWhYOA5QwW_f57xYCrSIM_qvq132wLQ
+id: node.white_papers.field_white_paper_paragraph
+field_name: field_white_paper_paragraph
+entity_type: node
+bundle: white_papers
+label: Paragraph
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 1
+    target_bundles: null
+    target_bundles_drag_drop:
+      block:
+        weight: 5
+        enabled: false
+      card:
+        weight: 6
+        enabled: false
+      card_container:
+        weight: 7
+        enabled: false
+      download_form:
+        weight: 8
+        enabled: false
+field_type: entity_reference_revisions

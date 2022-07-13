@@ -1,0 +1,18 @@
+services:
+  singpost.pm.category.model:
+    class: Drupal\singpost_packing_material\Model\PackingMaterialCategory
+  singpost.pm.category.service:
+    class: Drupal\singpost_packing_material\Services\CategoryService
+    arguments: ['@singpost.pm.category.model']
+
+  singpost.pm.product.model:
+    class: Drupal\singpost_packing_material\Model\PackingMaterialProduct
+  singpost.pm.product.service:
+    class: Drupal\singpost_packing_material\Services\ProductService
+    arguments: ['@singpost.pm.product.model']
+
+  singpost.pm.order.model:
+    class: Drupal\singpost_packing_material\Model\PackingMaterialOrder
+  singpost.pm.order.service:
+    class: Drupal\singpost_packing_material\Services\OrderService
+    arguments: ['@singpost.pm.order.model']

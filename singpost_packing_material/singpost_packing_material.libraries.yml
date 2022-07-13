@@ -1,0 +1,15 @@
+packing-material:
+  css:
+    theme:
+      assets/css/packing-material.css: { minified: true }
+  js:
+    assets/js/dbosta-localStorage.js: { minified: true }
+    assets/js/packing-material.js: { minified: true }
+  dependencies:
+    - core/jquery
+
+packing-material-form:
+  js:
+    assets/js/form.js: { minified: true }
+  dependencies:
+    - clientside_validation_jquery/jquery.validate

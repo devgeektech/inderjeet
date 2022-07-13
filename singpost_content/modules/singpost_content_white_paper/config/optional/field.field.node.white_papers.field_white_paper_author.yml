@@ -1,0 +1,23 @@
+uuid: 455b3b0c-1e8a-461f-a321-0ecce88f6505
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_white_paper_author
+    - node.type.white_papers
+  module:
+    - text
+_core:
+  default_config_hash: MFPkur9vViaSWhuTSUyx-fsHq3qaZo3VMzn1nrgLM58
+id: node.white_papers.field_white_paper_author
+field_name: field_white_paper_author
+entity_type: node
+bundle: white_papers
+label: Author
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

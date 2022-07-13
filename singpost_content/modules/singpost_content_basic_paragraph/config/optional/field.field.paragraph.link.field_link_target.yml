@@ -1,0 +1,22 @@
+uuid: 676f9aa1-a358-4a6c-b5e5-ae5db82da7bf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_link_target
+    - paragraphs.paragraphs_type.link
+  module:
+    - options
+id: paragraph.link.field_link_target
+field_name: field_link_target
+entity_type: paragraph
+bundle: link
+label: Target
+description: ''
+required: true
+translatable: false
+default_value:
+  - value: _self
+default_value_callback: ''
+settings: {  }
+field_type: list_string

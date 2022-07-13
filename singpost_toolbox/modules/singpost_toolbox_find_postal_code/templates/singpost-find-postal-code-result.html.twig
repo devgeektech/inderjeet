@@ -1,0 +1,61 @@
+{% spaceless %}
+    <div class="search-result toolbox-results">
+    <p class="search-result__head">Result:</p>
+    <div class="search-result__wrap">
+        {% if results.street is not empty %}
+            {% if help.count_street %}
+                {# <div class="count-result font-weight-bold">
+                    {{ help.count_street }} results found.
+                </div> #}
+            {% endif %}
+                {% for item in results.street %}
+                    <div class="search-result__box active">
+                    <p class="search-result__num">{{ (item.PostalCode ?: '') }}</p>
+                        <div class="search-result__text">
+                            <p class="search-result__val">{{ (item.BuildingNo ?: '') ~ ((item.BuildingNo and item.StreetName) ? ' ' : '') ~ (item.StreetName ?: '') ~ (((item.StreetName or item.BuildingNo) and item.BuildingName) ? ', ' : '' ) ~ (item.BuildingName ?: '') }}</p>
+                            <p class="search-result__val"><em>{{ (item.BuildingType ?: '') }}</em></p>
+                        </div>
+                    </div>
+                {% endfor %}
+        {% else %}
+            <div class="text-red">{{ help.error|raw }}</div>
+        {% endif %}
+
+        {% if results.landmark is not empty %}
+            {% if help.count_landmark %}
+                <div class="count-result font-weight-bold">
+                    {{ help.count_landmark }} results found.
+                </div>
+            {% endif %}
+                    {% for item in results.landmark %}
+                    <div class="search-result__box active">
+                    <p class="search-result__num">{{ (item.PostalCode ?: '') }}</p>
+                        <div class="search-result__text">
+                            <p class="search-result__val">{{ (item.BuildingNo ?: '') ~ ((item.BuildingNo and item.StreetName) ? ' ' : '') ~ (item.StreetName ?: '') ~ (((item.StreetName or item.BuildingNo) and item.BuildingName) ? ', ' : '' )  ~ (item.BuildingName ?: '') }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+        {% else %}
+            <div class="text-red">{{ help.error|raw }}</div>
+        {% endif %}
+
+        {% if results.pobox is not empty %}
+            {% if help.count_pobox %}
+                <div class="count-result font-weight-bold">
+                    {{ help.count_pobox }} results found.
+                </div>
+            {% endif %}
+                    {% for item in results.pobox %}
+                    <div class="search-result__box active">
+                    <p class="search-result__num">{{ (item.PostalCode ?: '') }}</p>
+                        <div class="search-result__text">
+                            <p class="search-result__val">{{ (item.WindowDeliveryNo ?: '') ~  ((item.WindowDeliveryNo and item.PostOffice) ? ', ' : '') ~ (item.PostOffice ?: '') }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+        {% else %}
+            <div class="text-red">{{ help.error|raw }}</div>
+        {% endif %}
+    </div>
+    </div>
+{% endspaceless %}

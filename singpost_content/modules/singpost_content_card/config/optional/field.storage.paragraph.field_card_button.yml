@@ -1,0 +1,19 @@
+uuid: fdee44a3-e572-422e-8f64-82fb68c2d757
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - paragraphs
+id: paragraph.field_card_button
+field_name: field_card_button
+entity_type: paragraph
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

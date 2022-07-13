@@ -1,0 +1,6 @@
+singpost.config.bulk_mail_solutions:
+  title: 'Bulk Mail Solutions settings'
+  parent: singpost.config.base
+  description: 'Setting for Bulk Mail Solutions webform.'
+  route_name: singpost.bulk_mail_solutions.config
+  weight: 20

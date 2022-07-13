@@ -1,0 +1,111 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.ptoc
+    - field.field.paragraph.pay_services_data.field_pay_other_text_post_office
+    - field.field.paragraph.pay_services_data.field_pay_other_text_sam_kiosk
+    - field.field.paragraph.pay_services_data.field_pay_other_text_sam_online
+    - field.field.paragraph.pay_services_data.field_pay_post_office
+    - field.field.paragraph.pay_services_data.field_pay_sam_kiosk
+    - field.field.paragraph.pay_services_data.field_pay_sam_online
+    - field.field.paragraph.pay_services_data.field_pay_service_description
+    - field.field.paragraph.pay_services_data.field_pay_service_name
+    - field.field.paragraph.pay_services_data.field_pay_tool_tip_post_office
+    - field.field.paragraph.pay_services_data.field_pay_tool_tip_sam_kiosk
+    - field.field.paragraph.pay_services_data.field_pay_tool_tip_sam_online
+    - paragraphs.paragraphs_type.pay_services_data
+  module:
+    - options
+    - text
+id: paragraph.pay_services_data.ptoc
+targetEntityType: paragraph
+bundle: pay_services_data
+mode: ptoc
+content:
+  field_pay_other_text_post_office:
+    weight: 4
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_pay_other_text_sam_kiosk:
+    weight: 10
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_pay_other_text_sam_online:
+    weight: 7
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_pay_post_office:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_pay_sam_kiosk:
+    weight: 5
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_pay_sam_online:
+    weight: 8
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_pay_service_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_pay_service_name:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_pay_tool_tip_post_office:
+    weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_pay_tool_tip_sam_kiosk:
+    weight: 6
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_pay_tool_tip_sam_online:
+    weight: 9
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  search_api_excerpt: true

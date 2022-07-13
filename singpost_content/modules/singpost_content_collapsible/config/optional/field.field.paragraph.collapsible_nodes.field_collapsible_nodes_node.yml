@@ -1,0 +1,30 @@
+uuid: 7d87ab87-df2c-43f8-b6fa-f526eece1c32
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_collapsible_nodes_node
+    - node.type.article
+    - node.type.page
+    - paragraphs.paragraphs_type.collapsible_nodes
+id: paragraph.collapsible_nodes.field_collapsible_nodes_node
+field_name: field_collapsible_nodes_node
+entity_type: paragraph
+bundle: collapsible_nodes
+label: Node
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      article: article
+      page: page
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: article
+field_type: entity_reference

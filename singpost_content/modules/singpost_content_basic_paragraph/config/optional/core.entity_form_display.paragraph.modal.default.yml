@@ -1,0 +1,61 @@
+uuid: 20ffc87a-128b-475b-9753-1ce42b3a7742
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.modal.field_modal_body
+    - field.field.paragraph.modal.field_modal_id
+    - field.field.paragraph.modal.field_modal_size
+    - field.field.paragraph.modal.field_modal_title
+    - paragraphs.paragraphs_type.modal
+  module:
+    - paragraphs
+id: paragraph.modal.default
+targetEntityType: paragraph
+bundle: modal
+mode: default
+content:
+  field_modal_body:
+    type: paragraphs
+    weight: 3
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        duplicate: duplicate
+        collapse_edit_all: collapse_edit_all
+        add_above: '0'
+    third_party_settings: {  }
+    region: content
+  field_modal_id:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_modal_size:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_modal_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

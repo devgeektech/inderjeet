@@ -1,0 +1,28 @@
+{{ attach_library('slick/slick') }}
+{{ attach_library('singpost_content_related_content/related-content') }}
+
+{% set classes = [
+    'paragraph',
+    'related-content',
+    paragraph.0.field_card_container_css_class.value
+] %}
+
+{% block paragraph %}
+    <div {{ attributes.addClass(classes) }}>
+        {% for row in paragraph %}
+            {% set row_class = 'row' ~ (row.field_card_container_row_class.value
+                ? (' ' ~ row.field_card_container_row_class.value) : '') %}
+
+            {% set col_class = (row.field_card_container_col_class.value
+                ? (' ' ~ row.field_card_container_col_class.value) : 'col-12') %}
+
+            <div class="{{ row_class }}">
+                {% for key, card in row.field_card_container_cards if key|first != '#' %}
+                    <div class="{{ col_class }}">
+                        {{ drupal_entity('paragraph', card.target_id) }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock paragraph %}

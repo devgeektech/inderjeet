@@ -1,0 +1,26 @@
+{% block paragraph %}
+    <div class="sidebar-links m-xl-0 mt-3">
+        {% for item in paragraph %}
+            <div class="sidebar-links-item">
+                {% if item.field_sidebar_links_title.value %}
+                    <h3>{{ item.field_sidebar_links_title.value }}</h3>
+                {% endif %}
+                <ul class="list-of-links links-vertical">
+                    {% for links in item.field_sidebar_links_links %}
+                        {% set link = drupal_entity('paragraph', links.target_id)['#paragraph'] %}
+                        <li>
+                            <a {{ link.field_link_target.value != '_self' ? 'target=' ~ link.field_link_target.value : '' }}
+                                    {{ link.field_link_css_class.value ? 'class=' ~ link.field_link_css_class.value : '' }} href="{{ link.field_link.0.url }}">
+                                {% if link.field_link_icon_css_class.value %}
+                                    {% set icon = '<i class="' ~ link.field_link_icon_css_class.value ~ '" aria-hidden="true"></i>' %}
+                                    {{ icon|raw }}
+                                {% endif %}
+                                {{ link.field_link.title }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock paragraph %}

@@ -1,0 +1,6 @@
+administer sgx announcements admin:
+  title: 'View Listing'
+administer sgx announcements form:
+  title: 'Add/Update/Publish/Unpublish/BulkAction'
+administer sgx announcements delete:
+  title: 'Delete'

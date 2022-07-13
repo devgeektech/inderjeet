@@ -1,0 +1,17 @@
+uuid: 5f48ac59-85df-401c-9500-597e0ccdeea3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.sidebar_links.field_sidebar_links_links
+    - field.field.paragraph.sidebar_links.field_sidebar_links_title
+    - paragraphs.paragraphs_type.sidebar_links
+id: paragraph.sidebar_links.default
+targetEntityType: paragraph
+bundle: sidebar_links
+mode: default
+content: {  }
+hidden:
+  field_sidebar_links_links: true
+  field_sidebar_links_title: true
+  search_api_excerpt: true

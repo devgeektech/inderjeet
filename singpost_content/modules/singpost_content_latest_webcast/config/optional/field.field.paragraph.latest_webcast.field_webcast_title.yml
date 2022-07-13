@@ -1,0 +1,19 @@
+uuid: bbbe42ac-9e8c-411d-910f-941b84dd744b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webcast_title
+    - paragraphs.paragraphs_type.latest_webcast
+id: paragraph.latest_webcast.field_webcast_title
+field_name: field_webcast_title
+entity_type: paragraph
+bundle: latest_webcast
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

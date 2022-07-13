@@ -1,0 +1,16 @@
+name: SingPost Content
+description: 'SingPost Content module'
+package: SingPost
+dependencies:
+  - paragraphs:paragraphs
+  - drupal:media
+  - drupal:media_library
+  - drupal:text
+  - drupal:node
+  - drupal:path
+  - drupal:block
+  - drupal:link
+  - twig_tweak:twig_tweak
+  - webform:webform
+type: module
+core_version_requirement: ^8 || ^9

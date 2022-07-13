@@ -1,0 +1,10 @@
+form:
+  js:
+    assets/js/form.js: { minified: true }
+  dependencies:
+    - core/jquery
+sort-table:
+  js:
+    assets/js/sort-table.js: { minified: true }
+  dependencies:
+    - core/jquery

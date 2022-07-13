@@ -1,0 +1,10 @@
+uuid: 9a79d7bf-e984-4ecd-8c51-c2c5d1a2dd95
+langcode: en
+status: true
+dependencies: {  }
+id: payment_table
+label: 'Payment Table'
+icon_uuid: null
+icon_default: null
+description: 'Create a payment table with Post Office, SAM Kiosk and SAM Web/Mobile columns'
+behavior_plugins: {  }

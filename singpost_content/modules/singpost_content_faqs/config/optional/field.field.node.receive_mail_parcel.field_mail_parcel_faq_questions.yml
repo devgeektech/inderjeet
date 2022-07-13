@@ -1,0 +1,58 @@
+uuid: 95c32782-91c7-4025-8ebd-5cad0223a6a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mail_parcel_faq_questions
+    - node.type.receive_mail_parcel
+    - paragraphs.paragraphs_type.faq_question
+  module:
+    - entity_reference_revisions
+id: node.receive_mail_parcel.field_mail_parcel_faq_questions
+field_name: field_mail_parcel_faq_questions
+entity_type: node
+bundle: receive_mail_parcel
+label: 'FAQ Questions'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      faq_question: faq_question
+    target_bundles_drag_drop:
+      card:
+        weight: 11
+        enabled: false
+      card_container:
+        weight: 12
+        enabled: false
+      faq_answers:
+        weight: 13
+        enabled: false
+      faq_question:
+        enabled: true
+        weight: 14
+      link:
+        weight: 15
+        enabled: false
+      modal:
+        weight: 16
+        enabled: false
+      receive_mail_parcel_faq:
+        weight: 17
+        enabled: false
+      sidebar_links:
+        weight: 18
+        enabled: false
+      text:
+        weight: 19
+        enabled: false
+      well:
+        weight: 20
+        enabled: false
+field_type: entity_reference_revisions

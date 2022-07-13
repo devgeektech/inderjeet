@@ -1,0 +1,6 @@
+singpost.config.service_enquiry:
+  title: 'Service Enquiry settings'
+  parent: singpost.config.base
+  description: 'Setting for Service Enquiry webform.'
+  route_name: singpost.service_enquiry.config
+  weight: 20

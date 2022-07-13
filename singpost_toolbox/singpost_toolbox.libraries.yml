@@ -1,0 +1,12 @@
+toolbox:
+  version: VERSION
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - clientside_validation_jquery/cv.jquery.validate
+  js:
+    assets/js/toolbox.js: {}
+
+recaptcha:
+  js:
+    https://www.google.com/recaptcha/api.js?onload=onloadRecaptchaCallback&render=explicit: {type: external, attributes: { defer: true, async: true }}

@@ -1,0 +1,14 @@
+singpost.service_enquiry.config:
+  path: '/admin/config/singpost/service-enquiry'
+  defaults:
+    _form: '\Drupal\singpost_content_service_enquiry\Form\Config\ServiceEnquiryForm'
+    _title: 'Service Enquiry settings'
+  requirements:
+    _permission: 'administer service enquiry configuration'
+
+singpost.service_enquiry.get_sub_categories:
+  path: '/ajax/service-enquiry/sub-categories'
+  defaults:
+    _controller: '\Drupal\singpost_content_service_enquiry\Controller\ServiceEnquiryController::index'
+  requirements:
+    _access: 'TRUE'

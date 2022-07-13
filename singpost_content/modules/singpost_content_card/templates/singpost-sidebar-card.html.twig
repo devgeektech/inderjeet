@@ -1,0 +1,20 @@
+{% spaceless %}
+    <div class="card d-none d-lg-block">
+        {% if config.image %}
+            <img src="{{ config.image }}" class="card-img-top" alt="">
+        {% endif %}
+        <div class="card-body">
+            {% if config.title %}
+                <h5 class="card-title font-weight-bold">{{ config.title }}</h5>
+            {% endif %}
+            {% if config.description %}
+                <p class="card-text">{{ config.description }}</p>
+            {% endif %}
+            {% if config.btn_label %}
+                <div class="text-center">
+                    <a href="{{ config.btn_url }}" target="_blank" class="btn btn-outline-primary btn-style-1">{{ config.btn_label }}</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endspaceless %}

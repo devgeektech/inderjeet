@@ -1,0 +1,8 @@
+name: SingPost Content - Payment
+type: module
+description: 'Add Payment Content type, Paragraph type.'
+package: SingPost
+core_version_requirement: ^8 || ^9
+dependencies:
+  - paragraphs:paragraphs
+  - singpost_content

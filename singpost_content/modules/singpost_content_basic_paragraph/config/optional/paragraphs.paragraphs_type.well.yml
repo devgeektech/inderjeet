@@ -1,0 +1,10 @@
+uuid: 183a4b9e-623d-4412-92a7-3ac1b3d572a1
+langcode: en
+status: true
+dependencies: {  }
+id: well
+label: Well
+icon_uuid: null
+icon_default: null
+description: 'Create a block with grey background that containing text, buttons (optional)'
+behavior_plugins: {  }

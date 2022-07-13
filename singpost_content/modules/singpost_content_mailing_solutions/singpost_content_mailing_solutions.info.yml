@@ -1,0 +1,7 @@
+name: SingPost Content - Mailing Solutions
+type: module
+description: 'Add Mailing Solution Taxonomy.'
+package: SingPost
+core_version_requirement: ^8 || ^9
+dependencies:
+  - singpost_content:singpost_content

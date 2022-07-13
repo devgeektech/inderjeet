@@ -1,0 +1,179 @@
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+weight: 0
+uid: 1
+template: false
+archive: false
+id: axa_post
+title: AXA@POST
+description: ''
+category: ''
+elements: "speaktoustext:\n  '#type': processed_text\n  '#text': |\n    <p>For any insurance queries, please fill in the required details and our AXA@POST Consultant will get in touch with you within 2 -3 working days.</p>\n    \n  '#format': basic_html\nsalutation:\n  '#type': select\n  '#title': Salutation\n  '#options':\n    Mr: Mr\n    Miss: Miss\n    Mdm: Mdm\ngiven_name:\n  '#type': textfield\n  '#title': 'Given Name'\n  '#required': true\nsurname:\n  '#type': textfield\n  '#title': Surname\n  '#required': true\nemail:\n  '#type': email\n  '#title': Email\ncontact_number:\n  '#type': textfield\n  '#title': 'Contact Number'\n  '#required': true\nday:\n  '#type': select\n  '#title': DOB\n  '#options':\n    Day: Day\n    1: '1'\n    2: '2'\n    3: '3'\n    4: '4'\n    5: '5'\n    6: '6'\n    7: '7'\n    8: '8'\n    9: '9'\n    10: '10'\n    11: '11'\n    12: '12'\n    13: '13'\n    14: '14'\n    15: '15'\n    16: '16'\n    17: '17'\n    18: '18'\n    19: '19'\n    20: '20'\n    21: '21'\n    22: '22'\n    23: '23'\n    24: '24'\n    25: '25'\n    26: '26'\n    27: '27'\n    28: '28'\n    29: '29'\n    30: '30'\n    31: '31'\nmonth:\n  '#type': select\n  '#title': Month\n  '#title_display': none\n  '#options':\n    Month: Month\n    1: Jan\n    2: Feb\n    3: Mar\n    4: Apr\n    5: May\n    6: Jun\n    7: Jul\n    8: Aug\n    9: Sep\n    10: Oct\n    11: Nov\n    12: Dec\nyear:\n  '#type': select\n  '#title': Year\n  '#title_display': none\n  '#options':\n    Year: Year\n    2000: '2000'\n    2001: '2001'\n    2002: '2002'\n    2003: '2003'\n    2004: '2004'\n    2005: '2005'\n    2006: '2006'\n    2007: '2007'\n    2008: '2008'\n    2009: '2009'\n    2010: '2010'\n    2011: '2011'\n    2012: '2012'\n    2013: '2013'\n    2014: '2014'\n    2015: '2015'\n    2016: '2016'\n    2017: '2017'\n    2018: '2018'\n    2019: '2019'\n    2020: '2020'\n    2021: '2021'\n    2022: '2022'\nnationality:\n  '#type': textfield\n  '#title': Nationality\ntype_of_enquiry:\n  '#type': select\n  '#title': 'Type of Enquiry'\n  '#options':\n    'AXA SmartPersonal Accident': 'AXA SmartPersonal Accident'\n    'AXA Personal Mobility Protect (e-Scooter)': 'AXA Personal Mobility Protect (e-Scooter)'\n    'Life Insurance (Life/Health/Savings & Investments)': 'Life Insurance (Life/Health/Savings & Investments)'\n    'General Insurance (Motor/Travel/Home/Personal Accident)': 'General Insurance (Motor/Travel/Home/Personal Accident)'\n    'Commercial Business': 'Commercial Business'\nenquiry_details:\n  '#type': textarea\n  '#title': 'Enquiry Details'\nhow_did_you_hear_about_us_:\n  '#type': select\n  '#title': 'How did you hear about us?'\n  '#options':\n    'Philatelic Store (General Post Office)': 'Philatelic Store (General Post Office)'\n    'Philatelic Store (Tampines Post Office)': 'Philatelic Store (Tampines Post Office)'\n    Website: Website\n    'Financial Service Ambassador': 'Financial Service Ambassador'\n    'Post Office (Walk-Ins)': 'Post Office (Walk-Ins)'\n  '#required': true\npdpa_text:\n  '#type': processed_text\n  '#text': |\n    <p>By providing and submitting your personal data above, you consent to our&nbsp;<a href=\"mailto:AXA@POST\">AXA@POST</a>&nbsp;Financial Consultant to contact you for the purpose indicated in your form above. The collection, use and disclosure of the personal data is governed by and regulated by the&nbsp;<a href=\"https://www.singpost.com/privacy-policy\">Privacy Policy</a>&nbsp;of the SingPost. You hereby acknowledge and consent to the Privacy Policy</p>\n    \n  '#format': basic_html"
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  page_admin_theme: false
+  form_title: both
+  form_submit_once: false
+  form_exception_message: ''
+  form_open_message: ''
+  form_close_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_remote_addr: true
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_reset: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  submission_label: ''
+  submission_log: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_track: ''
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_title: ''
+  confirmation_message: ''
+  confirmation_url: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers: {  }
+variants: {  }

@@ -1,0 +1,44 @@
+uuid: 1244fa5c-4219-457b-a45f-68458976a2ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.well.field_well_button_url
+    - field.field.paragraph.well.field_well_css_class
+    - field.field.paragraph.well.field_well_text
+    - paragraphs.paragraphs_type.well
+  module:
+    - link
+    - text
+id: paragraph.well.default
+targetEntityType: paragraph
+bundle: well
+mode: default
+content:
+  field_well_button_url:
+    weight: 2
+    settings:
+      placeholder_url: 'Button URL'
+      placeholder_title: 'Button Text'
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_well_css_class:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_well_text:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+hidden:
+  created: true
+  status: true

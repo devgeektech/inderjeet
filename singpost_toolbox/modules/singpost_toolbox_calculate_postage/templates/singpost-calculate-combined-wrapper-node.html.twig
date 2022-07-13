@@ -1,0 +1,20 @@
+{% spaceless %}
+  <div id='calculate_top' class="sgp-calc-postage calculate-combined {{ 'calculate-combined-' ~ help.position }}">
+  {% if help.position == 'node' %}
+  <div class="content-wrapper-large">
+  {% else %}
+  <div class="content-wrapper-small">
+  {% endif %}
+    {% if help.position == 'node' %}
+        <div class="sgp-header-arrow">
+            <div class="sgp-header-arrow__head-sec">
+                <h2 class="sgp-h2">Calculate Your Postage Fee</h2>
+            </div>
+        </div>
+    {% endif %}
+    <div class="card-body1">
+      {{ render_var({ '#theme': 'singpost_calculate_combined', '#forms': forms, '#help': help }) }}
+    </div>
+  </div>
+  </div>
+{% endspaceless %}

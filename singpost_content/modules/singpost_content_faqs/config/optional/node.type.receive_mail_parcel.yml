@@ -1,0 +1,17 @@
+uuid: 863cb2ee-932a-44d8-9b3c-f21242ae0b7f
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Receive Mail/Parcel'
+type: receive_mail_parcel
+description: 'Create a content with FAQs'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

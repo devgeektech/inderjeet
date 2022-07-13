@@ -1,0 +1,172 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function singpost_publications_schema(){
+	$database = Drupal::database();
+
+	$schema = [];
+
+	if (!$database->schema()->tableExists('publications')){
+		$schema['publications'] = singpost_publications_table();
+	}
+
+	return $schema;
+}
+
+/**
+ * @return array
+ */
+function singpost_publications_table(){
+	return [
+		'fields'      => [
+			'id'                    => [
+				'type'     => 'serial',
+				'unsigned' => TRUE,
+				'not null' => TRUE,
+			],
+			'title'                 => [
+				'type'     => 'varchar',
+				'length'   => 255,
+				'not null' => TRUE,
+			],
+			'summary'                 => [
+				'type'     => 'varchar',
+				'length'   => 600,
+			],
+			'image_thumbnail'       => [
+				'type'   => 'varchar',
+				'length' => 255,
+			],
+			'annual_report'         => [
+				'type'   => 'varchar',
+				'length' => 255,
+			],
+			'sustainability_report' => [
+				'type'   => 'varchar',
+				'length' => 255,
+			],
+			'heading' => [
+				'type' => 'varchar',
+				'heading' => "heading",
+				'length' => 600,
+			],
+			'sub_heading' => [
+				'type' => 'varchar',
+				'sub_heading' => "sub_heading",
+				'length' => 600,
+			],
+			'content'               => [
+				'type' => 'text',
+				'size' => 'big',
+			],
+			'published_at'          => [
+				'type'     => 'int',
+				'not null' => TRUE
+			],
+			'published'             => [
+				'type'    => 'int',
+				'default' => 1,
+				'size'    => 'tiny',
+			],
+			'slug' => [
+				'type' => 'varchar',
+				'slug' => "slug",
+				'length' => 300,
+				'not null' => TRUE,
+				'primary key' => TRUE
+			],
+			'created_at'            => [
+				'type'     => 'int',
+				'not null' => TRUE,
+				'default'  => 0,
+			],
+			'created_by'            => [
+				'type'     => 'int',
+				'not null' => TRUE
+			],
+			'updated_at'            => [
+				'type' => 'int',
+			],
+			'updated_by'            => [
+				'type' => 'int'
+			],
+		],
+		'primary key' => ['id'],
+	];
+}
+
+function singpost_publications_update_9300(){
+	$spec = [
+		'type' => 'varchar',
+		'summary' => "summary",
+		'length' => 600,
+	]; 
+	$spec_heading = [
+		'type' => 'varchar',
+		'heading' => "heading",
+		'length' => 600,
+	];
+	$spec_subheading = [
+		'type' => 'varchar',
+		'sub_heading' => "sub_heading",
+		'length' => 600,
+	];
+	$database = Drupal::database();
+   $schema = $database->schema();
+   $schema->addField('publications', 'summary', $spec);
+   $schema->addField('publications', 'heading', $spec_heading);
+   $schema->addField('publications', 'sub_heading', $spec_subheading);
+   $schema->addField('publications', 'sub_heading', $spec_subheading);
+  }
+
+  function singpost_publications_update_9301(){
+	$spec_slug = [
+		'type' => 'varchar',
+		'slug' => "slug",
+		'length' => 300,
+		'not null' => TRUE,
+		'default'  => 'empty',
+	];
+	$database = Drupal::database();
+	$schema = $database->schema();
+	$schema->addField('publications', 'slug', $spec_slug);
+  }
+
+  function singpost_publications_update_9302(){
+	$spec_micro_title = [
+		'type' => 'varchar',
+		'length' => 300
+	];
+	$spec_micro_url = [
+		'type' => 'varchar',
+		'length' => 300
+	];
+	$database = Drupal::database();
+	$schema = $database->schema();
+	$schema->addField('publications', 'micro_site_cta_title', $spec_micro_title);
+	$schema->addField('publications', 'micro_site_cta_url', $spec_micro_url);
+  }
+
+  function singpost_publications_update_9303(){
+	$micro_link_type = [
+		'type' => 'varchar',
+		'length' => 300,
+		'not null' => TRUE,
+		'default'  => 'internal',
+	];
+	$database = Drupal::database();
+	$schema = $database->schema();
+	$schema->addField('publications', 'micro_link_type', $micro_link_type);
+}
+/**
+ * Implements hook_uninstall().
+ */
+function singpost_publications_uninstall(){
+	$database = Drupal::database();
+
+	if ($database->schema()->tableExists('publications')){
+		$database->schema()->dropTable('publications');
+	}
+}

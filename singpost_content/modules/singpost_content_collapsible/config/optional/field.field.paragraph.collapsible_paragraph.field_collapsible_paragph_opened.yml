@@ -1,0 +1,23 @@
+uuid: a861a465-34bb-4aeb-9fea-27309178fe61
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_collapsible_paragph_opened
+    - paragraphs.paragraphs_type.collapsible_paragraph
+id: paragraph.collapsible_paragraph.field_collapsible_paragph_opened
+field_name: field_collapsible_paragph_opened
+entity_type: paragraph
+bundle: collapsible_paragraph
+label: Opened
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

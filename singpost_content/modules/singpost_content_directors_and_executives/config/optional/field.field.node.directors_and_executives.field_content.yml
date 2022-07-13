@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content
+    - node.type.directors_and_executives
+    - paragraphs.paragraphs_type.directors_executives
+id: node.directors_and_executives.field_content
+field_name: field_content
+entity_type: node
+bundle: directors_and_executives
+label: Content
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      directors_executives: directors_executives
+    target_bundles_drag_drop:
+      directors_executives:
+        enabled: true
+        weight: 2
+field_type: entity_reference_revisions

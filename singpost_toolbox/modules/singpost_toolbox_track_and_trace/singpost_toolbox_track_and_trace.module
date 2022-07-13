@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function singpost_toolbox_track_and_trace_theme($existing, $type, $theme, $path){
+	return [
+		'singpost_track_and_trace_result' => [
+			'template'  => 'singpost-track-and-trace-result',
+			'variables' => [
+				'help'    => [],
+				'results' => []
+			]
+		]
+	];
+}

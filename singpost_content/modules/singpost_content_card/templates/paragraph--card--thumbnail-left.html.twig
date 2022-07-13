@@ -1,0 +1,91 @@
+{#
+/**
+ * @file
+ * Overrides field template to add column class based on loop length.
+ *
+ * To override output, copy the "field.html.twig" from the templates directory
+ * to your theme's directory and customize it, just like customizing other
+ * Drupal templates such as page.html.twig or node.html.twig.
+ *
+ * Instead of overriding the theming for all fields, you can also just override
+ * theming for a subset of fields using
+ * @link themeable Theme hook suggestions. @endlink For example,
+ * here are some theme hook suggestions that can be used for a field_foo field
+ * on an article node type:
+ * - field--node--field-foo--article.html.twig
+ * - field--node--field-foo.html.twig
+ * - field--node--article.html.twig
+ * - field--field-foo.html.twig
+ * - field--text-with-summary.html.twig
+ * - field.html.twig
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the containing element.
+ * - label_hidden: Whether to show the field label or not.
+ * - title_attributes: HTML attributes for the title.
+ * - label: The label for the field.
+ * - multiple: TRUE if a field can contain multiple items.
+ * - items: List of all the field items. Each item contains:
+ *   - attributes: List of HTML attributes for each item.
+ *   - content: The field item's content.
+ * - entity_type: The entity type to which the field belongs.
+ * - field_name: The name of the field.
+ * - field_type: The type of the field.
+ * - label_display: The display settings for the label.
+ *
+ * @see template_preprocess_field()
+ */
+#}
+{% set parent = paragraph.getParentEntity() %}
+
+{% set classes = [
+    'card-media',
+    'paragraph',
+    'media',
+    'card-thumbnail-left',
+    paragraph.field_card_css_class.value,
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished'
+] %}
+
+<div {{ attributes.addClass(classes) }}>
+    <div class="media-image">
+        {% if content.field_card_thumbnail|render %}
+            {% if paragraph.field_card_title_link.uri %}
+                <a href="{{ paragraph.field_card_title_link.0.url }}" target="_blank">
+                    <img src="{{ file_url(paragraph.field_card_thumbnail.entity.uri.value) }}" alt="{{ paragraph.field_card_thumbnail.value.alt }}"/>
+                </a>
+            {% else %}
+                <img src="{{ file_url(paragraph.field_card_thumbnail.entity.uri.value) }}" alt="{{ paragraph.field_card_thumbnail.value.alt }}"/>
+            {% endif %}
+
+        {% endif %}
+        <div class="thumbnail-caption">
+            {% if paragraph.field_card_thumbnail_caption.value %}
+                {{ paragraph.field_card_thumbnail_caption.value|raw }}
+            {% endif %}
+        </div>
+    </div>
+    <div class="media-body">
+        {% if paragraph.field_card_title.value %}
+            <h5 class="mt-0">
+                {% if paragraph.field_card_title_link.uri %}
+                    <a href="{{ paragraph.field_card_title_link.0.url }}">{{ paragraph.field_card_title.value }}</a>
+                {% else %}
+                    {{ paragraph.field_card_title.value }}
+                {% endif %}
+            </h5>
+        {% endif %}
+
+        {% if paragraph.field_card_description.value %}
+            {{ paragraph.field_card_description.value|raw }}
+        {% endif %}
+
+        {% if paragraph.field_card_button %}
+            {% for button in paragraph.field_card_button %}
+                <a href="{{ button.url }}" class="btn btn-outline-primary btn-style-1">{{ button.title }}</a>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>

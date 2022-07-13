@@ -1,0 +1,8 @@
+name: SingPost SGX Announcements
+description: 'Management SGX announcements.'
+package: SingPost
+type: module
+core_version_requirement: ^8 || ^9
+dependencies:
+  - singpost_base:singpost_base
+  - drupal:block

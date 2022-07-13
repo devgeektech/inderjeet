@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @param $existing
+ * @param $type
+ * @param $theme
+ * @param $path
+ *
+ * @return \string[][]
+ */
+function singpost_content_payment_theme($existing, $type, $theme, $path){
+	return [
+		'paragraph__payment_table' => [
+			'base hook' => 'paragraph',
+		],
+		'paragraph__pay_services_data' => [
+			'base hook' => 'paragraph',
+		],
+	];
+}

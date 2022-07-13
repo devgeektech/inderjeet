@@ -1,0 +1,46 @@
+uuid: 15ae7b6f-cde2-45c5-a64e-2f9b2908dd16
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.well.field_well_button_url
+    - field.field.paragraph.well.field_well_css_class
+    - field.field.paragraph.well.field_well_text
+    - paragraphs.paragraphs_type.well
+  module:
+    - link
+    - text
+id: paragraph.well.default
+targetEntityType: paragraph
+bundle: well
+mode: default
+content:
+  field_well_button_url:
+    weight: 2
+    label: hidden
+    settings:
+      trim_length: null
+      rel: nofollow
+      target: _blank
+      url_only: false
+      url_plain: false
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_well_css_class:
+    weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_well_text:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden:
+  search_api_excerpt: true

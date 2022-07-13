@@ -1,0 +1,118 @@
+{% spaceless %}
+ {% if forms is not empty %}
+    <!-- Quick tool tab start -->
+    <div class="track-trace-sec track-trace-sec--position sgp-pb-6 content-wrapper-small">
+        <div class="track-trace-sec__inner">
+            <div class="track-trace-sec__desk">
+                <ul class="nav nav-pills" role="tablist" id="pills-tab">
+				{% set count = 1 %}
+				{% for form in forms %}
+                    <li class="track-trace-sec__tab" role="presentation">
+                    {% if form.title == 'Track Items' %}
+                        <a href="#{{ form.title|lower|replace({'/': '',' ': '-', '&': '-'}) }}" class="track-trace-sec__btn {% if count == 1%} active {% endif %}" id="{{ form.title|lower|replace({'/': '',' ': '-', '&': '-'}) }}-tab" data-toggle="pill" role="tab" aria-controls="{{ form.title|lower|replace({'/': '',' ': '-', '&': '-'}) }}" aria-selected="true">
+                            <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.3299 1H7.10986V11.88H20.3299V1Z" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M11.2998 1V5.92L13.7598 5.26L16.2298 5.92V1H11.2998Z" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M13.72 11.8799H0.5V22.7599H13.72V11.8799Z" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M4.68994 11.8799V16.7999L7.14994 16.1399L9.61994 16.7999V11.8799H4.68994Z" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M26.9402 11.8799H13.7202V22.7599H26.9402V11.8799Z" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M17.9102 11.8799V16.7999L20.3702 16.1399L22.8402 16.7999V11.8799H17.9102Z" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>{{ form.title }}</a>
+                    {% endif %}
+                    {% if form.title == 'Calculate Postage' %}
+                        <a href="#{{ form.title|lower|replace({'/': '',' ': '-', '&': '-'}) }}" class="track-trace-sec__btn {% if count == 1%} active {% endif %}" id="{{ form.title|lower|replace({'/': '',' ': '-', '&': '-'}) }}-tab" data-toggle="pill" role="tab" aria-controls="{{ form.title|lower|replace({'/': '',' ': '-', '&': '-'}) }}" aria-selected="true">
+                            <svg width="21" height="25" viewBox="0 0 21 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18.99 1H1.44C0.920852 1 0.5 1.42085 0.5 1.94V22.69C0.5 23.2091 0.920852 23.63 1.44 23.63H18.99C19.5091 23.63 19.93 23.2091 19.93 22.69V1.94C19.93 1.42085 19.5091 1 18.99 1Z" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M19.93 8.62012H0.5" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16.6801 11.51H3.31006V20.6H16.6801V11.51Z" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7.5 11.51V20.6" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12.5698 11.51V20.6" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M3.31006 16.0601H12.5701" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>{{ form.title }}</a>
+                    {% endif %}
+                    {% if form.title == 'Find Postal Code' %}
+                        <a href="#{{ form.title|lower|replace({'/': '',' ': '-', '&': '-'}) }}" class="track-trace-sec__btn {% if count == 1%} active {% endif %}" id="{{ form.title|lower|replace({'/': '',' ': '-', '&': '-'}) }}-tab" data-toggle="pill" role="tab" aria-controls="{{ form.title|lower|replace({'/': '',' ': '-', '&': '-'}) }}" aria-selected="true">
+                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9.53 19.0624C14.5171 19.0624 18.56 15.0196 18.56 10.0324C18.56 5.04531 14.5171 1.00244 9.53 1.00244C4.54287 1.00244 0.5 5.04531 0.5 10.0324C0.5 15.0196 4.54287 19.0624 9.53 19.0624Z" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M15.8398 16.4924L22.9498 23.6024" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12.9402 9.13237C12.9402 10.6824 10.9902 13.0324 10.0402 14.0824C9.97651 14.1515 9.89921 14.2066 9.81315 14.2443C9.72709 14.282 9.63415 14.3015 9.54019 14.3015C9.44624 14.3015 9.3533 14.282 9.26724 14.2443C9.18118 14.2066 9.10387 14.1515 9.04019 14.0824C8.09019 13.0324 6.14019 10.6824 6.14019 9.13237C6.10495 8.19038 6.44371 7.27267 7.08255 6.5795C7.72139 5.88633 8.60846 5.47396 9.55019 5.43237C10.4884 5.47907 11.3704 5.89366 12.005 6.58627C12.6395 7.27887 12.9756 8.19368 12.9402 9.13237V9.13237Z" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9.53 9.45233C9.82271 9.45233 10.06 9.21505 10.06 8.92233C10.06 8.62962 9.82271 8.39233 9.53 8.39233C9.23729 8.39233 9 8.62962 9 8.92233C9 9.21505 9.23729 9.45233 9.53 9.45233Z" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>{{ form.title }}</a>
+                    {% endif %}
+                    {% if form.title == 'Locate Us' %}
+                        <a href="#{{ form.title|lower|replace({'/': '',' ': '-', '&': '-'}) }}" class="track-trace-sec__btn {% if count == 1%} active {% endif %}" id="{{ form.title|lower|replace({'/': '',' ': '-', '&': '-'}) }}-tab" data-toggle="pill" role="tab" aria-controls="{{ form.title|lower|replace({'/': '',' ': '-', '&': '-'}) }}" aria-selected="true">
+                            <svg width="18" height="24" viewBox="0 0 18 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16.73 10.1224C16.73 14.2924 11.16 20.8424 9.25 22.9624C9.17026 23.0521 9.07245 23.1238 8.963 23.1729C8.85356 23.222 8.73496 23.2474 8.615 23.2474C8.49504 23.2474 8.37644 23.222 8.267 23.1729C8.15755 23.1238 8.05974 23.0521 7.98 22.9624C6.07 20.8424 0.5 14.2924 0.5 10.1224C0.5 5.08244 4.13 1.00244 8.62 1.00244C13.11 1.00244 16.73 5.08244 16.73 10.1224Z" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8.61992 13.2125C10.8014 13.2125 12.5699 11.444 12.5699 9.2625C12.5699 7.08098 10.8014 5.3125 8.61992 5.3125C6.4384 5.3125 4.66992 7.08098 4.66992 9.2625C4.66992 11.444 6.4384 13.2125 8.61992 13.2125Z" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>{{ form.title }}</a>
+                    {% endif %}
+                        </li>
+						{% set count = count + 1 %}
+					{% endfor %}
+				</ul>
+                   
+
+                <div class="track-trace-sec__cont tab-content" id="pills-tabContent">
+                    {% set count = 1 %}
+                    {% for form in forms %}
+                        <div class="track-trace-sec__tab-cont track-trace-sec--search tab-pane {% if count == 1%} active {% endif %}" id="{{ form.title|lower|replace({'/': '',' ': '-', '&': '-'}) }}" role="tabpanel" aria-labelledby="{{ form.title|lower|replace({'/': '',' ': '-', '&': '-'}) }}-tab">
+                            {{ form.form }}
+                        </div>
+                        {% set count = count + 1 %}
+                    {% endfor %}
+                </div>
+
+            </div>
+
+            {# Mobile Section #}
+			<div class="track-trace-sec__mob track-trace-sec--search-field">
+                <div class="track-trace-sec__mob-head">Track Your Item</div>
+                <div class="track-trace-sec__mob-track">
+                    {{forms['singpost.toolbox.track_and_trace.index'].form}}
+                   {# <input type="text" placeholder="Eg: ER10098275SG" class="track-trace-sec__input-text"> #}
+                    <span class="track-trace-sec__mob-search-sec">
+                        <img src="{{ base_path ~ directory }}/assets/images/search-icon-white.svg" alt="">
+                    </span>
+                </div>
+                <div class="track-trace-sec__mob-tile">
+                    <a title="Calculate Postage" href="/calculate-postage" class="track-trace-sec__mob-tile-sec">
+                        <svg viewBox="0 0 21 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="track-trace-sec__mob-icon">
+                            <path d="M18.99 1H1.44C0.920852 1 0.5 1.42085 0.5 1.94V22.69C0.5 23.2091 0.920852 23.63 1.44 23.63H18.99C19.5091 23.63 19.93 23.2091 19.93 22.69V1.94C19.93 1.42085 19.5091 1 18.99 1Z" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M19.93 8.62012H0.5" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16.6801 11.51H3.31006V20.6H16.6801V11.51Z" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7.5 11.51V20.6" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12.5698 11.51V20.6" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M3.31006 16.0601H12.5701" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg> Calculate Postage
+                    </a>
+                    <a title="Find Postal Code" href="/find-postal-code" class="track-trace-sec__mob-tile-sec">
+                        <svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="track-trace-sec__mob-icon">
+                            <path d="M9.53 19.0624C14.5171 19.0624 18.56 15.0196 18.56 10.0324C18.56 5.04531 14.5171 1.00244 9.53 1.00244C4.54287 1.00244 0.5 5.04531 0.5 10.0324C0.5 15.0196 4.54287 19.0624 9.53 19.0624Z" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M15.8398 16.4924L22.9498 23.6024" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12.9402 9.13237C12.9402 10.6824 10.9902 13.0324 10.0402 14.0824C9.97651 14.1515 9.89921 14.2066 9.81315 14.2443C9.72709 14.282 9.63415 14.3015 9.54019 14.3015C9.44624 14.3015 9.3533 14.282 9.26724 14.2443C9.18118 14.2066 9.10387 14.1515 9.04019 14.0824C8.09019 13.0324 6.14019 10.6824 6.14019 9.13237C6.10495 8.19038 6.44371 7.27267 7.08255 6.5795C7.72139 5.88633 8.60846 5.47396 9.55019 5.43237C10.4884 5.47907 11.3704 5.89366 12.005 6.58627C12.6395 7.27887 12.9756 8.19368 12.9402 9.13237V9.13237Z" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9.53 9.45233C9.82271 9.45233 10.06 9.21505 10.06 8.92233C10.06 8.62962 9.82271 8.39233 9.53 8.39233C9.23729 8.39233 9 8.62962 9 8.92233C9 9.21505 9.23729 9.45233 9.53 9.45233Z" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg> Find Postal Code
+                    </a>
+                    <a title="Locate Us" href="/locate-us" class="track-trace-sec__mob-tile-sec">
+                        <svg viewBox="0 0 18 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="track-trace-sec__mob-icon">
+                            <path d="M16.73 10.1224C16.73 14.2924 11.16 20.8424 9.25 22.9624C9.17026 23.0521 9.07245 23.1238 8.963 23.1729C8.85356 23.222 8.73496 23.2474 8.615 23.2474C8.49504 23.2474 8.37644 23.222 8.267 23.1729C8.15755 23.1238 8.05974 23.0521 7.98 22.9624C6.07 20.8424 0.5 14.2924 0.5 10.1224C0.5 5.08244 4.13 1.00244 8.62 1.00244C13.11 1.00244 16.73 5.08244 16.73 10.1224Z" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8.61992 13.2125C10.8014 13.2125 12.5699 11.444 12.5699 9.2625C12.5699 7.08098 10.8014 5.3125 8.61992 5.3125C6.4384 5.3125 4.66992 7.08098 4.66992 9.2625C4.66992 11.444 6.4384 13.2125 8.61992 13.2125Z" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg> Locate Us
+                    </a>
+                    <a title="Track Items" href="/track-items" class="track-trace-sec__mob-tile-sec">
+                        <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="track-trace-sec__mob-icon">
+                            <path d="M20.3299 1H7.10986V11.88H20.3299V1Z" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M11.2998 1V5.92L13.7598 5.26L16.2298 5.92V1H11.2998Z" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M13.72 11.8799H0.5V22.7599H13.72V11.8799Z" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M4.68994 11.8799V16.7999L7.14994 16.1399L9.61994 16.7999V11.8799H4.68994Z" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M26.9402 11.8799H13.7202V22.7599H26.9402V11.8799Z" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M17.9102 11.8799V16.7999L20.3702 16.1399L22.8402 16.7999V11.8799H17.9102Z" stroke="#24549d" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>Track Items
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Quick tool tab end -->
+	    {% endif %}
+{% endspaceless %}

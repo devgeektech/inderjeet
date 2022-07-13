@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_paragraph_form
+    - paragraphs.paragraphs_type.download_form
+    - webform.webform.download_pdf
+  module:
+    - webform
+id: paragraph.download_form.field_paragraph_form
+field_name: field_paragraph_form
+entity_type: paragraph
+bundle: download_form
+label: 'Paragraph Form'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    default_data: ''
+    status: open
+    open: ''
+    close: ''
+    target_uuid: f548392c-a7a3-4918-99fd-bcc489863ac2
+default_value_callback: ''
+settings:
+  handler: 'default:webform'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: webform

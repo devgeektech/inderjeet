@@ -1,0 +1,30 @@
+uuid: c38d1ffe-4a78-448a-81ef-c80c086ec3b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_modal_body
+    - paragraphs.paragraphs_type.modal
+  module:
+    - entity_reference_revisions
+id: paragraph.modal.field_modal_body
+field_name: field_modal_body
+entity_type: paragraph
+bundle: modal
+label: Body
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 1
+    target_bundles:
+      modal: modal
+    target_bundles_drag_drop:
+      modal:
+        enabled: true
+        weight: 2
+field_type: entity_reference_revisions

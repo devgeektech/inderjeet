@@ -1,0 +1,8 @@
+name: SingPost Announcements
+description: 'Allow to add scheduled announcements.'
+package: SingPost
+type: module
+core_version_requirement: ^8 || ^9
+dependencies:
+  - singpost_base
+  - block

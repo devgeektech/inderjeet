@@ -1,0 +1,83 @@
+<?php
+
+use Drupal\Core\Database\Database;
+
+/**
+ * @return mixed
+ */
+function singpost_toolbox_locate_us_schema(){
+	$database = Drupal::database();
+
+	$schema = [];
+
+	if (!$database->schema()->tableExists('singpost_locate_us_type')){
+		$schema['singpost_locate_us_type'] = singpost_locate_us_type_table();
+	}
+
+	return $schema;
+}
+
+function singpost_locate_us_type_table(){
+	return [
+		'fields'      => [
+			'id'         => [
+				'type'     => 'serial',
+				'unsigned' => TRUE,
+				'not null' => TRUE,
+			],
+			'title'      => [
+				'type'     => 'varchar',
+				'length'   => 255,
+				'not null' => TRUE,
+			],
+			'value'      => [
+				'type'   => 'varchar',
+				'length' => 255,
+			],
+			'icon'       => [
+				'type' => 'text',
+				'size' => 'big',
+			],
+			'marker'     => [
+				'type' => 'text',
+				'size' => 'big',
+			],
+			'status'     => [
+				'type' => 'int',
+			],
+			'created_at' => [
+				'type'     => 'int',
+				'not null' => TRUE,
+				'default'  => 0,
+			],
+			'created_by' => [
+				'type'     => 'int',
+				'not null' => TRUE
+			],
+			'updated_at' => [
+				'type' => 'int',
+			],
+			'updated_by' => [
+				'type' => 'int'
+			],
+		],
+		'primary key' => ['id'],
+	];
+}
+
+function singpost_toolbox_locate_us_update_8002(){
+	$field_content = [
+		'type'   => 'varchar',
+		'length' => 255,
+	];
+	$schema        = Database::getConnection()->schema();
+	$schema->addField('singpost_locate_us_type', 'icon_text', $field_content);
+}
+
+function singpost_toolbox_locate_us_uninstall(){
+	$database = Drupal::database();
+
+	if ($database->schema()->tableExists('singpost_locate_us_type')){
+		$database->schema()->dropTable('singpost_locate_us_type');
+	}
+}

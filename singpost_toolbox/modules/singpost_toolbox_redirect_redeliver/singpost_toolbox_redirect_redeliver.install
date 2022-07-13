@@ -1,0 +1,281 @@
+<?php
+/**
+ * @return mixed
+ */
+function singpost_toolbox_redirect_redeliver_schema(){
+	$database = Drupal::database();
+	$schema   = [];
+	if (!$database->schema()->tableExists('singpost_rr_location')){
+		$schema['singpost_rr_location'] = singpost_rr_location_table();
+	}
+
+	return $schema;
+}
+
+/**
+ * @return array
+ */
+function singpost_rr_location_table(){
+	return [
+		'fields' => [
+			'title' => [
+				'type'   => 'varchar',
+				'length' => 255,
+			],
+			'value' => [
+				'type'   => 'varchar',
+				'length' => 255,
+			],
+		],
+	];
+}
+
+/**
+ * @param $sandbox
+ *
+ * @throws \Exception
+ */
+function singpost_toolbox_redirect_redeliver_update_8010(&$sandbox){
+	$schema = Drupal::database();
+	$values = [
+		[
+			'title' => 'ALEXANDRA PO',
+			'value' => 'ALX'
+		],
+		[
+			'title' => 'ANG MO KIO CENTRAL PO',
+			'value' => 'AKC'
+		],
+		[
+			'title' => 'BEDOK CENTRAL PO',
+			'value' => 'BDC'
+		],
+		[
+			'title' => 'BISHAN PO',
+			'value' => 'BSH'
+		],
+		[
+			'title' => 'BRAS BASAH PO',
+			'value' => 'BRB'
+		],
+		[
+			'title' => 'BUKIT BATOK CENTRAL PO',
+			'value' => 'BBC'
+		],
+		[
+			'title' => 'BUKIT MERAH CENTRAL PO',
+			'value' => 'BMC'
+		],
+		[
+			'title' => 'BUKIT PANJANG PO',
+			'value' => 'BPJ'
+		],
+		[
+			'title' => 'BUKIT TIMAH PO',
+			'value' => 'QBT'
+		],
+		[
+			'title' => 'CHANGI AIRPORT (DEP HALL) PO',
+			'value' => 'CAD'
+		],
+		[
+			'title' => 'CHINATOWN POST OFFICE',
+			'value' => 'CTP'
+		],
+		[
+			'title' => 'CHOA CHU KANG CENTRAL PO',
+			'value' => 'CCK'
+		],
+		[
+			'title' => 'CITY SQUARE PO',
+			'value' => 'CSQ'
+		],
+		[
+			'title' => 'CLEMENTI CENTRAL POST OFFICE',
+			'value' => 'CMC'
+		],
+		[
+			'title' => 'CLEMENTI WEST PO',
+			'value' => 'CMW'
+		],
+		[
+			'title' => 'CRAWFORD PO',
+			'value' => 'CRD'
+		],
+		[
+			'title' => 'GENERAL POST OFFICE',
+			'value' => 'SPC'
+		],
+		[
+			'title' => 'GEYLANG EAST PO',
+			'value' => 'GYE'
+		],
+		[
+			'title' => 'GEYLANG POST OFFICE',
+			'value' => 'GYL'
+		],
+		[
+			'title' => 'GHIM MOH ESTATE PO',
+			'value' => 'GME'
+		],
+		[
+			'title' => 'HARBOURFRONT CENTRE PO',
+			'value' => 'HFC'
+		],
+		[
+			'title' => 'HOUGANG CENTRAL PO',
+			'value' => 'HGC'
+		],
+		[
+			'title' => 'JURONG EAST PO',
+			'value' => 'JRE'
+		],
+		[
+			'title' => 'JURONG POINT PO',
+			'value' => 'JRP'
+		],
+		[
+			'title' => 'JURONG WEST PO',
+			'value' => 'JRW'
+		],
+		[
+			'title' => 'KATONG PO',
+			'value' => 'KTP'
+		],
+		[
+			'title' => 'KILLINEY ROAD PO',
+			'value' => 'KLR'
+		],
+		[
+			'title' => 'LIM AH PIN PO',
+			'value' => 'LAP'
+		],
+		[
+			'title' => 'MACPHERSON ROAD PO',
+			'value' => 'MPR'
+		],
+		[
+			'title' => 'MARINE PARADE PO',
+			'value' => 'MNP'
+		],
+		[
+			'title' => 'NOVENA PO',
+			'value' => 'NVA'
+		],
+		[
+			'title' => 'ORCHARD PO',
+			'value' => 'ORC'
+		],
+		[
+			'title' => 'PASIR PANJANG PO',
+			'value' => 'PPJ'
+		],
+		[
+			'title' => 'PASIR RIS CENTRAL PO',
+			'value' => 'PSR'
+		],
+		[
+			'title' => 'POTONG PASIR PO',
+			'value' => 'PTP'
+		],
+		[
+			'title' => 'PUNGGOL PO',
+			'value' => 'PGL'
+		],
+		[
+			'title' => 'RAFFLES PLACE PO',
+			'value' => 'RPL'
+		],
+		[
+			'title' => 'SIMPANG BEDOK PO',
+			'value' => 'SBD'
+		],
+		[
+			'title' => 'SIGLAP PO',
+			'value' => 'SGL'
+		],
+		[
+			'title' => 'SERANGOON GARDEN PO',
+			'value' => 'SGN'
+		],
+		[
+			'title' => 'SEMBAWANG PO',
+			'value' => 'SBW'
+		],
+		[
+			'title' => 'SENGKANG CENTRAL PO',
+			'value' => 'SKC'
+		],
+		[
+			'title' => 'SERANGOON CENTRAL PO',
+			'value' => 'SRC'
+		],
+		[
+			'title' => 'SHENTON WAY PO',
+			'value' => 'STW'
+		],
+		[
+			'title' => 'SUNTEC CITY PO',
+			'value' => 'SUN'
+		],
+		[
+			'title' => 'TAMPINES CENTRAL PO',
+			'value' => 'TNC'
+		],
+		[
+			'title' => 'TANGLIN PO',
+			'value' => 'TLN'
+		],
+		[
+			'title' => 'TANJONG PAGAR PO',
+			'value' => 'TGP'
+		],
+		[
+			'title' => 'TEBAN GARDEN PO',
+			'value' => 'TGN'
+		],
+		[
+			'title' => 'TIONG BAHRU PO',
+			'value' => 'TBR'
+		],
+		[
+			'title' => 'TOA PAYOH CENTRAL PO',
+			'value' => 'TPC'
+		],
+		[
+			'title' => 'TOA PAYOH NORTH PO',
+			'value' => 'TPN'
+		],
+		[
+			'title' => 'TOWNER PO',
+			'value' => 'TWR'
+		],
+		[
+			'title' => 'WHAMPOA PO',
+			'value' => 'WMP'
+		],
+		[
+			'title' => 'WOODLANDS PO',
+			'value' => 'WDL'
+		],
+		[
+			'title' => 'YISHUN CENTRAL PO',
+			'value' => 'YSC'
+		],
+	];
+	$query  = $schema->insert('singpost_rr_location')->fields(['title', 'value']);
+	foreach ($values as $record){
+		$query->values($record);
+	}
+	$query->execute();
+}
+
+/**
+ *
+ */
+function singpost_toolbox_redirect_redeliver_uninstall(){
+	$database = Drupal::database();
+	if ($database->schema()->tableExists('singpost_rr_location')){
+		$database->schema()->dropTable('singpost_rr_location');
+	}
+}

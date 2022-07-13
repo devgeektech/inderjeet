@@ -1,0 +1,6 @@
+singpost.publication.admin:
+  title: 'Publications'
+  description: 'Manage website publications'
+  parent: singpost.admin.base
+  route_name: singpost.publication.admin
+  weight: 500

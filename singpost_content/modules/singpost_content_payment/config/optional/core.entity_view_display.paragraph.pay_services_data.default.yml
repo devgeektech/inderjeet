@@ -1,0 +1,127 @@
+uuid: 5dc0e7af-7213-436e-afa2-0574a075c7a3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.pay_services_data.field_pay_other_text_post_office
+    - field.field.paragraph.pay_services_data.field_pay_other_text_sam_kiosk
+    - field.field.paragraph.pay_services_data.field_pay_other_text_sam_online
+    - field.field.paragraph.pay_services_data.field_pay_post_office
+    - field.field.paragraph.pay_services_data.field_pay_sam_kiosk
+    - field.field.paragraph.pay_services_data.field_pay_sam_online
+    - field.field.paragraph.pay_services_data.field_pay_service_description
+    - field.field.paragraph.pay_services_data.field_pay_service_name
+    - field.field.paragraph.pay_services_data.field_pay_service_url
+    - field.field.paragraph.pay_services_data.field_pay_tool_tip_post_office
+    - field.field.paragraph.pay_services_data.field_pay_tool_tip_sam_kiosk
+    - field.field.paragraph.pay_services_data.field_pay_tool_tip_sam_online
+    - paragraphs.paragraphs_type.pay_services_data
+  module:
+    - link
+    - options
+    - text
+_core:
+  default_config_hash: 4kGkYAfEDL3t_iCGhqhyDl-dFmykwSB07ManWDneYEk
+id: paragraph.pay_services_data.default
+targetEntityType: paragraph
+bundle: pay_services_data
+mode: default
+content:
+  field_pay_other_text_post_office:
+    weight: 4
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_pay_other_text_sam_kiosk:
+    weight: 10
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_pay_other_text_sam_online:
+    weight: 7
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_pay_post_office:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_pay_sam_kiosk:
+    weight: 5
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_pay_sam_online:
+    weight: 8
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_pay_service_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_pay_service_name:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_pay_service_url:
+    weight: 11
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_pay_tool_tip_post_office:
+    weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_pay_tool_tip_sam_kiosk:
+    weight: 6
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_pay_tool_tip_sam_online:
+    weight: 9
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  search_api_excerpt: true

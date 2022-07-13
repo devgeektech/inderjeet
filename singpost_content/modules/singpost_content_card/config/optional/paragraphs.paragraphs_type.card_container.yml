@@ -1,0 +1,10 @@
+uuid: c8f6850d-8822-4887-81ce-c3542ff04d29
+langcode: en
+status: true
+dependencies: {  }
+id: card_container
+label: 'Card Container'
+icon_uuid: null
+icon_default: null
+description: 'Create a container for cards with configurable CSS class, Row class, Column class'
+behavior_plugins: {  }

@@ -1,0 +1,36 @@
+uuid: 121167e6-04dd-439e-b38a-7bc6cabbf503
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.payment_table.field_payment_row
+    - paragraphs.paragraphs_type.payment_table
+  module:
+    - paragraphs
+id: paragraph.payment_table.default
+targetEntityType: paragraph
+bundle: payment_table
+mode: default
+content:
+  field_payment_row:
+    type: paragraphs
+    weight: 0
+    settings:
+      title: 'Payment Data'
+      title_plural: 'Payment Data'
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: pay_services_data
+      features:
+        duplicate: duplicate
+        collapse_edit_all: collapse_edit_all
+        add_above: '0'
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  status: true

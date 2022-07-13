@@ -1,0 +1,9 @@
+name: SingPost Content - Related Content
+type: module
+description: 'Add a block to display list of related content.'
+package: SingPost
+core_version_requirement: ^8 || ^9
+dependencies:
+  - paragraphs:paragraphs
+  - singpost_content
+  - singpost_content_card

@@ -1,0 +1,72 @@
+singpost.toolbox.locate_us.config:
+  path: '/admin/config/singpost/toolbox/locate-us'
+  defaults:
+    _form: '\Drupal\singpost_toolbox_locate_us\Form\Config\LocateUsConfigForm'
+    _title: 'Locate Us settings'
+  requirements:
+    _permission: 'administer singpost toolbox locate_us configuration'
+
+singpost.toolbox.locate_us.admin.type:
+  path: '/admin/singpost/toolbox/locate-us/type'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_locate_us\Controller\LocateUsController::index'
+    _title: 'Locate Us'
+  requirements:
+    _access: 'TRUE'
+
+singpost.toolbox.locate_us.admin.type.add:
+  path: '/admin/singpost/toolbox/locate-us/type/add'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_locate_us\Controller\LocateUsController::add'
+    _title: 'Add Locate Us Type'
+  requirements:
+    _permission: 'administer singpost toolbox locate_us create'
+
+singpost.toolbox.locate_us.admin.type.edit:
+  path: '/admin/singpost/toolbox/locate-us/type/edit/{id}'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_locate_us\Controller\LocateUsController::edit'
+    _title: 'Edit Locate Us Type'
+  requirements:
+    _permission: 'administer singpost toolbox locate_us update'
+
+singpost.toolbox.locate_us.admin.type.delete:
+  path: '/admin/singpost/toolbox/locate-us/type/delete/{id}'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_locate_us\Controller\LocateUsController::delete'
+    _title: 'Delete Locate Us Type'
+  requirements:
+    _permission: 'administer singpost toolbox locate_us delete'
+
+singpost.toolbox.locate_us.admin.type.action:
+  path: '/admin/singpost/toolbox/locate-us/type/action/{action}'
+  defaults:
+    _form: 'Drupal\singpost_toolbox_locate_us\Form\LocateUsTypeBulkActionForm'
+    _title_callback: 'Drupal\singpost_toolbox_locate_us\Form\LocateUsTypeBulkActionForm::getPageTitle'
+    action: ''
+  requirements:
+    _permission: 'administer singpost toolbox locate_us update'
+
+singpost.toolbox.locate_us.admin.type.status:
+  path: '/admin/singpost/toolbox/locate-us/type/status'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_locate_us\Controller\LocateUsController::changeStatus'
+    _title: 'Change Locate Us Type Status'
+  requirements:
+    _permission: 'administer singpost toolbox locate_us update'
+
+singpost.toolbox.locate_us.index:
+  path: '/locate-us'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_locate_us\Frontend\Controller\LocateUsController::buildForm'
+    _title: 'Locate Us'
+  requirements:
+    _access: 'TRUE'
+
+singpost.toolbox.locate_us.get_map_data:
+  path: '/locate-us/get-map-data'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_locate_us\Frontend\Controller\LocateUsController::getMapData'
+    _title: 'Locate Us'
+  requirements:
+    _access: 'TRUE'

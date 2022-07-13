@@ -1,0 +1,111 @@
+singpost.toolbox.calculate.postage.index:
+  path: '/calculate-postage'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_calculate_postage\Frontend\Controller\CalculateController::calculatePostage'
+    _title: 'Calculate Postage'
+  requirements:
+    _access: 'TRUE'
+
+singpost.toolbox.calculate.singapore.index:
+  path: '/send-receive/send-within-singapore'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_calculate_postage\Frontend\Controller\CalculateController::calculateSingapore'
+    _title: 'Sending within Singapore'
+  requirements:
+    _access: 'TRUE'
+
+singpost.toolbox.calculate.overseas.index:
+  path: '/send-receive/send-overseas'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_calculate_postage\Frontend\Controller\CalculateController::calculateOverseas'
+    _title: 'Sending Overseas'
+  requirements:
+    _access: 'TRUE'
+
+singpost.toolbox.calculate.delivery_service.manage:
+  path: '/admin/singpost/calculate-postage/delivery-service'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_calculate_postage\Controller\DeliveryServiceController::index'
+    _title: 'Delivery Service Management'
+  requirements:
+    _permission: 'administer singpost toolbox calculate delivery manage'
+
+singpost.toolbox.calculate.delivery_service.add:
+  path: '/admin/singpost/calculate-postage/delivery-service/add'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_calculate_postage\Controller\DeliveryServiceController::add'
+    _title: 'Create Delivery Service'
+  requirements:
+    _permission: 'administer singpost toolbox calculate delivery form'
+
+singpost.toolbox.calculate.delivery_service.edit:
+  path: '/admin/singpost/calculate-postage/delivery-service/edit/{id}'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_calculate_postage\Controller\DeliveryServiceController::edit'
+    _title: 'Edit Delivery Service'
+  requirements:
+    _permission: 'administer singpost toolbox calculate delivery form'
+
+singpost.toolbox.calculate.delivery_service.change_status:
+  path: '/admin/singpost/calculate-postage/delivery-service/change-status'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_calculate_postage\Controller\DeliveryServiceController::changeStatus'
+    _title: 'Change Status Delivery Service'
+  requirements:
+    _permission: 'administer singpost toolbox calculate delivery form'
+
+singpost.toolbox.calculate.delivery_service.delete:
+  path: '/admin/singpost/calculate-postage/delivery-service/delete/{id}'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_calculate_postage\Controller\DeliveryServiceController::delete'
+    _title: 'Delete Delivery Service'
+  requirements:
+    _permission: 'administer singpost toolbox calculate delivery delete'
+
+singpost.toolbox.calculate.dimension.manage:
+  path: '/admin/singpost/toolbox/calculate-postage/dimension/manage'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_calculate_postage\Controller\DimensionController::index'
+    _title: 'Dimension Management'
+  requirements:
+    _permission: 'administer singpost toolbox calculate dimension manage'
+
+singpost.toolbox.calculate.admin.dimension.add:
+  path: '/admin/singpost/toolbox/calculate-postage/dimension/add'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_calculate_postage\Controller\DimensionController::add'
+    _title: 'Add Dimension'
+  requirements:
+    _permission: 'administer singpost toolbox calculate dimension form'
+
+singpost.toolbox.calculate.admin.dimension.edit:
+  path: '/admin/singpost/toolbox/calculate-postage/dimension/edit/{id}'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_calculate_postage\Controller\DimensionController::edit'
+    _title: 'Edit Dimension'
+  requirements:
+    _permission: 'administer singpost toolbox calculate dimension form'
+
+singpost.toolbox.calculate.admin.dimension.delete:
+  path: '/admin/singpost/toolbox/calculate-postage/dimension/delete/{id}'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_calculate_postage\Controller\DimensionController::delete'
+    _title: 'Delete Dimension'
+  requirements:
+    _permission: 'administer singpost toolbox calculate dimension delete'
+
+singpost.toolbox.calculate.admin.dimension.status:
+  path: '/admin/singpost/toolbox/calculate-postage/dimension/status'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_calculate_postage\Controller\DimensionController::changeStatus'
+    _title: 'Change Dimension Status'
+  requirements:
+    _permission: 'administer singpost toolbox calculate dimension form'
+
+singpost.toolbox.calculate.config:
+  path: '/admin/config/singpost/toolbox/calculate-postage'
+  defaults:
+    _form: '\Drupal\singpost_toolbox_calculate_postage\Form\Config\CalculateConfigForm'
+    _title: 'Calculate Postage settings'
+  requirements:
+    _permission: 'administer singpost toolbox calculate configuration'

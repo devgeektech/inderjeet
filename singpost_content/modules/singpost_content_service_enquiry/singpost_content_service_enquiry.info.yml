@@ -1,0 +1,8 @@
+name: SingPost Content - Service Enquiry
+description: 'Configuration for Service Enquiry webform'
+package: SingPost
+type: module
+core_version_requirement: ^8 || ^9
+dependencies:
+  - webform
+  - singpost_content

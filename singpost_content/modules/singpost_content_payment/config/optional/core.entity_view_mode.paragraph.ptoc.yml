@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+_core:
+  default_config_hash: o8pWXe3YaKIuuPJzzBkTvOMKLLVaKekVZGifkqm1DaY
+id: paragraph.ptoc
+label: 'Table of contents'
+targetEntityType: paragraph
+cache: true

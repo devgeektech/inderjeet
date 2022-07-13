@@ -1,0 +1,21 @@
+uuid: 0b002d25-da81-4f58-b635-f12ada27d013
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+_core:
+  default_config_hash: _eabZxF_Eor8JEpscCpUp6qOODTeBrcR_6m7s7rfKrI
+id: node.field_white_paper_body
+field_name: field_white_paper_body
+entity_type: node
+type: text_with_summary
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

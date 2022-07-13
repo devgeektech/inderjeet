@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: download_form
+label: 'Download Form'
+icon_uuid: null
+icon_default: null
+description: 'Thank you for interest in our publication. After completing and submitting the form, we will send you a link to download the requested document via email. Please read SingPost''s full Privacy Policy.'
+behavior_plugins: {  }

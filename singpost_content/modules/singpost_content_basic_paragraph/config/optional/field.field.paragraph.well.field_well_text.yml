@@ -1,0 +1,21 @@
+uuid: 9322f68a-bedc-4f9c-9228-eb249431b856
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_well_text
+    - paragraphs.paragraphs_type.well
+  module:
+    - text
+id: paragraph.well.field_well_text
+field_name: field_well_text
+entity_type: paragraph
+bundle: well
+label: Text
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

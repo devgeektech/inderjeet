@@ -1,0 +1,63 @@
+<!-- useful links Start -->
+<div class="sgp-pers-featured sgp-service-announce">
+	<div class="content-wrapper-small">
+		<div class="sgp-header-arrow">
+			<div class="sgp-header-arrow__head-sec">
+				<h2 class="sgp-h2">Service Announcements</h2>
+			</div>
+			<div class="sgp-arrow">
+				<button class="sgp-arrow__prev sgp-service-announce__prev">.</button>
+				<button class="sgp-arrow__next sgp-service-announce__next">.</button>
+			</div>
+		</div>
+	
+			<div class="sgp-pers-featured__wrapper sgp-service-announce__slider">
+			<!-- Returned announcement from AnnouncementBlock -->
+				{% for results in result %}
+				<div class="sgp-tile">
+					<div class="sgp-tile__cnt-sec">
+						<p class="sgp-tile__small-title"><em>Local - Announcement</em> | {{ results.start_date|date('d M Y') }}</p>
+						<h5 class="sgp-h5">{{ results.title }}</h5>
+						<a href="{{ url('<front>')}}send-receive/service-announcement-detail-page/{{results.id}}" title="Read More" class="sgp-btn">
+							<span class="sgp-btn__icon">
+								<svg viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M36.9608 53.3546L52.6381 37.6773L36.9608 22L34.901 24.1743L48.2896 37.6773L34.901 51.1803L36.9608 53.3546Z" /><path d="M50.4639 36.0752H23V39.2793H50.4639V36.0752Z"/></svg>
+							</span>Read More
+						</a>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+
+		<a href="" title="Explore More" class="sgp-btn">
+			<span class="sgp-btn__icon">
+				<svg viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M36.9608 53.3546L52.6381 37.6773L36.9608 22L34.901 24.1743L48.2896 37.6773L34.901 51.1803L36.9608 53.3546Z" /><path d="M50.4639 36.0752H23V39.2793H50.4639V36.0752Z"/></svg>
+			</span>Explore More
+		</a>
+	</div>
+</div>
+
+<!--
+{% if announcements is not empty %}
+    <div class="layout-list-group mb-4">
+        {% for announcement in announcements %}
+            <div class="list-group-item">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <p class="date date-bold">{{ announcement.start_date|date('d M Y') }}</p>
+                    </div>
+                    <div class="col-lg-10">
+                        <h4 class="title-news block-margin-small">{{ announcement.title }}</h4>
+                        <div class="content">
+                            {{ announcement.content.value|raw }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+-->
+
+
+
+

@@ -1,0 +1,7 @@
+name: SingPost Toolbox Locate Us
+description: 'SingPost Toolbox Locate Us module.'
+package: SingPost
+type: module
+core_version_requirement: ^8.8 || ^9
+dependencies:
+  - singpost_toolbox

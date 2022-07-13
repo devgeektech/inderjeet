@@ -1,0 +1,26 @@
+{% spaceless %}
+    <ul class="nav {{ (help.position == 'node') ? 'nav-tabs bg-grey-custom' : '' }}" role="tablist" id="calculate-local-tabs">
+        <li class="nav-item">
+            <a title="Mail" class="nav-link {{ ((help.active.mail) or ((help.active.mail == false) and (help.active.package == false)) ? 'active' : '') }}" id="calculate-mail-tab-{{ help.position }}" data-toggle="pill" href="#calculate-mail-{{ help.position }}" role="tab" aria-controls="calculate-mail-{{ help.position }}" aria-selected="false">
+                Mail
+            </a>
+        </li>
+        <li class="nav-item">
+            <a title="Package" class="nav-link {{ (help.active.package ? 'active' : '') }}" id="calculate-package-tab-{{ help.position }}" data-toggle="pill" href="#calculate-package-{{ help.position }}" role="tab" aria-controls="calculate-package-{{ help.position }}" aria-selected="false">
+                Package
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content" id="tab-content">
+        <div class="tab-pane fade {{ ((help.active.mail) or ((help.active.mail == false) and (help.active.package == false)) ? 'active show' : '') }}" id="calculate-mail-{{ help.position }}" role="tabpanel" aria-labelledby="calculate-mail-tab-{{ help.position }}">
+            <div class="tab-item" data-parent="#tab-content" role="tabpanel" aria-labelledby="heading-calculate-mail">
+                {{ forms.mail }}
+            </div>
+        </div>
+        <div class="tab-pane fade {{ (help.active.package ? 'active show' : '') }}" id="calculate-package-{{ help.position }}" role="tabpanel" aria-labelledby="calculate-package-tab-{{ help.position }}">
+            <div class="tab-item" data-parent="#tab-content" role="tabpanel" aria-labelledby="heading-calculate-package">
+                {{ forms.package }}
+            </div>
+        </div>
+    </div>
+{% endspaceless %}

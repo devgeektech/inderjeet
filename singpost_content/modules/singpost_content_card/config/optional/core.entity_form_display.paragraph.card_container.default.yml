@@ -1,0 +1,65 @@
+uuid: 0825795c-ed63-4760-81d8-23553dc8bc1d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.card_container.field_card_container_cards
+    - field.field.paragraph.card_container.field_card_container_col_class
+    - field.field.paragraph.card_container.field_card_container_css_class
+    - field.field.paragraph.card_container.field_card_container_row_class
+    - paragraphs.paragraphs_type.card_container
+  module:
+    - paragraphs
+_core:
+  default_config_hash: Ghi00o0y-qK9w9oe68xQyivVTBlLaZ9DqRXX24ZU3Ms
+id: paragraph.card_container.default
+targetEntityType: paragraph
+bundle: card_container
+mode: default
+content:
+  field_card_container_cards:
+    type: paragraphs
+    weight: 3
+    settings:
+      title: Card
+      title_plural: Cards
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: card
+      features:
+        duplicate: duplicate
+        collapse_edit_all: collapse_edit_all
+        add_above: '0'
+    third_party_settings: {  }
+    region: content
+  field_card_container_col_class:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_card_container_css_class:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_card_container_row_class:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

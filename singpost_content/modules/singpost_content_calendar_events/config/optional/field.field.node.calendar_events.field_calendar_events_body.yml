@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_calendar_events_body
+    - node.type.calendar_events
+  module:
+    - text
+id: node.calendar_events.field_calendar_events_body
+field_name: field_calendar_events_body
+entity_type: node
+bundle: calendar_events
+label: Body
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+field_type: text_with_summary

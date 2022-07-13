@@ -1,0 +1,21 @@
+uuid: d826fcbd-c6be-49c7-96e4-fbe207dcafd7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_collapsible_text_body
+    - paragraphs.paragraphs_type.collapsible_text
+  module:
+    - text
+id: paragraph.collapsible_text.field_collapsible_text_body
+field_name: field_collapsible_text_body
+entity_type: paragraph
+bundle: collapsible_text
+label: Body
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

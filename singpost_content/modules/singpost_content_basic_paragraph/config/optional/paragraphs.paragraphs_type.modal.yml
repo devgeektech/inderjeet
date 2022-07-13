@@ -1,0 +1,10 @@
+uuid: a67d75d2-3370-4052-bd19-4e0a05776b2a
+langcode: en
+status: true
+dependencies: {  }
+id: modal
+label: Modal
+icon_uuid: null
+icon_default: null
+description: 'Add a popup Modal to page.'
+behavior_plugins: {  }

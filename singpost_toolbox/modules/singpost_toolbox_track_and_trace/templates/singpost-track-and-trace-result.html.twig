@@ -1,0 +1,276 @@
+{% spaceless %}
+    {% if results is empty and help.tracking_nos is not empty %}
+    {# {% if help.error_status is not empty %} #} 
+            {{ help.error|t }}
+    {% endif %}
+    {% if results is not empty %}
+    <div class="content-wrapper-small">
+        <div class="d-flex align-items-center justify-content-end copy-result">
+            <i class="lar la-file-alt" aria-hidden="true"></i>
+            <button class="sgp-btn text-capitalize btn-copy-result text-color-primary font-16 p-0" data-clipboard-action="copy" data-clipboard-target="#table-copy-result">
+                Copy result table
+            </button>
+        </div>
+    </div>
+        <div id="table-copy-result" class="table-copy-result">
+        <table>
+            <thead>
+            <tr>
+                <th>TRACKING NO.</th>
+                <th>STATUS</th>
+                <th>POSTING DATE</th>
+                <th>STATUS DATE</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for key,item in results %}
+                <tr>
+                    <td>{{ key }}</td>
+                    <td>
+                        {% if item.NotFound %}
+                            {{ 'Item status not found in the system.' }}
+                        {% elseif item.DeliveryStatus is not empty %}
+                            {{ item.DeliveryStatus.0.StatusDescription }}
+                        {% endif %}
+                    </td>
+                    <td>{{ (item.PostingDate and item.PostingDate != '-') ? item.PostingDate|date('d/m/Y') : '-' }}</td>
+                    <td>{{ item.StatusDate ? item.StatusDate|date('d/m/Y') : '-' }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        <div class="toolbox-results content-wrapper-small" id="track_item_result">
+            {% for key,item in results %}
+            <div class="accordion sgp-accordion {{ item.NotFound ? 'item-not-found' : 'item-found' }}" id="sgpAccordion">
+            {% if loop.first %}
+                {% set according_status = 'active' %}
+            {% else %}
+                {% set according_status = '' %}
+            {% endif %}
+                <div class="card {{according_status}}">
+                    <div class="card-header" id="sgpAccordion{{key}}">
+                        <button class="sgp-accordion__btn {{ item.NotFound ? 'item-not-found' : 'item-found' }}" type="button" data-toggle="collapse" data-target="#collapse{{key}}" aria-expanded="true" aria-controls="collapse{{key}}">
+                         {% set status_desc =  '' %}
+                        {% if item.DeliveryStatus %}
+                            {% for value in item.DeliveryStatus %}
+                                {% if loop.first %}
+                                    {% set status_date = item.StatusDate|date('d/m/Y') %}
+                                    
+                                    {% if value.StatusDescription %}
+                                        {% set status_desc = value.StatusDescription %}
+                                    {% endif %}
+
+                                    {% if value.AceReasonDescription %}
+                                        {% set status_desc =  value.AceReasonDescription %}
+                                    {% endif %}
+
+                                    {% if value.DestinationCountry is not empty and value.DestinationCountry.Oversea %}
+                                        {% set status_desc = value.DestinationCountry.Oversea %}
+                                    {% endif %}
+                                    <span class="sgp-accordion__btn-desc">Tracking No: <span class="sgp-accordion__btn-val">{{ key }}{{ item.AlternativeTrackingNumber }}</span></span><span class="sgp-accordion__btn-desc">Status: <span class="sgp-accordion__btn-val">{{ item.NotFound ? item.NotFound : item.StatusDescription }}</span></span><span class="sgp-accordion__btn-desc">Status Date: <span class="sgp-accordion__btn-val">{{ status_date ? status_date : '-' }}</span></span>
+                                {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            <span class="sgp-accordion__btn-desc">Tracking No: <span class="sgp-accordion__btn-val">{{ key }}</span></span><span class="sgp-accordion__btn-desc">Status: <span class="sgp-accordion__btn-val sgp-accordion__btn-val--red">{{ item.NotFound ? item.NotFound : item.StatusDescription }}</span></span></span>
+                        {% endif %}
+                        </button>
+                    </div>
+                    <div id="collapse{{key}}" class="collapse show" aria-labelledby="sgpAccordion{{key}}" data-parent="#sgpAccordion">
+
+                        <div class="card-body">
+                            <div class="toolbox-results content-wrapper-small">
+
+
+
+            <div class="sgp-track-trace__details-box">
+                <div class="sgp-track-trace__details-head">
+                    <img src="{{ url('<front>')}}{{ base_path ~ directory }}/assets/images/svg/delivery-van-icon.svg" alt="van icon" class="sgp-track-trace__head-icon">
+                    <h3 class="sgp-track-trace__details-title" id="setDeliveryStatus">{{status_desc | t }}</h3>
+                </div>
+               {# {% for key,item in results %} #} 
+                    <div class="sgp-track-trace__details-cnt">
+                        <div class="sgp-track-trace__details-row">
+                            <div class="sgp-track-trace__details-label">Tracking No.:</div>
+                            <div class="sgp-track-trace__details-value">{{ key }}{{ item.AlternativeTrackingNumber }}</div>
+                        </div>
+                        <div class="sgp-track-trace__details-row">
+                            <div class="sgp-track-trace__details-label">Posted Date:</div>
+                            <div class="sgp-track-trace__details-value">{{ (item.PostingDate and item.PostingDate != '-') ? item.PostingDate|date('d/m/Y') : '-' }}</div>
+                        </div>
+                        {% for infor in item.InfoItemType %}
+                            {% if infor['name'] == 'Other Reference No' %}
+                            <div class="sgp-track-trace__details-row">
+                                <div class="sgp-track-trace__details-label">{{infor['name']}}:</div>
+                                <div class="sgp-track-trace__details-value">{{infor['value']}}</div>
+                            </div>
+                            {% endif %}
+                            {% if infor['name'] == 'Origin Country' %}
+                            <div class="sgp-track-trace__details-row">
+                                <div class="sgp-track-trace__details-label">{{infor['name']}}:</div>
+                                <div class="sgp-track-trace__details-value">{{infor['value']}}</div>
+                            </div>
+                            {% endif %}
+                            {% if infor['name'] == 'Destination Country' %}
+                            <div class="sgp-track-trace__details-row">
+                                <div class="sgp-track-trace__details-label">{{infor['name']}}:</div>
+                                <div class="sgp-track-trace__details-value">{{infor['value']}}</div>
+                            </div>
+                            {% endif %}
+                            {% if infor['name'] == 'Service Type' %}
+                            <div class="sgp-track-trace__details-row">
+                                <div class="sgp-track-trace__details-label">{{infor['name']}}:</div>
+                                <div class="sgp-track-trace__details-value">{{infor['value']}}</div>
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                        {#
+                        <div class="sgp-track-trace__details-row">
+                            <div class="sgp-track-trace__details-label">Despatch No.:</div>
+                            <div class="sgp-track-trace__details-value sgp-track-trace__details-value--bold">0038</div>
+                        </div> #}
+                    </div>
+              {# {% endfor %} #}   
+            </div>
+            {% set count = 0 %}
+            {# {% for key,item in results %} #} 
+            <div class="accordion sgp-accordion sgp-track-trace__updated-box">
+                <div class="card active">
+                    <div class="card-header">
+                        <button class="sgp-accordion__btn">
+                            Latest Status Information
+                        </button>
+                    </div>
+                    <div class="collapse show">
+                        <div class="card-body">
+                        {% for value in item.DeliveryStatus %}
+                            {% set count = count + 1 %}
+                            {% if loop.first %}
+                            <div class="sgp-track-trace__journey-box">
+                                <img src="{{ url('<front>')}}{{ base_path ~ directory }}/assets/images/svg/track-transit-icon.svg" alt="" class="sgp-track-trace__track-icon">
+                                <div class="sgp-track-trace__journey-inner">
+                                    <div class="sgp-track-trace__journey-main">
+                                        <img src="{{ url('<front>')}}{{ base_path ~ directory }}/assets/images/svg/track-transit-icon.svg" alt="" class="sgp-track-trace__track-icon sgp-track-trace__track-icon--mob">
+                                        <div class="sgp-track-trace__journey-main-inner">
+                                            <div class="sgp-track-trace__date">{{ item.ShowLocation ? value.Date|date('d/m/Y') : value.Date|date('d/m/Y') }}</div>
+                                            {% if value.Date %}
+                                            <div class="sgp-track-trace__time">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="13.563" height="13.563" viewBox="0 0 13.563 13.563"><path d="M7-12.031a6.573,6.573,0,0,1,3.391.916,6.852,6.852,0,0,1,2.475,2.475,6.573,6.573,0,0,1,.916,3.391,6.573,6.573,0,0,1-.916,3.391A6.852,6.852,0,0,1,10.391.615,6.573,6.573,0,0,1,7,1.531,6.573,6.573,0,0,1,3.609.615,6.852,6.852,0,0,1,1.135-1.859,6.573,6.573,0,0,1,.219-5.25a6.573,6.573,0,0,1,.916-3.391,6.852,6.852,0,0,1,2.475-2.475A6.573,6.573,0,0,1,7-12.031ZM7,.219A5.307,5.307,0,0,0,9.734-.52a5.515,5.515,0,0,0,2-2,5.307,5.307,0,0,0,.738-2.734,5.307,5.307,0,0,0-.738-2.734,5.515,5.515,0,0,0-2-2A5.307,5.307,0,0,0,7-10.719a5.307,5.307,0,0,0-2.734.738,5.515,5.515,0,0,0-2,2A5.307,5.307,0,0,0,1.531-5.25,5.307,5.307,0,0,0,2.27-2.516a5.515,5.515,0,0,0,2,2A5.307,5.307,0,0,0,7,.219ZM8.7-2.625a.3.3,0,0,0,.246.055.35.35,0,0,0,.219-.137l.492-.711a.34.34,0,0,0,.068-.246A.3.3,0,0,0,9.6-3.883L7.766-5.2V-9.078a.316.316,0,0,0-.1-.232.316.316,0,0,0-.232-.1H6.563a.316.316,0,0,0-.232.1.316.316,0,0,0-.1.232v4.484a.337.337,0,0,0,.137.273Z" transform="translate(-0.219 12.031)" fill="#c31126"/></svg>{{ value.Date|date('H:i') }}
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="sgp-track-trace__cnt-detail">
+                                        {% if value.StatusDescription %}
+                                            <p class="sgp-track-trace__desc" id="delivered_status">{{ value.StatusDescription | t }}</p>
+                                        {% endif %}
+
+                                        {% if value.AceReasonDescription %}
+                                            <p class="sgp-track-trace__desc">{{ value.AceReasonDescription | t }}</p>
+                                        {% endif %}
+
+                                        {% if value.DestinationCountry is not empty and value.DestinationCountry.Oversea %}
+                                            <p class="sgp-track-trace__desc">{{ value.DestinationCountry.Oversea | t }}</p>
+                                        {% endif %}
+                                        <!-- <p class="sgp-track-trace__desc 1">Departure from Singapore Hub for Transit to Oversea Destination</p> -->
+                                        {% if item.ShowLocation %}
+                                            <p class="sgp-track-trace__desc 1">
+                                                {% if value.DestinationCountry is not empty and value.DestinationCountry.Singapore and value.Location %}
+                                                
+                                                    <a href='{{ value.DestinationCountry.Singapore }}' target="_blank">{{ value.Location | t }}</a>
+                                                {% else %}
+                                                    <strong>Location:</strong>
+                                                    {{ value.Location ? value.Location : '' }}
+                                                {% endif %}
+                                            </p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            
+                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+           {# {% endfor %} #}
+            {% if count > 1 %}
+           {# {% for key,item in results %} #}
+            <div class="accordion sgp-accordion sgp-track-trace__journey-his" id="sgpTrack">
+                <div class="card active">
+                    <div class="card-header" id="sgpAccordionOne">
+                        <button class="sgp-accordion__btn" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Journey History
+                        </button>
+                    </div>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="sgpAccordionOne" data-parent="#sgpTrack">
+                        <div class="card-body">
+                            <div class="sgp-track-trace__journey-outer">
+                            {% for value in item.DeliveryStatus %}
+                                {% if loop.first %}
+                                {# skip first #}
+                                {% else %}
+                                    <div class="sgp-track-trace__journey-box active">
+                                    <span class="sgp-track-trace__dot"></span>
+                                   {# <img src="{{ url('<front>')}}{{ base_path ~ directory }}/assets/images/svg/track-transit-icon.svg" alt="" class="sgp-track-trace__track-icon"> #}
+                                    <div class="sgp-track-trace__journey-inner">
+                                        <div class="sgp-track-trace__journey-main">
+                                            <img src="{{ url('<front>')}}{{ base_path ~ directory }}/assets/images/svg/track-transit-icon.svg" alt="" class="sgp-track-trace__track-icon sgp-track-trace__track-icon--mob">
+                                            <div class="sgp-track-trace__journey-main-inner">
+                                                <div class="sgp-track-trace__date">{{ item.ShowLocation ? value.Date|date('d/m/Y') : value.Date|date('d/m/Y') }}</div>
+                                               {% if value.Date %}
+                                                <div class="sgp-track-trace__time">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="13.563" height="13.563" viewBox="0 0 13.563 13.563"><path d="M7-12.031a6.573,6.573,0,0,1,3.391.916,6.852,6.852,0,0,1,2.475,2.475,6.573,6.573,0,0,1,.916,3.391,6.573,6.573,0,0,1-.916,3.391A6.852,6.852,0,0,1,10.391.615,6.573,6.573,0,0,1,7,1.531,6.573,6.573,0,0,1,3.609.615,6.852,6.852,0,0,1,1.135-1.859,6.573,6.573,0,0,1,.219-5.25a6.573,6.573,0,0,1,.916-3.391,6.852,6.852,0,0,1,2.475-2.475A6.573,6.573,0,0,1,7-12.031ZM7,.219A5.307,5.307,0,0,0,9.734-.52a5.515,5.515,0,0,0,2-2,5.307,5.307,0,0,0,.738-2.734,5.307,5.307,0,0,0-.738-2.734,5.515,5.515,0,0,0-2-2A5.307,5.307,0,0,0,7-10.719a5.307,5.307,0,0,0-2.734.738,5.515,5.515,0,0,0-2,2A5.307,5.307,0,0,0,1.531-5.25,5.307,5.307,0,0,0,2.27-2.516a5.515,5.515,0,0,0,2,2A5.307,5.307,0,0,0,7,.219ZM8.7-2.625a.3.3,0,0,0,.246.055.35.35,0,0,0,.219-.137l.492-.711a.34.34,0,0,0,.068-.246A.3.3,0,0,0,9.6-3.883L7.766-5.2V-9.078a.316.316,0,0,0-.1-.232.316.316,0,0,0-.232-.1H6.563a.316.316,0,0,0-.232.1.316.316,0,0,0-.1.232v4.484a.337.337,0,0,0,.137.273Z" transform="translate(-0.219 12.031)" fill="#24549d"/></svg>{{ value.Date|date('H:i') }}
+                                                </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="sgp-track-trace__cnt-detail">
+                                            {% if value.StatusDescription %}
+                                                <p class="sgp-track-trace__desc">{{ value.StatusDescription | t }}</p>
+                                            {% endif %}
+
+                                            {% if value.AceReasonDescription %}
+                                                <p class="sgp-track-trace__desc">{{ value.AceReasonDescription | t }}</p>
+                                            {% endif %}
+
+                                            {% if value.DestinationCountry is not empty and value.DestinationCountry.Oversea %}
+                                                <p class="sgp-track-trace__desc">{{ value.DestinationCountry.Oversea | t }}</p>
+                                            {% endif %}
+                                            <!-- <p class="sgp-track-trace__desc 1">Departure from Singapore Hub for Transit to Oversea Destination</p> -->
+                                            {% if item.ShowLocation %}
+                                                <p class="sgp-track-trace__desc 1">
+                                                    {% if value.DestinationCountry is not empty and value.DestinationCountry.Singapore and value.Location %}
+                                                    
+                                                        <a href='{{ value.DestinationCountry.Singapore }}' target="_blank">{{ value.Location | t }}</a>
+                                                    {% else %}
+                                                        <strong>Location:</strong>
+                                                        {{ value.Location ? value.Location : '' }}
+                                                    {% endif %}
+                                                </p>
+                                            {% endif %}
+                                            <!--<p class="sgp-track-trace__desc 1"><strong>Location:</strong>Speedpost Service Centre</p>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           {# {% endfor %} #} 
+            {% endif %}
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            {% endfor %}
+            </div>
+        {% endif %}
+    
+{% endspaceless %}

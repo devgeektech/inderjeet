@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_pay_sam_online
+    - paragraphs.paragraphs_type.pay_services_data
+  module:
+    - options
+id: paragraph.pay_services_data.field_pay_sam_online
+field_name: field_pay_sam_online
+entity_type: paragraph
+bundle: pay_services_data
+label: 'Pay SAM Online'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

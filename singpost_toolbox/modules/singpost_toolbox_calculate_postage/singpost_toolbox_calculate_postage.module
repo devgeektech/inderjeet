@@ -1,0 +1,68 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ *
+ * @param $existing
+ * @param $type
+ * @param $theme
+ * @param $path
+ *
+ * @return array
+ */
+function singpost_toolbox_calculate_postage_theme($existing, $type, $theme, $path){
+	return [
+		'singpost_calculate_wrapper_node' => [
+			'template'  => 'singpost-calculate-wrapper-node',
+			'variables' => [
+				'forms' => [],
+				'help'  => []
+			]
+		],
+		'singpost_calculate_combined_wrapper_node' => [
+			'template'  => 'singpost-calculate-combined-wrapper-node',
+			'variables' => [
+				'forms' => [],
+				'help'  => []
+			]
+		],
+		'singpost_calculate_combined'        => [
+			'template'  => 'singpost-calculate-combined',
+			'variables' => [
+				'forms' => [],
+				'help'  => [],
+			]
+		],
+		'singpost_calculate_local'        => [
+			'template'  => 'singpost-calculate-local',
+			'variables' => [
+				'forms' => [],
+				'help'  => [],
+			]
+		],
+		'singpost_calculate_overseas'     => [
+			'template'  => 'singpost-calculate-overseas',
+			'variables' => [
+				'forms' => [],
+				'help'  => [],
+			]
+		],
+		'singpost_calculate_side'         => [
+			'template'  => 'singpost-calculate-side',
+			'variables' => [
+				'forms' => [],
+			]
+		],
+		'singpost_calculate_result'       => [
+			'template'  => 'singpost-calculate-result',
+			'variables' => [
+				'data'          => [],
+				'tooltips'      => [],
+				'content'       => [],
+				'error_message' => '',
+				'form'          => [],
+				'maximum_price' => ''
+			]
+		]
+	];
+}

@@ -1,0 +1,39 @@
+uuid: 84375e04-f6c9-4557-8d78-95c356859a9a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.latest_webcast.field_webcast_link
+    - field.field.paragraph.latest_webcast.field_webcast_title
+    - paragraphs.paragraphs_type.latest_webcast
+  module:
+    - link
+_core:
+  default_config_hash: HDs6f9VDmN5gyQsPj46NbzMULQAMN-mkKAj7LzI_6LY
+id: paragraph.latest_webcast.default
+targetEntityType: paragraph
+bundle: latest_webcast
+mode: default
+content:
+  field_webcast_link:
+    weight: 1
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_webcast_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  search_api_excerpt: true

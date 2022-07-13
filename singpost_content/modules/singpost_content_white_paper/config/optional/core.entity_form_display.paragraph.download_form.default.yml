@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.download_form.field_paragraph_form
+    - paragraphs.paragraphs_type.download_form
+  module:
+    - webform
+id: paragraph.download_form.default
+targetEntityType: paragraph
+bundle: download_form
+mode: default
+content:
+  field_paragraph_form:
+    weight: 0
+    settings:
+      default_data: true
+    third_party_settings: {  }
+    type: webform_entity_reference_select
+    region: content
+hidden: { }

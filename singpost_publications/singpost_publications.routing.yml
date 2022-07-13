@@ -1,0 +1,78 @@
+singpost.publication.admin:
+  path: '/admin/singpost/publications'
+  defaults:
+    _controller: '\Drupal\singpost_publications\Controller\PublicationController::index'
+    _title: 'Publications Management'
+  requirements:
+    _permission: 'administer publication admin'
+
+singpost.publication.add:
+  path: '/admin/singpost/publications/add'
+  defaults:
+    _controller: '\Drupal\singpost_publications\Controller\PublicationController::add'
+    _title: 'Add Publication'
+  requirements:
+    _permission: 'administer publication form'
+
+singpost.publication.edit:
+  path: '/admin/singpost/publications/edit/{id}'
+  defaults:
+    _controller: '\Drupal\singpost_publications\Controller\PublicationController::edit'
+    _title: 'Edit Publication'
+  requirements:
+    _permission: 'administer publication form'
+
+singpost.publication.delete:
+  path: '/admin/singpost/publications/delete/{id}'
+  defaults:
+    _controller: '\Drupal\singpost_publications\Controller\PublicationController::delete'
+    _title: 'Delete Publication'
+  requirements:
+    _permission: 'administer publication delete'
+
+singpost.publication.status:
+  path: '/admin/singpost/publications/change-status'
+  defaults:
+    _controller: '\Drupal\singpost_publications\Controller\PublicationController::changeStatus'
+    _title: 'Change Status Publication'
+  requirements:
+    _permission: 'administer publication form'
+
+singpost.publication.action:
+  path: '/admin/singpost/publications/action/{action}'
+  defaults:
+    _form: '\Drupal\singpost_publications\Form\PublicationBulkActionForm'
+    _title_callback: '\Drupal\singpost_publications\Form\PublicationBulkActionForm::getPageTitle'
+    action: ''
+  requirements:
+    _permission: 'administer publication form'
+
+singpost.annual.index:
+  path: '/about-us/investor-relations/annual-reports'
+  defaults:
+    _controller: '\Drupal\singpost_publications\Frontend\Controller\PublicationController::index'
+    _title: 'Annual Reports'
+  requirements:
+    _access: 'TRUE'
+  options:
+    no_cache: 'TRUE'
+
+entity.singpost_publication.canonical:
+  path: '/about-us/publications/{singpost_publication}'
+  defaults:
+    _controller: '\Drupal\singpost_publications\Frontend\Controller\PublicationController::view'
+    _title: 'Publication'
+  requirements:
+    _access: 'TRUE'
+  options:
+    no_cache: 'TRUE'
+
+singpost.annual.detail_publication:
+  path: '/about-us/investor-relations/annual-reports/{slug}'
+  defaults:
+    _controller: '\Drupal\singpost_publications\Frontend\Controller\PublicationController::detail_publication'
+    _title_callback: '\Drupal\singpost_publications\Frontend\Controller\PublicationController::getTitle'
+  requirements:
+    _access: 'TRUE'
+  options:
+    no_cache: 'TRUE'

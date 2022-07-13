@@ -1,0 +1,5 @@
+announcements.add:
+  title: Add Announcement
+  route_name: singpost.announcements.add
+  appears_on:
+    - singpost.announcements.admin

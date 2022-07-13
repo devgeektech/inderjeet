@@ -1,0 +1,12 @@
+singpost.admin.base:
+  title: SingPost
+  description: 'Singapore Post content management.'
+  route_name: singpost.admin.base
+  parent: system.admin
+  weight: 10
+singpost.config.base:
+  title: SingPost
+  description: 'Configure SingPost.'
+  route_name: singpost.config.base
+  parent: system.admin_config
+  weight: 10

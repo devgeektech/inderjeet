@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function singpost_toolbox_find_postal_code_theme($existing, $type, $theme, $path){
+	return [
+		'singpost_find_postal_code'        => [
+			'template'  => 'singpost-find-postal-code',
+			'variables' => [
+				'list_form'   => [],
+				'list_result' => []
+			]
+		],
+		'singpost_find_postal_code_result' => [
+			'template'  => 'singpost-find-postal-code-result',
+			'variables' => [
+				'results' => [],
+				'help'    => []
+			]
+		]
+	];
+}

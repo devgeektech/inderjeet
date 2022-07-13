@@ -1,0 +1,5 @@
+publication.add:
+  title: Add publication
+  route_name: singpost.publication.add
+  appears_on:
+    - singpost.publication.admin

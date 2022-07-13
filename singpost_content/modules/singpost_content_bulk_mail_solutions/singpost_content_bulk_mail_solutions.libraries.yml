@@ -1,0 +1,5 @@
+form:
+  js:
+    assets/js/form.js: { minified: true }
+  dependencies:
+    - core/jquery

@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * Implements hook_cron().
+ */
+function singpost_audit_trail_cron(){
+	Drupal::service('singpost.audit_trail.service')->deleteAuditTrail();
+}

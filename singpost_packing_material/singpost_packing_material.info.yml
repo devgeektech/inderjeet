@@ -1,0 +1,9 @@
+name: SingPost Packing Material
+description: 'Packing Material management.'
+package: SingPost
+type: module
+core_version_requirement: ^8 || ^9
+dependencies:
+  - key
+  - encrypt
+  - singpost_base

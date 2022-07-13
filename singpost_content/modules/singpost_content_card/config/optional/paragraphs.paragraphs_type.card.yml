@@ -1,0 +1,10 @@
+uuid: 363d93fa-0ab5-4ece-ace9-e40f491f19bb
+langcode: en
+status: true
+dependencies: {  }
+id: card
+label: Card
+icon_uuid: null
+icon_default: null
+description: 'Create a bootstrap card item containing thumbnail, title, description, buttons'
+behavior_plugins: {  }

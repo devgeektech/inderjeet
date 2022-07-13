@@ -1,0 +1,20 @@
+singpost.config.toolbox.locate_us:
+  title: 'Locate Us'
+  parent: singpost.config.toolbox
+  description: 'All settings for Locate Us.'
+  route_name: singpost.toolbox.locate_us.config
+  weight: 40
+
+singpost.locate_us.manage:
+  title: 'Locate Us'
+  parent: singpost.toolbox.manage
+  description: 'Create and manage Locate Us Type for Locate Us form.'
+  route_name: singpost.toolbox.locate_us.admin.type
+  weight: 40
+
+singpost.toolbox.locate_us.index:
+  title: 'Locate Us'
+  menu_name: singposttoolbox
+  description: 'Locate Us module frontend page.'
+  route_name: singpost.toolbox.locate_us.index
+  weight: 30

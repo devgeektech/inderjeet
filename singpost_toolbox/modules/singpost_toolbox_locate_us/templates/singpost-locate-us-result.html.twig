@@ -1,0 +1,163 @@
+{% spaceless %}
+    <!-- Locate us start -->
+    <div class="sgp-locate-us sgp-locate-result" id="locate-us">
+    {% if data is not empty %}
+        <div class="content-wrapper-test">
+            <!-- location results start -->
+            <div class="sgp-locate-us__sec-1 after-result">
+                <div class="sgp-locate-us__inner right-info" id="locate_us_2" style="display: none">
+                    <div class="sgp-locate-us__load-more"><img src="{{ url('<front>')}}{{ base_path ~ directory }}/assets/images/arrow-up-blue.svg" alt=""></div>
+                    <div class="btn btn-close-form sgp-link-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12.245" height="7" viewBox="0 0 12.245 7"><path data-name="Path 1018" d="M3.745-8.641a.327.327,0,0,0-.232-.109.327.327,0,0,0-.232.109L.109-5.469A.26.26,0,0,0,0-5.25a.26.26,0,0,0,.109.219L3.276-1.859a.327.327,0,0,0,.232.109.327.327,0,0,0,.237-.109l.191-.191a.26.26,0,0,0,.109-.22.34.34,0,0,0-.109-.246l-2.3-2.27H11.917a.316.316,0,0,0,.232-.1.316.316,0,0,0,.1-.227v-.273a.316.316,0,0,0-.1-.232.316.316,0,0,0-.232-.1H1.636l2.3-2.27a.34.34,0,0,0,.109-.242.26.26,0,0,0-.109-.219Z" transform="translate(0 8.75)"/></svg>
+                        Back
+                    </div>
+                    <div class="sgp-locate-detail__sec">
+                        <label for="locateResult_Main" class="sgp-locate-result__tile active">
+                            <div class="desc">
+                                <p class="sgp-locate-result__name heading-title"></p>
+                                <h6 class="sgp-h6 type-location"></h6>
+                                <p class="sgp-locate-result__note address-location">(Approx. 0.41 Kms)</p>
+                            </div>
+                            <div class="sgp-locate-result__check">
+                                <label class="sgp-checkbox">
+                                    <input type="radio" name="locateResult_Main" id="locateResult_Main" checked />
+                                    <svg viewBox="0 0 24 24" filter="url(#goo-light)">
+                                        <defs><filter id="goo-light" x="-50%" width="200%" y="-50%" height="200%" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceGraphic" stdDeviation="1.25" result="blur" /><feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -7" result="cm" /></filter></defs>
+                                        <path class="tick" d="M4.5 10L10.5 16L24.5 1" />
+                                        <circle class="dot" cx="10.5" cy="15.5" r="1.5" />
+                                        <circle class="drop" cx="25" cy="-1" r="2" />
+                                    </svg>
+                                    <span class="sgp-checkbox__custom"></span>
+                                </label>
+                            </div>
+                        </label>
+                            <!-- Notice box start -->
+                            <!-- <div class="sgp-notice-box">
+                                <div class="sgp-notice-box__inner">
+                                    <img src="../assets/images/notice-icon-red.svg" alt="" class="sgp-notice-box__icon">
+                                    <p class="sgp-notice-box__desc">This Post Office is scheduled for electrical servicing and maintenance from 20-21 May, 11:59pm to 6am.</p>
+                                </div>
+                            </div> -->
+                            <!-- Notice box end -->
+                            <div class="accordion sgp-accordion" id="sgpAccordion">
+                            <div class="locate-content-container"></div>
+                            <div class="card" id="info">
+                                <div class="card-header" id="sgpAccordionThree">
+                                    <button class="sgp-accordion__btn collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        Directional Info
+                                    </button>
+                                </div>
+                                <div id="collapseThree" class="collapse" aria-labelledby="sgpAccordionThree" data-parent="#sgpAccordion">
+                                    <div class="card-body">
+                                        <div class="form-group sgp-text-box__icon-outer">
+                                            <input id="origin-input" type="text" class="form-control form-control-lg sgp-text-box__input" placeholder="Enter an origin location" value="{{ keyword }}">
+                                            <img class="sgp-text-box__icon" id="sgp_locate_us_current_location" src="{{ url('<front>')}}{{ base_path ~ directory }}/assets/images/location-point.svg" alt="Current Location" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input id="destination-input" data-lat="" data-lng="" readonly type="text" class="form-control form-control-lg" placeholder="Enter a destination location">
+                                        </div>
+
+                                        <div class="d-flex justify-content-between">
+                                            <button id="back" class="btn btn-outline-primary" style="display:none;">
+                                                <i class="fas fa-chevron-left"></i> Back
+                                            </button>
+                                            <button id="go" class="btn btn-outline-primary ml-auto">
+                                                <i class="fas fa-directions"></i> Get Directions
+                                            </button>
+                                        </div>
+                                        <hr class="mb-0">
+                                        <div id="mode-selector" style="display:none;">
+                                            <input type="radio" name="type" class="hidden hide" id="changemode-driving" checked="checked"/>
+
+                                            <div class="form-group">
+                                                <label class="driving" for="changemode-driving">Driving</label>
+                                            </div>
+                                            <input type="radio" name="type" class="hidden hide" id="changemode-walking"/>
+
+                                            <div class="form-group">
+                                                <label class="walking" for="changemode-walking">Walking</label>
+                                            </div>
+                                            <input type="radio" name="type" class="hidden hide" id="changemode-bicycling"/>
+
+                                            <div class="form-group">
+                                                <label class="bicycling" for="changemode-bicycling">Bicycling</label>
+                                            </div>
+                                            <input type="radio" name="type" class="hidden hide" id="changemode-transit"/>
+
+                                            <div class="form-group">
+                                                <label class="transit" for="changemode-transit">Transit</label>
+                                            </div>
+                                        </div>
+                                        <div id="panel"></div>
+                                        <div id="panel-error" class="text-danger"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="sgp-locate-us__inner list-location" id="locate_us_1">
+                    <div class="sgp-locate-us__load-more"><img src="{{ url('<front>')}}{{ base_path ~ directory }}/assets/images/arrow-up-blue.svg" alt=""></div>
+                    <div class="sgp-locate-us__mobile-stick">
+                        <div class="sgp-link-btn go-to-step1">
+                        <a href="/locate-us/?reset=1"><svg xmlns="http://www.w3.org/2000/svg" width="12.245" height="7" viewBox="0 0 12.245 7"><path data-name="Path 1018" d="M3.745-8.641a.327.327,0,0,0-.232-.109.327.327,0,0,0-.232.109L.109-5.469A.26.26,0,0,0,0-5.25a.26.26,0,0,0,.109.219L3.276-1.859a.327.327,0,0,0,.232.109.327.327,0,0,0,.237-.109l.191-.191a.26.26,0,0,0,.109-.22.34.34,0,0,0-.109-.246l-2.3-2.27H11.917a.316.316,0,0,0,.232-.1.316.316,0,0,0,.1-.227v-.273a.316.316,0,0,0-.1-.232.316.316,0,0,0-.232-.1H1.636l2.3-2.27a.34.34,0,0,0,.109-.242.26.26,0,0,0-.109-.219Z" transform="translate(0 8.75)"/></svg>Back
+                        </a>
+                        </div>
+                        <h4 class="sgp-h4">Filtered</h4>
+                        <div class="sgp-locate-result__current">
+                            <h6 class="sgp-h6 type">{{data[0].outletType}}</h6>
+                           <!-- <p>Ang Mo Kio, Singapore</p> -->
+                        </div>
+                        <h4 class="sgp-h4">Nearest Locations</h4>
+                    </div>
+                    <div class="sgp-locate-result__sec">
+                        <div class="sgp-locate-result__tile-wrapper">
+                        {% for key, datumn in data %}
+
+                            <label for="locateResult{{ key }}" class="sgp-locate-result__tile title-marker" data-markerid="{{ key }}">
+                                <div>
+                                    <p class="sgp-locate-result__name">{{ datumn.outletName }}</p>
+                                    <h6 class="sgp-h6 type">{{ datumn.outletType }}</h6>
+                                    <p class="sgp-locate-result__note" id="distace_post">(Approx <span>{{ datumn.distance }}</span> Kms)</p>
+                                    <div class="map_lat" style="display: none">{{ datumn.latitude }}</div>
+                                    <div class="map_lat" style="display: none">{{ datumn.longitude }}</div>
+                                </div>
+                                <div class="sgp-locate-result__check">
+                                    <label class="sgp-checkbox">
+                                        <input type="radio" name="locateResult" id="locateResult{{ key }}"/>
+                                        <svg viewBox="0 0 24 24" filter="url(#goo-light)">
+                                            <defs><filter id="goo-light" x="-50%" width="200%" y="-50%" height="200%" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceGraphic" stdDeviation="1.25" result="blur" /><feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -7" result="cm" /></filter></defs>
+                                            <path class="tick" d="M4.5 10L10.5 16L24.5 1" />
+                                            <circle class="dot" cx="10.5" cy="15.5" r="1.5" />
+                                            <circle class="drop" cx="25" cy="-1" r="2" />
+                                        </svg>
+                                        <span class="sgp-checkbox__custom"></span>
+                                    </label>
+                                </div>
+                            </label>
+                        {% endfor %}
+                        </div>
+                    </div>
+                   <!-- <div class="sgp-locate-us__btn-sec">
+                        <a href="" class="sgp-link-btn sgp-link-btn--box">SEARCH NOW<svg xmlns="http://www.w3.org/2000/svg" width="12.25" height="7" viewBox="0 0 12.25 7"><path d="M8.5-8.641a.327.327,0,0,1,.232-.109.327.327,0,0,1,.232.109l3.172,3.172a.26.26,0,0,1,.109.219.26.26,0,0,1-.109.219L8.969-1.859a.327.327,0,0,1-.232.109A.327.327,0,0,1,8.5-1.859l-.191-.191A.26.26,0,0,1,8.2-2.27a.34.34,0,0,1,.109-.246l2.3-2.27H.328a.316.316,0,0,1-.232-.1A.316.316,0,0,1,0-5.113v-.273a.316.316,0,0,1,.1-.232.316.316,0,0,1,.232-.1H10.609l-2.3-2.27A.34.34,0,0,1,8.2-8.23a.26.26,0,0,1,.109-.219Z" transform="translate(0 8.75)"/></svg></a>
+                    </div> -->
+                </div>
+                </div>
+            </div>
+            <!-- location results end -->
+            
+            <!-- Map Start -->
+            <div class="map-header-final">
+                <div class="sgp_mob-get-loc" id="open_app_loction">GET DIRECTION<svg xmlns="http://www.w3.org/2000/svg" width="12.25" height="7" viewBox="0 0 12.25 7"><path d="M8.5-8.641a.327.327,0,0,1,.232-.109.327.327,0,0,1,.232.109l3.172,3.172a.26.26,0,0,1,.109.219.26.26,0,0,1-.109.219L8.969-1.859a.327.327,0,0,1-.232.109A.327.327,0,0,1,8.5-1.859l-.191-.191A.26.26,0,0,1,8.2-2.27a.34.34,0,0,1,.109-.246l2.3-2.27H.328a.316.316,0,0,1-.232-.1A.316.316,0,0,1,0-5.113v-.273a.316.316,0,0,1,.1-.232.316.316,0,0,1,.232-.1H10.609l-2.3-2.27A.34.34,0,0,1,8.2-8.23a.26.26,0,0,1,.109-.219Z" transform="translate(0 8.75)"></path></svg></div>
+                <div class="sgp-locate-us__sec-2 loading" id="map"></div>
+            </div>
+            <!-- Map End -->
+        </div>
+        {% else %}
+            {# <div class="text-muted mt-4">{{ error_msg|raw }}</div> #}
+        {% endif %}
+    </div>
+    <!-- Locate us end -->
+
+    {% endspaceless %}

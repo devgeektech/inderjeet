@@ -1,0 +1,23 @@
+uuid: 0bbb7a00-2fba-4a94-9919-4145781962d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_pay_service_url
+    - paragraphs.paragraphs_type.pay_services_data
+  module:
+    - link
+id: paragraph.pay_services_data.field_pay_service_url
+field_name: field_pay_service_url
+entity_type: paragraph
+bundle: pay_services_data
+label: 'Pay Service URL'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link

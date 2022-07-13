@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Mailing Solutions'
+vid: mailing_solutions
+description: ''
+weight: 0

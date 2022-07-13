@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_pay_service_description
+    - paragraphs.paragraphs_type.pay_services_data
+  module:
+    - text
+id: paragraph.pay_services_data.field_pay_service_description
+field_name: field_pay_service_description
+entity_type: paragraph
+bundle: pay_services_data
+label: 'Pay Service Description'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

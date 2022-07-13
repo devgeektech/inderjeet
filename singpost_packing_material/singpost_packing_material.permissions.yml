@@ -1,0 +1,18 @@
+administer pm setting:
+  title: 'Packing Material Settings'
+administer pm config:
+  title: 'View Config'
+administer pm category manage:
+  title: 'View Listing Category'
+administer pm category form:
+  title: 'Add/Update/Publish/Unpublish category'
+administer pm category delete:
+  title: 'Delete category'
+administer pm product manage:
+  title: 'View Listing Product'
+administer pm product form:
+  title: 'Add/Update/Publish/Unpublish product'
+administer pm product delete:
+  title: 'Delete product'
+administer pm order manage:
+  title: 'View Listing Order'

@@ -1,0 +1,8 @@
+name: SingPost Content - Latest Webcast
+type: module
+description: 'Add Latest Webcast Paragraph type.'
+package: SingPost
+core_version_requirement: ^8 || ^9
+dependencies:
+  - paragraphs:paragraphs
+  - singpost_content:singpost_content

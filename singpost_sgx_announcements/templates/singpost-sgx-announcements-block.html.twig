@@ -1,0 +1,51 @@
+
+    <div class="sgp-tile-box sgp-tile-box--pos sgp-investor-rel">
+        <div class="content-wrapper-small sgp-tile-box__inner sgp-tile-box__inner--no-shadow">
+            <!-- announcements slider start -->
+            <div class="sgp-pers-featured sgp-useful-links sgp-useful-links--white sgp-arrow-center">
+                <div class="sgp-pers-featured__wrapper sgp-arrow-center__slider">
+                    <div class="sgp-arrow sgp-arrow--effect">
+                        <button class="sgp-arrow__prev sgp-arrow-center__prev sgp-btn"><span class="sgp-btn__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                                <g data-name="Group 5256" transform="translate(-179 -2675)">
+                                  <rect data-name="Rectangle 1193" width="30" height="30" transform="translate(179 2675)" fill="none"></rect>
+                                  <path data-name="Path 1019" d="M6.289.711a.4.4,0,0,1-.246.082A.3.3,0,0,1,5.824.711L.109-5.031A.26.26,0,0,1,0-5.25a.26.26,0,0,1,.109-.219l5.715-5.742a.3.3,0,0,1,.219-.082.4.4,0,0,1,.246.082l.547.547a.3.3,0,0,1,.082.219.4.4,0,0,1-.082.246L2.6-5.961h9.324a.316.316,0,0,1,.232.1.316.316,0,0,1,.1.232v.766a.316.316,0,0,1-.1.232.316.316,0,0,1-.232.1H2.6L6.836-.3a.4.4,0,0,1,.082.246.3.3,0,0,1-.082.219Z" transform="translate(188 2695.293)"></path>
+                                </g>
+                              </svg> 
+                        </span></button>
+                        <button class="sgp-arrow__next sgp-btn sgp-arrow-center__next"><span class="sgp-btn__icon">
+                            <svg viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M36.9608 53.3546L52.6381 37.6773L36.9608 22L34.901 24.1743L48.2896 37.6773L34.901 51.1803L36.9608 53.3546Z"></path><path d="M50.4639 36.0752H23V39.2793H50.4639V36.0752Z"></path></svg>
+                        </span></button>
+                    </div>
+
+                    {% for value in result %}
+                    <div class="sgp-tile">
+                        <div class="sgp-tile__cnt-sec">
+                            <p class="sgp-tile__small-title"><em>SGX ANNOUNCEMENTS</em>{{value.date}}</p>
+                            <h5 class="sgp-h5">{{value.title}}</h5>
+                            <a href="{{value.url}}" class="sgp-btn">
+                                <span class="sgp-btn__icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+                                        <g data-name="Group 5261" transform="translate(-851 -2096)">
+                                          <rect data-name="Rectangle 1199" width="30" height="30" transform="translate(851 2096)" fill="none"></rect>
+                                          <path data-name="Path 1033" d="M6.562-4.375a1.266,1.266,0,0,1,.93.383,1.266,1.266,0,0,1,.383.93v3.5a1.266,1.266,0,0,1-.383.93,1.266,1.266,0,0,1-.93.383H-6.563a1.266,1.266,0,0,1-.93-.383,1.266,1.266,0,0,1-.383-.93v-3.5a1.266,1.266,0,0,1,.383-.93,1.266,1.266,0,0,1,.93-.383h2.516L-5.3-5.633a1.291,1.291,0,0,1-.369-.943,1.325,1.325,0,0,1,.383-.916,1.221,1.221,0,0,1,.916-.383h1.75v-3.062a1.266,1.266,0,0,1,.383-.93,1.266,1.266,0,0,1,.93-.383H1.312a1.266,1.266,0,0,1,.93.383,1.266,1.266,0,0,1,.383.93v3.063h1.75a1.254,1.254,0,0,1,.943.383,1.325,1.325,0,0,1,.383.916,1.248,1.248,0,0,1-.4.943L4.047-4.375ZM-4.375-6.562,0-2.187,4.375-6.562H1.312v-4.375H-1.313v4.375Zm10.938,7v-3.5H2.734l-1.8,1.8A1.266,1.266,0,0,1,0-.875a1.266,1.266,0,0,1-.93-.383l-1.8-1.8H-6.563v3.5ZM4.156-1.312a.633.633,0,0,0,.191.465.633.633,0,0,0,.465.191.633.633,0,0,0,.465-.191.633.633,0,0,0,.191-.465.633.633,0,0,0-.191-.465.633.633,0,0,0-.465-.191.633.633,0,0,0-.465.191A.633.633,0,0,0,4.156-1.312Z" transform="translate(865.875 2116.25)"></path>
+                                        </g>
+                                      </svg>
+                                </span>Download Now
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    
+                </div>
+                <div class="sgp-investor-rel__btn-sec sgp-investor-rel__mob-hidden">
+                    <a href="/about-us/investor-relations/sgx-announcements" class="sgp-btn">
+                        <span class="sgp-btn__icon">
+                            <svg viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M36.9608 53.3546L52.6381 37.6773L36.9608 22L34.901 24.1743L48.2896 37.6773L34.901 51.1803L36.9608 53.3546Z" /><path d="M50.4639 36.0752H23V39.2793H50.4639V36.0752Z"/></svg>
+                        </span>SEE ALL ANNOUNCEMENTS
+                    </a>
+                </div>
+            </div>
+         </div>
+        </div>
+            <!-- announcements slider end -->

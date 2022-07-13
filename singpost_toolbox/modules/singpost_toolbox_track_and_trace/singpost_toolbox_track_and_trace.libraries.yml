@@ -1,0 +1,6 @@
+form:
+  js:
+    assets/js/track-and-trace.js: { minified: true }
+    assets/vendor/clipboard/dist/clipboard.min.js: {}
+  dependencies:
+    - core/jquery

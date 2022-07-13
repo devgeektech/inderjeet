@@ -1,0 +1,49 @@
+<?php
+
+use Drupal\singpost_toolbox_locate_us\Form\Config\LocateUsConfigForm;
+
+/**
+ * Implements hook_theme().
+ */
+function singpost_toolbox_locate_us_theme($existing, $type, $theme, $path){
+	return [
+		'singpost_locate_us_index'  => [
+			'template'  => 'singpost-locate-us-index',
+			'variables' => [
+				'list_type' => [],
+				'form'      => NULL,
+				'icon'      => [],
+				'id'        => NULL
+			],
+		],
+		'singpost_locate_us_result' => [
+			'template'  => 'singpost-locate-us-result',
+			'variables' => [
+				'data'      => [],
+				'icon'      => NULL,
+				'icon_text' => NULL,
+				'keyword'   => NULL,
+				'error_msg' => NULL
+			]
+		]
+	];
+}
+
+/**
+ * @return array
+ */
+function singpost_toolbox_locate_us_library_info_build(){
+	$config  = Drupal::config(LocateUsConfigForm::$config_name);
+	$api_key = $config->get('locate_us_google_map_key');
+
+	$libraries               = [];
+	$libraries['google_map'] = [
+		'js' => [
+			'https://maps.googleapis.com/maps/api/js?key=' . $api_key . '&libraries=places,geometry&region=SG' => [
+				'type' => 'external'
+			],
+		],
+	];
+
+	return $libraries;
+}

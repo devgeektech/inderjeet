@@ -1,0 +1,20 @@
+singpost.toolbox.track_and_trace.index:
+  title: 'Track Items'
+  menu_name: singposttoolbox
+  description: 'Track and Trace module frontend page.'
+  route_name: singpost.toolbox.track_and_trace.index
+  weight: 20
+
+singpost.config.toolbox.track_and_trace:
+  title: 'Track and Trace'
+  parent: singpost.config.toolbox
+  description: 'All settings for Track and Trace.'
+  route_name: singpost.toolbox.track_and_trace.config
+  weight: 20
+
+singpost.tnt.status.manage:
+  title: 'Track and Trace Status'
+  parent: singpost.toolbox.manage
+  description: 'Create and manage Status for Track and Trace form.'
+  route_name: singpost.toolbox.track_and_trace.status
+  weight: 10

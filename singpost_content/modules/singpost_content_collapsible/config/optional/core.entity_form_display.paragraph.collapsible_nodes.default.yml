@@ -1,0 +1,33 @@
+uuid: c53301bd-d4ad-46f6-af8d-5dfe4a17ed3b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.collapsible_nodes.field_collapsible_nodes_node
+    - field.field.paragraph.collapsible_nodes.field_collapsible_nodes_opened
+    - paragraphs.paragraphs_type.collapsible_nodes
+id: paragraph.collapsible_nodes.default
+targetEntityType: paragraph
+bundle: collapsible_nodes
+mode: default
+content:
+  field_collapsible_nodes_node:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_collapsible_nodes_opened:
+    weight: 1
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+hidden:
+  created: true
+  status: true

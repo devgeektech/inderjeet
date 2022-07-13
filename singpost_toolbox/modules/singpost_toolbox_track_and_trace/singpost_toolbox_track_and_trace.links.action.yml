@@ -1,0 +1,5 @@
+tnt_status.add:
+  title: Add status
+  route_name: singpost.toolbox.track_and_trace.status.add
+  appears_on:
+    - singpost.toolbox.track_and_trace.status

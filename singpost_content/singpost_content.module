@@ -1,0 +1,324 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\node\Entity\Node;
+use Drupal\node\NodeForm;
+use Drupal\singpost_content\NodeStyleHelper;
+
+/**
+ * Implements hook_form_alter().
+ */
+function singpost_content_form_alter(
+	&$form,
+	FormStateInterface $form_state,
+	$form_id){
+	if ($form_state->getFormObject() instanceof NodeForm){
+		$node = $form_state->getFormObject()->getEntity();
+
+		$form['styling'] = [
+			'#type'       => 'details',
+			'#title'      => t('Styling'),
+			'#group'      => 'advanced',
+			'#attributes' => [
+				'class' => ['node-form-styling'],
+			],
+			'#attached'   => [
+				'library' => ['node/drupal.node'],
+			],
+			'#weight'     => 99,
+			'#optional'   => TRUE,
+		];
+
+		$form['css'] = [
+			'#type'          => 'webform_codemirror',
+			'#title'         => t('Stylesheet'),
+			'#group'         => 'styling',
+			'#mode'          => 'css',
+			'#default_value' => NodeStyleHelper::getStyle($node)
+		];
+
+		$form['actions']['submit']['#submit'][] = 'singpost_content_save_node_styling';
+	}
+}
+
+/**
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function singpost_content_save_node_styling($form, FormStateInterface $form_state){
+	$stylesheet = $form_state->getValue('css');
+	if ($stylesheet){
+		$node = $form_state->getFormObject()->getEntity();
+		NodeStyleHelper::saveStyle($stylesheet, $node);
+	}
+}
+
+/**
+ * @param $vars
+ */
+function singpost_content_preprocess_node(&$vars){
+	$file_path = 'public://stylesheet/node-' . $vars['node']->id() . '.css';
+	if ($vars['node'] && $vars['node'] instanceof Node && file_exists($file_path)){
+		$vars['#attached']['html_head_link'][] = [
+			[
+				'rel'  => 'stylesheet',
+				'href' => file_create_url($file_path),
+			],
+			TRUE,
+		];
+	}
+}
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function singpost_content_views_data_alter(array &$data){
+	$data['node_field_data']['nodes_granular_dates'] = [
+		'title'  => t('Node granular date filter'),
+		'filter' => [
+			'title' => t('Node granular date filter'),
+			'help'  => t('Node granular date filter.'),
+			'field' => 'title',
+			'id'    => 'node_granular_date_filter',
+		],
+	];
+}
+
+/**
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ * @param $form_id
+ */
+function singpost_content_form_views_exposed_form_alter(
+	&$form,
+	FormStateInterface $form_state,
+	$form_id){
+
+	if (isset($form['#id']) && $form['#id'] == 'views-exposed-form-articles-news-releases'){
+		$option_year = [
+			'All' => '- Year -'
+		];
+
+		$option_month = [
+			'All' => '- Month -'
+		];
+
+		$nids = Drupal::entityQuery('node')
+		              ->condition('status', 1)
+		              ->condition('type', 'article')
+		              ->condition('field_tags.entity.name', 'News Releases')
+		              ->sort('created')->execute();
+if (!empty($nids) && isFlipable($nids)) {
+		$nodes = Node::loadMultiple($nids);
+}
+
+		if (!empty($nodes)){
+			$node_first = reset(array_keys($nodes));
+			$node_end   = end(array_keys($nodes));
+			$year_start = date('Y', $nodes[$node_first]->getCreatedTime());
+			$year_end   = date('Y', $nodes[$node_end]->getCreatedTime());
+
+			$option_year += array_combine(range($year_start, $year_end),
+				range($year_start, $year_end));
+		}
+
+		for ($key = 1; $key <= 12; $key ++){
+			$option_month[$key] = date('M', mktime(NULL, NULL, NULL, $key));
+		}
+
+		$form['#attributes'] = [
+			'class' => ['form-filter form-filter-news']
+		];
+
+		$form['exposed_month'] = [
+			'#type'          => 'select',
+			'#options'       => $option_month,
+			'#default_value' => 'All',
+			'#states'        => [
+				'invisible' => [
+					'select[name="exposed_year"]' => ['value' => 'All'],
+				],
+			],
+			'#attributes'    => [
+				'onChange' => 'this.form.submit();',
+			],
+		];
+
+		$form['exposed_year'] = [
+			'#type'          => 'select',
+			'#options'       => $option_year,
+			'#default_value' => 'All'
+		];
+
+		$form['actions']['submit'] += [
+			'#attributes' => [
+				'class' => ['d-none']
+			]
+		];
+	}
+
+	if (isset($form['#id']) && $form['#id'] == 'views-exposed-form-calendar-of-events-page'){
+
+		$form['#attributes'] = [
+			'class' => ['form-filter form-filter-news']
+		];
+
+		$form['title']['#title_display']  = 'hidden';
+		$form['title']['#options']['All'] = 'Browse by financial year';
+
+		$form['title'] += [
+			'#attributes' => [
+				'class'    => ['filter-select-small'],
+				'onChange' => 'this.form.submit();'
+			]
+		];
+
+		$form['actions']['submit'] += [
+			'#attributes' => [
+				'class' => ['d-none']
+			]
+		];
+	}
+
+	if (isset($form['#id']) && $form['#id'] == 'views-exposed-form-search-support-center-page'){
+		$form['#attributes'] = [
+			'class' => ['main-form support-center-form']
+		];
+
+		$form['combine']['#prefix'] = '<div class="search-label d-lg-block d-none">Search Support Center</div>';
+		$form['combine']['#size']   = 50;
+
+		$form['combine']['#attributes']['placeholder'] = t('Enter Keyword');
+
+		$form['actions']['submit']['#value']      = t('');
+		$form['actions']['submit']['#attributes'] = [
+			'class' => [
+				'btn btn-form-submit icon-search'
+			]
+		];
+	}
+
+
+
+
+if (isset($form['#id']) && $form['#id'] == 'views-exposed-form-service-announcements-slider-page-1' ){
+		$option_year = [
+			'All' => '- Year -'
+		];
+
+		$option_month = [
+			'All' => '- Month -'
+		];
+
+		$nids = Drupal::entityQuery('node')
+		              ->condition('status', 1)
+		              ->condition('type', 'service_announcements')
+		             // ->condition('field_tags.entity.name', 'News Releases')
+		              ->sort('created')->execute();
+				if (!empty($nids) && isFlipable($nids)) {
+						$nodes = Node::loadMultiple($nids);
+				}
+
+		if (!empty($nodes)){
+			$node_first = reset(array_keys($nodes));
+			$node_end   = end(array_keys($nodes));
+			$year_start = date('Y', $nodes[$node_first]->getCreatedTime());
+			$year_end   = date('Y');
+
+			//$time = strtotime($year_end);
+			$year_start = date("Y", strtotime("-18 months"));
+
+			$option_year += array_combine(range($year_start, $year_end),
+				range($year_start, $year_end));
+		}
+
+		for ($key = 1; $key <= 12; $key ++){
+			$option_month[$key] = date('M', mktime(NULL, NULL, NULL, $key));
+		}
+
+		$form['#attributes'] = [
+			#'class' => ['form-filter form-filter-news']
+		];
+
+		$form['exposed_month'] = [
+			'#type'          => 'select',
+			'#options'       => $option_month,
+			'#default_value' => 'All',
+			'#states'        => [
+				'invisible' => [
+					'select[name="exposed_year"]' => ['value' => 'All'],
+				],
+			],
+			'#attributes'    => [
+				'onChange' => 'this.form.submit();',
+			],
+		];
+
+		$form['exposed_year'] = [
+			'#type'          => 'select',
+			'#options'       => $option_year,
+			'#default_value' => 'All',
+			'#attributes'    => [
+				'onChange' => 'this.form.submit();',
+			],
+		];
+
+		$form['actions']['submit'] += [
+			'#attributes' => [
+				#'class' => ['d-none']
+			]
+		];
+	}
+
+}
+
+/**
+ * @param $variables
+ *
+ * @throws \Drupal\Core\Entity\EntityMalformedException
+ */
+function singpost_content_preprocess_breadcrumb(&$variables){
+	$node = Drupal::routeMatch()->getParameter('node');
+	if ($node && $node instanceof Node){
+		$variables['breadcrumb'] = array_filter($variables['breadcrumb'], function ($breadcrumb){
+			if(empty($breadcrumb['text'])){
+				return false;
+			}else{
+			return strpos($breadcrumb['text'], '[group]') === FALSE ||
+			       strpos($breadcrumb['text'], '[hidden]');
+			   }
+
+		});
+
+		$alias = $node->toUrl()->toString();
+
+		if ($alias == '/send-receive/send-overseas'){
+			$variables['breadcrumb'] = [
+				[
+					'text' => t('Home'),
+					'url'  => '/'
+				],
+				[
+					'text' => t('Send & Receive'),
+					'url'  => $alias
+				],
+				[
+					'text' => t('Sending Overseas')
+				]
+			];
+		}
+	}
+
+}
+
+/* function isFlipable($array) {
+
+    if (!is_array($array)) { return false; }
+
+    foreach ($array as $key => $value) {
+        if (!(is_string($key) || is_integer($key))) { return false; }
+        if (!(is_string($value) || is_integer($value))) { return false;}
+    }
+
+    return true;
+  }*/

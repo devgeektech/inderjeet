@@ -1,0 +1,8 @@
+administer singpost toolbox locate_us configuration:
+  title: 'Administer SingPost toolbox locate us configuration'
+administer singpost toolbox locate_us create:
+  title: 'Administer SingPost toolbox locate us create'
+administer singpost toolbox locate_us update:
+  title: 'Administer SingPost toolbox locate us update'
+administer singpost toolbox locate_us delete:
+  title: 'Administer SingPost toolbox locate us delete'

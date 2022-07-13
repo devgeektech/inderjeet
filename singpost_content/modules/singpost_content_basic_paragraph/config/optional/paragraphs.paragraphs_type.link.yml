@@ -1,0 +1,10 @@
+uuid: 39c157d1-5809-4015-8f37-b81703e9e97f
+langcode: en
+status: true
+dependencies: {  }
+id: link
+label: Link
+icon_uuid: null
+icon_default: null
+description: 'Display a linked text with icon (optional)'
+behavior_plugins: {  }

@@ -1,0 +1,75 @@
+{% spaceless %}
+    <div class="errormsg text-center font-weight-bold py-3 {{ data.is_success ? '' : 'text-red' }}">
+        {{ data.error|raw }}
+    </div>
+
+    {% if data.data is not empty %}
+
+        <div class="row justify-content-center">
+            <div class="col-xs-12 col-sm-6 ">
+                <table class="redirect-result custom-table table">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <strong>Article/Item Number :</strong>
+                        </td>
+                        <td>
+                            {{ data.data.item_number }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Post Office on Delivery Advice :</strong>
+                        </td>
+                        <td>
+                            {{ data.data.post_office_on_delivery }}
+                        </td>
+                    </tr>
+                    {% if data.data.post_office_to_collect is not empty %}
+                        <tr>
+                            <td>
+                                <strong>Post Office to Collect from :</strong>
+                            </td>
+                            <td>
+                                {{ data.data.post_office_to_collect }}
+                            </td>
+                        </tr>
+                    {% endif %}
+                    {% if data.data.date is not empty %}
+                        <tr>
+                            <td>
+                                <strong>Post Office to Collect from :</strong>
+                            </td>
+                            <td>
+                                {{ data.data.date }}
+                            </td>
+                        </tr>
+                    {% endif %}
+                    <tr>
+                        <td>
+                            <strong>Your Contact Number :</strong>
+                        </td>
+                        <td>
+                            {{ data.data.phone_number }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Email :</strong>
+                        </td>
+                        <td>
+                            {{ data.data.email }}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    {% endif %}
+
+    <div class="text-center backButton">
+        <a href="{{ data.back_url }}" class="btn btn-outline-primary no-hover">&lt; Back </a>
+    </div>
+
+{% endspaceless %}

@@ -1,0 +1,14 @@
+administer singpost toolbox calculate configuration:
+  title: 'Configuration Calculate Postage'
+administer singpost toolbox calculate delivery manage:
+  title: 'Calculate Delivery Service - View Listing'
+administer singpost toolbox calculate delivery form:
+  title: 'Calculate Delivery Service - Add/Update/Publish/Unpublish'
+administer singpost toolbox calculate delivery delete:
+  title: 'Calculate Delivery Service - Delete'
+administer singpost toolbox calculate dimension manage:
+  title: 'Calculate Dimension - View Listing'
+administer singpost toolbox calculate dimension form:
+  title: 'Calculate Dimension - Add/Update/Publish/Unpublish'
+administer singpost toolbox calculate dimension delete:
+  title: 'Calculate Dimension - Delete'

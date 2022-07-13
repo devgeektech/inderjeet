@@ -1,0 +1,19 @@
+uuid: b15f5fe8-61aa-47ed-9846-2ff2c4f59731
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_modal_title
+    - paragraphs.paragraphs_type.modal
+id: paragraph.modal.field_modal_title
+field_name: field_modal_title
+entity_type: paragraph
+bundle: modal
+label: Title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,67 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function singpost_toolbox_track_and_trace_schema(){
+	$database = Drupal::database();
+
+	$schema = [];
+
+	if (!$database->schema()->tableExists('singpost_tnt_status')){
+		$schema['singpost_tnt_status'] = tntStatusTable();
+	}
+
+	return $schema;
+}
+
+/**
+ * @return array
+ */
+function tntStatusTable(){
+	return [
+		'fields'      => [
+			'id'         => [
+				'type'     => 'serial',
+				'unsigned' => TRUE,
+				'not null' => TRUE,
+			],
+			'type'       => [
+				'type'   => 'varchar',
+				'length' => 255,
+			],
+			'content'    => [
+				'type'   => 'varchar',
+				'length' => 255,
+			],
+			'published'  => [
+				'type'    => 'int',
+				'default' => 1,
+			],
+			'created_at' => [
+				'type' => 'int'
+			],
+			'created_by' => [
+				'type' => 'int'
+			],
+			'updated_at' => [
+				'type' => 'int'
+			],
+			'updated_by' => [
+				'type' => 'int'
+			],
+		],
+		'primary key' => ['id'],
+	];
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function singpost_toolbox_track_and_trace_uninstall(){
+	$database = Drupal::database();
+
+	if ($database->schema()->tableExists('singpost_tnt_status')){
+		$database->schema()->dropTable('singpost_tnt_status');
+	}
+}

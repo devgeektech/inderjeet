@@ -1,0 +1,69 @@
+
+{{dump(results[0].content.value[0] | raw)}}
+ <!-- service-announcements-detail start -->
+    <div class="sgp-postal-revision sgp-service-announcements-detail">
+        <div class="content-wrapper-form">
+            <div class="sgp-social-head">
+                <p class="sgp-social-head__small"><em>Local - Announcement</em><span class="sgp-social-head__date">{% if(results[0].title) %} {{ results[0].start_date|date('d M Y') }}  {% endif %}</span></p>
+                <h2 class="sgp-h2">{% if(results[0].title) %} {{ results[0].title }} {% endif %}</h2>
+                <div class="sgp-social">
+                    <span>Share to:</span>
+                    <div class="sgp-social__outer">
+                        <a href="#" class="sgp-social__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><g transform="translate(-2927 -13791)"><path d="M5.9-9.926H7.219v-2.226a17.612,17.612,0,0,0-1.92-.1A3,3,0,0,0,2.1-8.961V-7H0v2.488H2.1V1.75h2.57V-4.512H6.68L7-7H4.668V-8.714C4.668-9.434,4.867-9.926,5.9-9.926Z" transform="translate(2931.391 13804.25)"/><rect width="16" height="16" transform="translate(2927 13791)" fill="none"/></g></svg></a>
+                        <a href="#" class="sgp-social__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><g transform="translate(-2929 -13820)"><path d="M45.155-8.1a6.168,6.168,0,0,0,1.439-1.483,5.752,5.752,0,0,1-1.652.444A2.862,2.862,0,0,0,46.2-10.722a5.649,5.649,0,0,1-1.821.693,2.862,2.862,0,0,0-2.1-.906,2.868,2.868,0,0,0-2.869,2.869,3.239,3.239,0,0,0,.071.657,8.156,8.156,0,0,1-5.916-3,2.848,2.848,0,0,0-.391,1.448,2.867,2.867,0,0,0,1.279,2.39,2.889,2.889,0,0,1-1.3-.364V-6.9a2.87,2.87,0,0,0,2.3,2.816,3.034,3.034,0,0,1-.755.1,3.616,3.616,0,0,1-.542-.044,2.874,2.874,0,0,0,2.683,1.99A5.746,5.746,0,0,1,33.287-.817a5.938,5.938,0,0,1-.693-.036A8.108,8.108,0,0,0,37,.435a8.108,8.108,0,0,0,8.164-8.164C45.164-7.853,45.164-7.977,45.155-8.1Z" transform="translate(2897.406 13832.936)"/><rect width="16" height="16" transform="translate(2929 13820)" fill="none"/></g></svg></a>
+                        <a href="#" class="sgp-social__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><g transform="translate(-2968 -13846)"><path d="M74.684,0V-8.179h-2.54V0ZM73.412-9.294a1.483,1.483,0,0,0,1.471-1.485,1.472,1.472,0,0,0-1.471-1.471,1.472,1.472,0,0,0-1.471,1.471A1.483,1.483,0,0,0,73.412-9.294ZM84.191,0h0V-4.493c0-2.2-.473-3.891-3.043-3.891a2.669,2.669,0,0,0-2.4,1.321h-.036V-8.179H76.275V0h2.537V-4.05c0-1.066.2-2.1,1.523-2.1,1.3,0,1.321,1.217,1.321,2.166V0Z" transform="translate(2898.059 13860.25)"/><rect width="16" height="16" transform="translate(2968 13846)" fill="none"/></g></svg></a>
+                        <a href="#" class="sgp-social__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><g transform="translate(-3006 -13876)"><path d="M122.254-10.5a1.266,1.266,0,0,1,.93.383,1.266,1.266,0,0,1,.383.93v7.875a1.266,1.266,0,0,1-.383.93,1.266,1.266,0,0,1-.93.383H110.879a1.266,1.266,0,0,1-.93-.383,1.266,1.266,0,0,1-.383-.93V-9.187a1.266,1.266,0,0,1,.383-.93,1.266,1.266,0,0,1,.93-.383Zm0,1.313H110.879v1.121q.957.766,3.691,2.9l.246.219a6.683,6.683,0,0,0,.875.656,1.664,1.664,0,0,0,.875.355,1.664,1.664,0,0,0,.875-.355,6.683,6.683,0,0,0,.875-.656l.246-.219q2.734-2.105,3.691-2.9ZM110.879-1.312h11.375V-6.4l-3.172,2.516a7.93,7.93,0,0,1-1.121.82,2.754,2.754,0,0,1-1.395.438,2.9,2.9,0,0,1-1.422-.437,10.8,10.8,0,0,1-1.121-.82L110.879-6.4Z" transform="translate(2897.434 13889.5)"/><rect width="16" height="16" transform="translate(3006 13876)" fill="none"/></g></svg></a>
+                    </div>
+                </div>
+            </div>
+            {% if(results[0].content.value) %} {{ results[0].content.value|raw }} {% endif %}
+            <img src="../assets/images/service-announcements-detail-img.jpg" alt="image" class="sgp-postal-revision__img">
+            <div class="sgp-postal-revision__btn">
+                <a href="" title="Download Brochure" class="sgp-btn">
+                    <span class="sgp-btn__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+                            <g data-name="Group 5261" transform="translate(-851 -2096)">
+                              <rect data-name="Rectangle 1199" width="30" height="30" transform="translate(851 2096)" fill="none"></rect>
+                              <path data-name="Path 1033" d="M6.562-4.375a1.266,1.266,0,0,1,.93.383,1.266,1.266,0,0,1,.383.93v3.5a1.266,1.266,0,0,1-.383.93,1.266,1.266,0,0,1-.93.383H-6.563a1.266,1.266,0,0,1-.93-.383,1.266,1.266,0,0,1-.383-.93v-3.5a1.266,1.266,0,0,1,.383-.93,1.266,1.266,0,0,1,.93-.383h2.516L-5.3-5.633a1.291,1.291,0,0,1-.369-.943,1.325,1.325,0,0,1,.383-.916,1.221,1.221,0,0,1,.916-.383h1.75v-3.062a1.266,1.266,0,0,1,.383-.93,1.266,1.266,0,0,1,.93-.383H1.312a1.266,1.266,0,0,1,.93.383,1.266,1.266,0,0,1,.383.93v3.063h1.75a1.254,1.254,0,0,1,.943.383,1.325,1.325,0,0,1,.383.916,1.248,1.248,0,0,1-.4.943L4.047-4.375ZM-4.375-6.562,0-2.187,4.375-6.562H1.312v-4.375H-1.313v4.375Zm10.938,7v-3.5H2.734l-1.8,1.8A1.266,1.266,0,0,1,0-.875a1.266,1.266,0,0,1-.93-.383l-1.8-1.8H-6.563v3.5ZM4.156-1.312a.633.633,0,0,0,.191.465.633.633,0,0,0,.465.191.633.633,0,0,0,.465-.191.633.633,0,0,0,.191-.465.633.633,0,0,0-.191-.465.633.633,0,0,0-.465-.191.633.633,0,0,0-.465.191A.633.633,0,0,0,4.156-1.312Z" transform="translate(865.875 2116.25)"></path>
+                            </g>
+                          </svg>
+                    </span>Download Brochure
+                </a>
+            </div>
+
+            <div class="sgp-tag-link">
+                <p class="sgp-tag-link__label">Tags:</p>
+                <div class="sgp-tag-link__wrapper">
+                    <a href="" title="Send & Received" class="sgp-link-btn sgp-link-btn--border">Send & Received</a>
+                    <a href="" title="Send & Received" class="sgp-link-btn sgp-link-btn--border">Stamps</a>
+                    <a href="" title="Send & Received" class="sgp-link-btn sgp-link-btn--border">CNY 2021</a>
+                </div>
+            </div>
+
+            <div class="sgp-prev-next-btn">
+                <a href="" class="sgp-btn">
+                    <span class="sgp-btn__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 30 30">
+                        <g data-name="Group 5256" transform="translate(-179 -2675)">
+                          <rect  data-name="Rectangle 1193" width="30" height="30" transform="translate(179 2675)" fill="none"/>
+                          <path  data-name="Path 1019" d="M6.289.711a.4.4,0,0,1-.246.082A.3.3,0,0,1,5.824.711L.109-5.031A.26.26,0,0,1,0-5.25a.26.26,0,0,1,.109-.219l5.715-5.742a.3.3,0,0,1,.219-.082.4.4,0,0,1,.246.082l.547.547a.3.3,0,0,1,.082.219.4.4,0,0,1-.082.246L2.6-5.961h9.324a.316.316,0,0,1,.232.1.316.316,0,0,1,.1.232v.766a.316.316,0,0,1-.1.232.316.316,0,0,1-.232.1H2.6L6.836-.3a.4.4,0,0,1,.082.246.3.3,0,0,1-.082.219Z" transform="translate(188 2695.293)"/>
+                        </g>
+                      </svg>
+                </span>PREV
+                </a>
+                <a href="" class="sgp-btn">
+                NEXT<span class="sgp-btn__icon">
+                    <svg viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M36.9608 53.3546L52.6381 37.6773L36.9608 22L34.901 24.1743L48.2896 37.6773L34.901 51.1803L36.9608 53.3546Z"></path><path d="M50.4639 36.0752H23V39.2793H50.4639V36.0752Z"></path></svg>
+                </span>
+            </a>
+            </div>
+        </div>
+    </div>
+    <!-- service-announcements-detail end -->
+
+    <!-- Go to top btn start -->
+    <a href="" title="Go TO TOP" class="sgp-go-top-btn"><svg viewBox="0 0 28 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 13.7L2 15.7L13.7 3.89993L25.4 15.7L27.4 13.7L13.7 -6.10352e-05L0 13.7Z" fill="white"/>
+        </svg>Go TO TOP</a>
+    <!-- Go to top btn start -->
+	

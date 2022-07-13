@@ -1,0 +1,23 @@
+uuid: c0a880e5-bf9b-48b8-8406-5c9bf48d926e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_modal_size
+    - paragraphs.paragraphs_type.modal
+  module:
+    - options
+id: paragraph.modal.field_modal_size
+field_name: field_modal_size
+entity_type: paragraph
+bundle: modal
+label: Size
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: normal
+default_value_callback: ''
+settings: {  }
+field_type: list_string

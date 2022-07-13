@@ -1,0 +1,159 @@
+singpost.pm.setting:
+  path: '/admin/config/singpost/packing-material'
+  defaults:
+    _form: '\Drupal\singpost_packing_material\Form\Config\PackingMaterialConfigForm'
+    _title: 'Packing Material Settings'
+  requirements:
+    _permission: 'administer pm setting'
+
+singpost.pm.config:
+  path: '/admin/singpost/packing-material'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Packing Material'
+  requirements:
+    _permission: 'administer pm config'
+
+singpost.pm.category.manage:
+  path: '/admin/singpost/packing-material/category'
+  defaults:
+    _controller: '\Drupal\singpost_packing_material\Controller\CategoryController::index'
+    _title: 'Category Management'
+  requirements:
+    _permission: 'administer pm category manage'
+
+singpost.pm.category.add:
+  path: '/admin/singpost/packing-material/category/add'
+  defaults:
+    _controller: '\Drupal\singpost_packing_material\Controller\CategoryController::add'
+    _title: 'Add Category'
+  requirements:
+    _permission: 'administer pm category form'
+
+singpost.pm.category.edit:
+  path: '/admin/singpost/packing-material/category/edit/{id}'
+  defaults:
+    _controller: '\Drupal\singpost_packing_material\Controller\CategoryController::edit'
+    _title: 'Edit Category'
+  requirements:
+    _permission: 'administer pm category form'
+
+singpost.pm.category.status:
+  path: '/admin/singpost/packing-material/category/change-status'
+  defaults:
+    _controller: '\Drupal\singpost_packing_material\Controller\CategoryController::changeStatus'
+    _title: 'Change Category Status'
+  requirements:
+    _permission: 'administer pm category form'
+
+singpost.pm.category.delete:
+  path: '/admin/singpost/packing-material/category/delete/{id}'
+  defaults:
+    _controller: '\Drupal\singpost_packing_material\Controller\CategoryController::delete'
+    _title: 'Delete Category'
+  requirements:
+    _permission: 'administer pm category delete'
+
+singpost.pm.product.manage:
+  path: '/admin/singpost/packing-material/product'
+  defaults:
+    _controller: '\Drupal\singpost_packing_material\Controller\ProductController::index'
+    _title: 'Product Management'
+  requirements:
+    _permission: 'administer pm product manage'
+
+singpost.pm.product.add:
+  path: '/admin/singpost/packing-material/product/add'
+  defaults:
+    _controller: '\Drupal\singpost_packing_material\Controller\ProductController::add'
+    _title: 'Add Product'
+  requirements:
+    _permission: 'administer pm product form'
+
+singpost.pm.product.edit:
+  path: '/admin/singpost/packing-material/product/edit/{id}'
+  defaults:
+    _controller: '\Drupal\singpost_packing_material\Controller\ProductController::edit'
+    _title: 'Edit Product'
+  requirements:
+    _permission: 'administer pm product form'
+
+singpost.pm.product.status:
+  path: '/admin/singpost/packing-material/product/change-status'
+  defaults:
+    _controller: '\Drupal\singpost_packing_material\Controller\ProductController::changeStatus'
+    _title: 'Change Product Status'
+  requirements:
+    _permission: 'administer pm product form'
+
+singpost.pm.product.delete:
+  path: '/admin/singpost/packing-material/product/delete/{id}'
+  defaults:
+    _controller: '\Drupal\singpost_packing_material\Controller\ProductController::delete'
+    _title: 'Delete Product'
+  requirements:
+    _permission: 'administer pm product delete'
+
+singpost.pm.order.manage:
+  path: '/admin/singpost/packing-material/order'
+  defaults:
+    _controller: '\Drupal\singpost_packing_material\Controller\OrderController::index'
+    _title: 'Order Listing'
+  requirements:
+    _permission: 'administer pm order manage'
+
+singpost.pm.order.view:
+  path: '/admin/singpost/packing-material/order/view/{id}'
+  defaults:
+    _controller: '\Drupal\singpost_packing_material\Controller\OrderController::view'
+    _title: 'Order View Detail'
+  requirements:
+    _permission: 'administer pm order manage'
+
+singpost.pm.index:
+  path: '/packing-materials'
+  defaults:
+    _controller: '\Drupal\singpost_packing_material\Frontend\Controller\PackingMaterialController::index'
+    _title: 'Packing Materials'
+  requirements:
+    _access: 'TRUE'
+
+singpost.pm.product:
+  path: '/packing-materials/product/{name}/{id}'
+  defaults:
+    _controller: '\Drupal\singpost_packing_material\Frontend\Controller\PackingMaterialController::singleProduct'
+    _title: 'Packing Materials product Details'
+  requirements:
+    _access: 'TRUE'
+
+singpost.pm.cart:
+  path: '/packing-materials/cart-summary'
+  defaults:
+    _controller: '\Drupal\singpost_packing_material\Frontend\Controller\PackingMaterialController::cartSummary'
+    _title: 'Packing Materials Cart Summary'
+  requirements:
+    _access: 'TRUE'
+
+singpost.pm.checkout:
+  path: '/packing-materials/cart-checkout'
+  defaults:
+    _controller: '\Drupal\singpost_packing_material\Frontend\Controller\PackingMaterialController::cartCheckout'
+    _title: 'Packing Materials Cart Checkout page'
+  requirements:
+    _access: 'TRUE'
+
+singpost.pm.thanks:
+  path: '/packing-materials/cart-thanks/{id}'
+  defaults:
+    _controller: '\Drupal\singpost_packing_material\Frontend\Controller\PackingMaterialController::cartThanks'
+    _title: 'Packing Materials Cart Thanks page'
+  requirements:
+    _access: 'TRUE'
+
+singpost.pm.confirm:
+  path: '/packing-materials-your-order'
+  defaults:
+    _controller: '\Drupal\singpost_packing_material\Frontend\Controller\PackingMaterialController::confirm'
+    _title: 'Packing Materials - Your Order'
+  requirements:
+    _access: 'TRUE'

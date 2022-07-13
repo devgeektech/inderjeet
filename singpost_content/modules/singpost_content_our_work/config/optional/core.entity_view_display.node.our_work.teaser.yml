@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.our_work.field_banner_our_work
+    - field.field.node.our_work.field_body_our_work
+    - field.field.node.our_work.field_file_download_our_work
+    - node.type.our_work
+  module:
+    - user
+id: node.our_work.teaser
+targetEntityType: node
+bundle: our_work
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_banner_our_work: true
+  field_body_our_work: true
+  field_file_download_our_work: true
+  search_api_excerpt: true

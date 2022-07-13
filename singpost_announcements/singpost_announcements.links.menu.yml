@@ -1,0 +1,6 @@
+singpost.announcements.admin:
+  title: 'Announcements'
+  description: 'Manage website announcements'
+  parent: singpost.admin.base
+  route_name: singpost.announcements.admin
+  weight: 100

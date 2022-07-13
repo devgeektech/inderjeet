@@ -1,0 +1,27 @@
+uuid: a5057f55-876b-4042-9059-ff653024b513
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_file
+    - node.type.white_papers
+  module:
+    - file
+id: node.white_papers.field_file
+field_name: field_file
+entity_type: node
+bundle: white_papers
+label: File
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: pdf
+  max_filesize: ''
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

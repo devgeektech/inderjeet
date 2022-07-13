@@ -1,0 +1,25 @@
+uuid: b1b19684-65f7-4bcc-b7db-97e4bb8da413
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.payment_table.field_payment_row
+    - paragraphs.paragraphs_type.payment_table
+  module:
+    - entity_reference_revisions
+id: paragraph.payment_table.default
+targetEntityType: paragraph
+bundle: payment_table
+mode: default
+content:
+  field_payment_row:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  search_api_excerpt: true

@@ -1,0 +1,11 @@
+delivery_service.add:
+  title: Add delivery service
+  route_name: singpost.toolbox.calculate.delivery_service.add
+  appears_on:
+    - singpost.toolbox.calculate.delivery_service.manage
+
+dimension.add:
+  title: Add Dimension
+  route_name: singpost.toolbox.calculate.admin.dimension.add
+  appears_on:
+    - singpost.toolbox.calculate.dimension.manage

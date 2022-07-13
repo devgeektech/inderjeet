@@ -1,0 +1,78 @@
+singpost.announcements.admin:
+  path: '/admin/singpost/announcements'
+  defaults:
+    _controller: '\Drupal\singpost_announcements\Controller\AnnouncementController::index'
+    _title: 'Announcements Management'
+  requirements:
+    _permission: 'administer announcements'
+
+singpost.announcements.add:
+  path: '/admin/singpost/announcements/add'
+  defaults:
+    _controller: '\Drupal\singpost_announcements\Controller\AnnouncementController::add'
+    _title: 'Add Announcement'
+  requirements:
+    _permission: 'administer announcements form'
+
+singpost.announcements.edit:
+  path: '/admin/singpost/announcements/edit/{id}'
+  defaults:
+    _controller: '\Drupal\singpost_announcements\Controller\AnnouncementController::edit'
+    _title: 'Edit Announcement'
+  requirements:
+    _permission: 'administer announcements form'
+
+singpost.announcements.delete:
+  path: '/admin/singpost/announcements/delete/{id}'
+  defaults:
+    _controller: '\Drupal\singpost_announcements\Controller\AnnouncementController::delete'
+    _title: 'Delete Announcement'
+  requirements:
+    _permission: 'administer announcements delete'
+
+singpost.announcements.action:
+  path: '/admin/singpost/announcements/action/{action}'
+  defaults:
+    _form: 'Drupal\singpost_announcements\Form\AnnouncementBulkActionForm'
+    _title_callback: 'Drupal\singpost_announcements\Form\AnnouncementBulkActionForm::getPageTitle'
+    action: ''
+  requirements:
+    _permission: 'administer announcements form'
+
+singpost.announcements.status:
+  path: '/admin/singpost/announcements/status'
+  defaults:
+    _controller: '\Drupal\singpost_announcements\Controller\AnnouncementController::changeStatus'
+    _title: 'Change Announcement Status'
+  requirements:
+    _permission: 'administer announcements form'
+
+singpost.announcements.index:
+  path: '/send-receive/service-announcements'
+  defaults:
+    _controller: '\Drupal\singpost_announcements\Frontend\Controller\AnnouncementController::index'
+    _title: 'Service Announcements'
+  requirements:
+    _access: 'TRUE'
+  options:
+    no_cache: 'TRUE'
+
+entity.singpost_announcement.canonical:
+  path: '/send-receive/service-announcement/{singpost_announcement}'
+  defaults:
+    _controller: '\Drupal\singpost_announcements\Frontend\Controller\AnnouncementController::view'
+    _title: 'Service Announcement'
+  requirements:
+    _access: 'TRUE'
+  options:
+    no_cache: 'TRUE'
+    
+singpost.announcements.single_announcement:
+  path: '/send-receive/service-announcement-detail-page/{singpost_announcement}'
+  defaults:
+    _controller: '\Drupal\singpost_announcements\Frontend\Controller\AnnouncementController::single_announcement'
+    _title: 'Single Announcements'
+  requirements:
+    _access: 'TRUE'
+  options:
+    no_cache: 'TRUE'

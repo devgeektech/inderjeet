@@ -1,0 +1,6 @@
+administer announcements admin:
+  title: 'View Listing'
+administer announcements form:
+  title: 'Add/Update/Publish/Unpublish'
+administer announcements delete:
+  title: 'Delete'

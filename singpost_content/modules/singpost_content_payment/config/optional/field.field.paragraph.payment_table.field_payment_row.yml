@@ -1,0 +1,82 @@
+uuid: c788c220-9ad5-4854-97da-716e586d8dce
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_payment_row
+    - paragraphs.paragraphs_type.pay_services_data
+    - paragraphs.paragraphs_type.payment_table
+  module:
+    - entity_reference_revisions
+id: paragraph.payment_table.field_payment_row
+field_name: field_payment_row
+entity_type: paragraph
+bundle: payment_table
+label: 'Payment Row'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      pay_services_data: pay_services_data
+    target_bundles_drag_drop:
+      block:
+        weight: 19
+        enabled: false
+      card:
+        weight: 20
+        enabled: false
+      card_container:
+        weight: 21
+        enabled: false
+      collapsible:
+        weight: 22
+        enabled: false
+      collapsible_nodes:
+        weight: 23
+        enabled: false
+      collapsible_paragraph:
+        weight: 24
+        enabled: false
+      collapsible_text:
+        weight: 25
+        enabled: false
+      faq_answers:
+        weight: 26
+        enabled: false
+      faq_question:
+        weight: 27
+        enabled: false
+      latest_webcast:
+        weight: 28
+        enabled: false
+      link:
+        weight: 29
+        enabled: false
+      modal:
+        weight: 30
+        enabled: false
+      pay_services_data:
+        enabled: true
+        weight: 31
+      payment_table:
+        weight: 32
+        enabled: false
+      sidebar_links:
+        weight: 33
+        enabled: false
+      text:
+        weight: 34
+        enabled: false
+      webform:
+        weight: 35
+        enabled: false
+      well:
+        weight: 36
+        enabled: false
+field_type: entity_reference_revisions

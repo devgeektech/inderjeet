@@ -1,0 +1,84 @@
+<?php
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\search_api\IndexInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function singpost_sgx_announcements_theme($existing, $type, $theme, $path){
+	return [
+		'singpost_sgx_announcement' => [
+			'template'  => 'singpost-sgx-announcement',
+			'variables' => [
+				'sgx_announcements' => []
+			],
+		],
+		'singpost_sgx_announcements_block' => [
+			'template'  => 'singpost-sgx-announcements-block',
+			'variables' => [
+				'result' => []
+			]
+		],
+		'singpost_sgx_announcement_filter' => [
+			'template'  => 'singpost-sgx-announcement-filter',
+			'variables' => [
+				'title' 			=> t('SGX Announcements'),
+				'sub_title' 		=> t('DONEC QUAM FELIS'),
+				'sgx_announcements_filter' => []
+			],
+		],
+	];
+}
+
+/**
+ * Implements hook_search_api_index_items_alter().
+ *
+ * @param Drupal\search_api\IndexInterface $index
+ * @param Drupal\search_api\Item\Item[] $items
+ */
+function singpost_sgx_announcements_search_api_index_items_alter(
+	IndexInterface $index,
+	array &$items){
+	$published_field = '';
+	$fields          = $index->get('field_settings');
+	foreach ($fields as $field => $field_data){
+		if ($field_data['datasource_id'] == 'entity:sgx_announcement' && strpos($field,
+				'published') !== FALSE){
+			$published_field = $field;
+			break;
+		}
+	}
+
+	if (!empty($published_field)){
+		foreach ($items as $item_id => $item){
+			if (strpos($item_id, 'entity:sgx_announcement') !== FALSE){
+				$is_published = $item->getField($published_field)->getValues();
+				if (empty($is_published) || empty($is_published[0])){
+					unset($items[$item_id]);
+				}
+			}
+		}
+	}
+}
+
+
+/**
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ * @param $operation
+ * @param \Drupal\Core\Session\AccountInterface $account
+ *
+ * @return \Drupal\Core\Access\AccessResultAllowed|\Drupal\Core\Access\AccessResultNeutral
+ */
+function singpost_sgx_announcements_sgx_announcement_access(
+	EntityInterface $entity,
+	$operation,
+	AccountInterface $account){
+	if ($operation == 'view'){
+		return AccessResult::allowed();
+	}
+
+	return AccessResult::neutral();
+}

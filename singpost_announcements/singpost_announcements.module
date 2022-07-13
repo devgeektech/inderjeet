@@ -1,0 +1,81 @@
+<?php
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\search_api\IndexInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function singpost_announcements_theme($existing, $type, $theme, $path){
+	return [
+		'singpost_announcements' => [
+			'template'  => 'singpost-announcements',
+			'variables' => [
+				'announcements' => []
+			]
+		],
+		'singpost_announcements_bock' => [
+			'template'  => 'singpost-announcements-bock',
+			'variables' => [
+				'result' => []
+			]
+		],
+		'singpost_announcement_single' => [
+			'template'  => 'singpost-announcement-single',
+			'variables' => [
+				'results' => []
+			]
+		],
+		
+	];
+}
+
+/**
+ * Implements hook_search_api_index_items_alter().
+ *
+ * @param Drupal\search_api\IndexInterface $index
+ * @param Drupal\search_api\Item\Item[] $items
+ */
+function singpost_announcements_search_api_index_items_alter(IndexInterface $index, array &$items){
+	$published_field = '';
+	$fields          = $index->get('field_settings');
+	foreach ($fields as $field => $field_data){
+		if ($field_data['datasource_id'] == 'entity:singpost_announcement' && strpos($field,
+				'published') !== FALSE){
+			$published_field = $field;
+			break;
+		}
+	}
+
+	if (!empty($published_field)){
+		foreach ($items as $item_id => $item){
+			if (strpos($item_id, 'entity:singpost_announcement') !== FALSE){
+				$is_published = $item->getField($published_field)->getValues();
+				if (empty($is_published) || empty($is_published[0])){
+					unset($items[$item_id]);
+				}
+			}
+		}
+	}
+}
+
+
+/**
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ * @param $operation
+ * @param \Drupal\Core\Session\AccountInterface $account
+ *
+ * @return \Drupal\Core\Access\AccessResultAllowed|\Drupal\Core\Access\AccessResultNeutral
+ */
+function singpost_announcements_singpost_announcement_access(
+	EntityInterface $entity,
+	$operation,
+	AccountInterface $account){
+	if ($operation == 'view'){
+		return AccessResult::allowed();
+	}
+
+	return AccessResult::neutral();
+}

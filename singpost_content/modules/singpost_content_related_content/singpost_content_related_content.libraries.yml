@@ -1,0 +1,3 @@
+related-content:
+  js:
+    assets/js/related-content.js: { minified: true }

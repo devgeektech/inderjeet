@@ -1,0 +1,15 @@
+singpost.find_postal_code.config:
+  path: '/admin/config/singpost/toolbox/find-postal-code'
+  defaults:
+    _form: '\Drupal\singpost_toolbox_find_postal_code\Form\Config\FindPostalCodeConfig'
+    _title: 'Find Postal Code settings'
+  requirements:
+    _permission: 'administer singpost toolbox fpc configuration'
+
+singpost.toolbox.find_postal_code.index:
+  path: '/find-postal-code'
+  defaults:
+    _controller: '\Drupal\singpost_toolbox_find_postal_code\Controller\FindPostalCodeController::index'
+    _title: 'Find Postal Code'
+  requirements:
+    _access: 'TRUE'

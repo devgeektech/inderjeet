@@ -1,0 +1,68 @@
+singpost.sgx.announcements.admin:
+  path: '/admin/singpost/sgx-announcements'
+  defaults:
+    _controller: '\Drupal\singpost_sgx_announcements\Controller\SgxAnnouncementController::index'
+    _title: 'SGX Announcements Management'
+  requirements:
+    _permission: 'administer sgx announcements admin'
+
+singpost.sgx.announcements.add:
+  path: '/admin/singpost/sgx-announcements/add'
+  defaults:
+    _controller: '\Drupal\singpost_sgx_announcements\Controller\SgxAnnouncementController::add'
+    _title: 'Add SGX Announcement'
+  requirements:
+    _permission: 'administer sgx announcements form'
+
+singpost.sgx.announcements.edit:
+  path: '/admin/singpost/sgx-announcements/edit/{id}'
+  defaults:
+    _controller: '\Drupal\singpost_sgx_announcements\Controller\SgxAnnouncementController::edit'
+    _title: 'Edit SGX Announcement'
+  requirements:
+    _permission: 'administer sgx announcements form'
+
+singpost.sgx.announcements.delete:
+  path: '/admin/singpost/sgx-announcements/delete/{id}'
+  defaults:
+    _controller: '\Drupal\singpost_sgx_announcements\Controller\SgxAnnouncementController::delete'
+    _title: 'Delete SGX Announcement'
+  requirements:
+    _permission: 'administer sgx announcements delete'
+
+singpost.sgx.announcements.status:
+  path: '/admin/singpost/sgx-announcements/status'
+  defaults:
+    _controller: '\Drupal\singpost_sgx_announcements\Controller\SgxAnnouncementController::changeStatus'
+    _title: 'Change Status SGX Announcement'
+  requirements:
+    _permission: 'administer sgx announcements form'
+
+singpost.sgx.announcements.action:
+  path: '/admin/singpost/sgx-announcements/action/{action}'
+  defaults:
+    _form: '\Drupal\singpost_sgx_announcements\Form\SgxAnnouncementBulkActionForm'
+    _title_callback: '\Drupal\singpost_sgx_announcements\Form\SgxAnnouncementBulkActionForm::getPageTitle'
+    action: ''
+  requirements:
+    _permission: 'administer sgx announcements form'
+
+singpost.sgx.announcements.index:
+  path: '/about-us/investor-relations/sgx-announcements'
+  defaults:
+    _controller: '\Drupal\singpost_sgx_announcements\Frontend\Controller\SgxAnnouncementController::index'
+    _title: 'SGX Announcements'
+  requirements:
+    _access: 'TRUE'
+  options:
+    no_cache: 'TRUE'
+
+entity.sgx_announcement.canonical:
+  path: '/about-us/investor-relations/sgx-announcement/{sgx_announcement}'
+  defaults:
+    _controller: '\Drupal\singpost_sgx_announcements\Frontend\Controller\SgxAnnouncementController::view'
+    _title: 'SGX Announcement'
+  requirements:
+    _access: 'TRUE'
+  options:
+    no_cache: 'TRUE'

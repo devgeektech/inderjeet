@@ -1,0 +1,33 @@
+uuid: 6f1c0784-664c-46cd-98a9-6c9410bdcca0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.card_container.field_card_container_cards
+    - field.field.paragraph.card_container.field_card_container_col_class
+    - field.field.paragraph.card_container.field_card_container_css_class
+    - field.field.paragraph.card_container.field_card_container_row_class
+    - paragraphs.paragraphs_type.card_container
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: 2zYczo978ISExe7fnqkdevbm_5FcjZ4M2kJ6GbIlq-Q
+id: paragraph.card_container.default
+targetEntityType: paragraph
+bundle: card_container
+mode: default
+content:
+  field_card_container_cards:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_card_container_col_class: true
+  field_card_container_css_class: true
+  field_card_container_row_class: true
+  search_api_excerpt: true

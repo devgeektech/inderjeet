@@ -1,0 +1,10 @@
+name: SingPost Content - Basic Paragraph
+type: module
+description: 'Add Basic Paragraph types: Text, Node, Link, Modal, Well.'
+package: SingPost
+core_version_requirement: ^8 || ^9
+dependencies:
+  - paragraphs:paragraphs
+  - singpost_content
+  - block_field
+  - webform

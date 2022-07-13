@@ -1,0 +1,10 @@
+uuid: 532ea6a3-b2f2-4b0e-81a5-fa49ed1ed215
+langcode: en
+status: true
+dependencies: {  }
+id: sidebar_links
+label: 'Sidebar Links'
+icon_uuid: null
+icon_default: null
+description: 'Display a list of links with icon (optional) for Side Links block.'
+behavior_plugins: {  }

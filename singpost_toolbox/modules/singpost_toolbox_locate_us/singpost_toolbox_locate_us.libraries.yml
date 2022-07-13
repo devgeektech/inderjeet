@@ -1,0 +1,13 @@
+form-locate-us:
+  js:
+    assets/js/form.js: { minified: true }
+  dependencies:
+    - core/jquery
+    - core/drupal
+
+map-locate-us:
+  js:
+    assets/js/map.js: { minified: true }
+  dependencies:
+    - core/jquery
+    - core/drupal

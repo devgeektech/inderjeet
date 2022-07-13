@@ -1,0 +1,133 @@
+<?php
+
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\ReplaceCommand;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\webform\Entity\Webform;
+use Symfony\Component\Yaml\Yaml;
+
+/**
+ * Implements hook_form_alter().
+ */
+function singpost_content_service_enquiry_form_alter(
+	&$form,
+	FormStateInterface $form_state,
+	$form_id){
+	if (isset($form['#webform_id'])){
+		$config  = Drupal::config('singpost.webform.service_enquiry');
+		$webform = $config->get('webform_id');
+		if ($form['#webform_id'] == $webform){
+			$webform  = Webform::load($webform);
+			$elements = $webform->getElementsDecoded();
+
+			$form['#attached']['library'][] = 'singpost_content_service_enquiry/form';
+
+			$form['#attached']['drupalSettings']['singpost_content_service_enquiry']['webform_id'] = $elements['#attributes']['id'] ?: $form_id;
+
+			if (isset($form['elements']['service_type_container']['service_type'])){
+				$form['elements']['service_type_container']['service_type']['#ajax'] = [
+					'callback' => 'singpost_content_service_enquiry_load_categories',
+					'event'    => 'change',
+					'progress' => ['type' => 'none']
+				];
+
+				if (isset($form['elements']['service_type_container']['category'])){
+					$form['elements']['service_type_container']['category']['#options']   = [];
+					$form['elements']['service_type_container']['category']['#validated'] = TRUE;
+
+					if (isset($form['elements']['service_type_container']['sub_category'])){
+						$form['elements']['service_type_container']['sub_category']['#options']   = [];
+						$form['elements']['service_type_container']['sub_category']['#validated'] = TRUE;
+						$form['elements']['service_type_container']['sub_category']['#states']    = [
+							'invisible' => [
+								'select[name="category"]' => ['value' => ''],
+							],
+						];
+					}
+				}
+			}
+		}
+	}
+}
+
+/**
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *
+ * @return \Drupal\Core\Ajax\AjaxResponse
+ */
+function singpost_content_service_enquiry_load_categories(&$form, $form_state){
+	if (isset($form['elements']['service_type_container']['category'])){
+		$renderer = Drupal::service('renderer');
+		$response = new AjaxResponse();
+
+		$categories      = [];
+		$selected_option = $form_state->getValue('service_type');
+
+		$config = Drupal::config('singpost.webform.service_enquiry');
+		$data   = $config->get('map_data');
+
+		if ($data){
+			$data = Yaml::parse($data);
+
+			if ($data[$selected_option]){
+				foreach ($data[$selected_option] as $key => $value){
+					if (is_array($value)){
+						$categories[] = $key;
+					}else{
+						$categories[] = $value;
+					}
+				}
+			}
+
+			$categories = array_combine($categories, $categories);
+
+			$form['elements']['service_type_container']['category']['#options'] = ['' => t('- Select -')] + $categories;
+		}else{
+			$form['elements']['service_type_container']['category']['#options'] = ['' => t('- Select -')];
+		}
+
+		$response->addCommand(new ReplaceCommand('#category-select',
+			$renderer->render($form['elements']['service_type_container']['category'])));
+
+		return $response;
+	}
+}
+
+/**
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *
+ * @return \Drupal\Core\Ajax\AjaxResponse
+ */
+function singpost_content_service_enquiry_load_sub_categories(&$form, $form_state){
+	if (isset($form['elements']['service_type_container']['sub_category'])){
+		$renderer = Drupal::service('renderer');
+		$response = new AjaxResponse();
+
+		$categories       = [];
+		$selected_service = $form_state->getValue('service_type');
+		$selected_option  = $form_state->getValue('category');
+
+		$config = Drupal::config('singpost.webform.service_enquiry');
+		$data   = $config->get('map_data');
+
+		if ($data){
+			$data = Yaml::parse($data);
+
+			if ($data[$selected_service][$selected_option]){
+				$categories += $data[$selected_service][$selected_option];
+				$categories = array_combine($categories, $categories);
+			}
+
+			$form['elements']['service_type_container']['sub_category']['#options'] = ['' => t('- None -')] + $categories;
+		}else{
+			$form['elements']['service_type_container']['sub_category']['#options'] = ['' => t('- None -')];
+		}
+
+		$response->addCommand(new ReplaceCommand('#sub-category-select',
+			$renderer->render($form['elements']['service_type_container']['sub_category'])));
+
+		return $response;
+	}
+}

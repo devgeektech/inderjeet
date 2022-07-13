@@ -1,0 +1,53 @@
+uuid: 7c5b613a-40c2-4bc6-ad42-8cb6bded3110
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.collapsible_paragraph.field_collapsible_paragph_body
+    - field.field.paragraph.collapsible_paragraph.field_collapsible_paragph_opened
+    - field.field.paragraph.collapsible_paragraph.field_collapsible_paragph_title
+    - paragraphs.paragraphs_type.collapsible_paragraph
+  module:
+    - paragraphs
+id: paragraph.collapsible_paragraph.default
+targetEntityType: paragraph
+bundle: collapsible_paragraph
+mode: default
+content:
+  field_collapsible_paragph_body:
+    type: paragraphs
+    weight: 2
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        duplicate: duplicate
+        collapse_edit_all: collapse_edit_all
+        add_above: '0'
+    third_party_settings: {  }
+    region: content
+  field_collapsible_paragph_opened:
+    weight: 1
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_collapsible_paragph_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

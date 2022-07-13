@@ -1,0 +1,8 @@
+name: SingPost Content - News Releases
+type: module
+description: 'Add News Releases Content type.'
+package: SingPost
+core_version_requirement: ^8 || ^9
+dependencies:
+  - paragraphs:paragraphs
+  - singpost_content:singpost_content

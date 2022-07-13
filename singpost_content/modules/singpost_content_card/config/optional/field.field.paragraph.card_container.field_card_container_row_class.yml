@@ -1,0 +1,19 @@
+uuid: 0c860a39-5e46-4eac-af44-decb816b6f49
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_card_container_row_class
+    - paragraphs.paragraphs_type.card_container
+id: paragraph.card_container.field_card_container_row_class
+field_name: field_card_container_row_class
+entity_type: paragraph
+bundle: card_container
+label: 'Row Class'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

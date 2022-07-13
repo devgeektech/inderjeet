@@ -1,0 +1,5 @@
+sgx.announcements.add:
+  title: Add SGX Announcement
+  route_name: singpost.sgx.announcements.add
+  appears_on:
+    - singpost.sgx.announcements.admin

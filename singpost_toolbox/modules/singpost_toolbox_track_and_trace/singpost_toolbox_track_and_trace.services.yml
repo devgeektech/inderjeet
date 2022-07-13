@@ -1,0 +1,6 @@
+services:
+  singpost.tnt.status.model:
+    class: Drupal\singpost_toolbox_track_and_trace\Model\Status
+  singpost.tnt.status.service:
+    class: Drupal\singpost_toolbox_track_and_trace\Services\StatusService
+    arguments: ['@singpost.tnt.status.model']

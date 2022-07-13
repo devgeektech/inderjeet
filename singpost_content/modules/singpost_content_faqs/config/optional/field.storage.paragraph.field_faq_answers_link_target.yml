@@ -1,0 +1,27 @@
+uuid: a7bb04ac-9fe1-4116-a3ca-2df85b08e154
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_faq_answers_link_target
+field_name: field_faq_answers_link_target
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: _self
+      label: 'Current Tab'
+    -
+      value: _blank
+      label: 'New Tab'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

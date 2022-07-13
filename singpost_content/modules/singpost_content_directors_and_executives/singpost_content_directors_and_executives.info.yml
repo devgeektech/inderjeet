@@ -1,0 +1,8 @@
+name: SingPost Content - Directors and Executives
+type: module
+description: 'Add Directors and Executives Content type, Paragraph type.'
+package: SingPost
+core_version_requirement: ^8 || ^9
+dependencies:
+  - paragraphs:paragraphs
+  - singpost_content

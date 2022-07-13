@@ -1,0 +1,6 @@
+services:
+  singpost.audit_trail.model:
+    class: Drupal\singpost_audit_trail\Model\AuditTrail
+  singpost.audit_trail.service:
+    class: Drupal\singpost_audit_trail\Services\AuditTrailService
+    arguments: ['@singpost.audit_trail.model']

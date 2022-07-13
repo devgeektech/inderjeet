@@ -1,0 +1,22 @@
+uuid: d707f5a9-6e7a-45c1-bdb5-005d3669d4cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_collapsible_nodes_opened
+    - paragraphs.paragraphs_type.collapsible_nodes
+id: paragraph.collapsible_nodes.field_collapsible_nodes_opened
+field_name: field_collapsible_nodes_opened
+entity_type: paragraph
+bundle: collapsible_nodes
+label: Opened
+description: ''
+required: false
+translatable: false
+default_value:
+  - value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

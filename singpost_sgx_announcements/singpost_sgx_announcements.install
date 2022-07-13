@@ -1,0 +1,76 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function singpost_sgx_announcements_schema(){
+	$database = Drupal::database();
+
+	$schema = [];
+
+	if (!$database->schema()->tableExists('sgx_announcement')){
+		$schema['sgx_announcement'] = singpost_sgx_announcement_table();
+	}
+
+	return $schema;
+}
+
+/**
+ * @return array
+ */
+function singpost_sgx_announcement_table(){
+	return [
+		'fields'      => [
+			'id'         => [
+				'type'     => 'serial',
+				'unsigned' => TRUE,
+				'not null' => TRUE,
+			],
+			'title'      => [
+				'type'     => 'varchar',
+				'length'   => 255,
+				'not null' => TRUE,
+			],
+			'date'       => [
+				'type'     => 'int',
+				'not null' => TRUE,
+			],
+			'file'       => [
+				'type'   => 'varchar',
+				'length' => 255
+			],
+			'published'  => [
+				'type'    => 'int',
+				'default' => 1,
+				'size'    => 'tiny',
+			],
+			'created_at' => [
+				'type'     => 'int',
+				'not null' => TRUE,
+				'default'  => 0,
+			],
+			'created_by' => [
+				'type'     => 'int',
+				'not null' => TRUE
+			],
+			'updated_at' => [
+				'type' => 'int',
+			],
+			'updated_by' => [
+				'type' => 'int'
+			],
+		],
+		'primary key' => ['id'],
+	];
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function singpost_sgx_announcements_uninstall(){
+	$database = Drupal::database();
+
+	if ($database->schema()->tableExists('sgx_announcement')){
+		$database->schema()->dropTable('sgx_announcement');
+	}
+}

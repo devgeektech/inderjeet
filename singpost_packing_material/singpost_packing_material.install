@@ -1,0 +1,301 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function singpost_packing_material_schema(){
+	$database = Drupal::database();
+
+	$schema = [];
+
+	if (!$database->schema()->tableExists('singpost_pm_category')){
+		$schema['singpost_pm_category'] = singpost_pm_category_table();
+	}
+
+	if (!$database->schema()->tableExists('singpost_pm_product')){
+		$schema['singpost_pm_product'] = singpost_pm_product_table();
+	}
+
+	if (!$database->schema()->tableExists('singpost_pm_order')){
+		$schema['singpost_pm_order'] = singpost_pm_order_table();
+	}
+
+	if (!$database->schema()->tableExists('singpost_pm_order_detail')){
+		$schema['singpost_pm_order_detail'] = singpost_pm_order_detail_table();
+	}
+
+	return $schema;
+}
+
+/**
+ * @return array
+ */
+function singpost_pm_category_table(){
+	return [
+		'fields'      => [
+			'id'          => [
+				'type'     => 'serial',
+				'unsigned' => TRUE,
+				'not null' => TRUE,
+			],
+			'title'       => [
+				'type'     => 'varchar',
+				'length'   => 255,
+				'not null' => TRUE,
+			],
+			'feature_img' => [
+				'type'   => 'varchar',
+				'length' => 255,
+			],
+			'published'   => [
+				'type'    => 'int',
+				'default' => 1,
+				'size'    => 'tiny',
+			],
+			'weight'      => [
+				'type' => 'int',
+			],
+			'created_at'  => [
+				'type'     => 'int',
+				'not null' => TRUE,
+				'default'  => 0,
+			],
+			'created_by'  => [
+				'type'     => 'int',
+				'not null' => TRUE
+			],
+			'updated_at'  => [
+				'type' => 'int'
+			],
+			'updated_by'  => [
+				'type' => 'int'
+			],
+		],
+		'primary key' => ['id'],
+	];
+}
+
+/**
+ * @return array
+ */
+function singpost_pm_product_table(){
+	return [
+		'fields'       => [
+			'id'                 => [
+				'type'     => 'serial',
+				'unsigned' => TRUE,
+				'not null' => TRUE,
+			],
+			'category_id'        => [
+				'type'     => 'int',
+				'unsigned' => TRUE,
+				'not null' => TRUE,
+			],
+			'title'              => [
+				'type'     => 'varchar',
+				'length'   => 255,
+				'not null' => TRUE,
+			],
+			'dimension'          => [
+				'type'   => 'varchar',
+				'length' => 255,
+			],
+			'estimated_weight'   => [
+				'type'   => 'varchar',
+				'length' => 255,
+			],
+			'unit'               => [
+				'type'   => 'varchar',
+				'length' => 255,
+			],
+			'price'              => [
+				'type' => 'float',
+				'size' => 'normal',
+			],
+			'discounted_price'   => [
+				'type' => 'float',
+				'size' => 'normal',
+			],
+			'tooltip_text'       => [
+				'type' => 'text',
+				'size' => 'big',
+			],
+			'product_img'        => [
+				'type'   => 'varchar',
+				'length' => 255,
+			],
+			'bundle'             => [
+				'type' => 'float',
+				'size' => 'normal',
+			],
+			'description_bundle' => [
+				'type'   => 'varchar',
+				'length' => 255,
+			],
+			'published'          => [
+				'type'    => 'int',
+				'default' => 1,
+				'size'    => 'tiny',
+			],
+			'weight'             => [
+				'type' => 'int',
+			],
+			'created_at'         => [
+				'type'     => 'int',
+				'not null' => TRUE,
+				'default'  => 0,
+			],
+			'created_by'         => [
+				'type'     => 'int',
+				'not null' => TRUE
+			],
+			'updated_at'         => [
+				'type' => 'int'
+			],
+			'updated_by'         => [
+				'type' => 'int'
+			],
+		],
+		'primary key'  => ['id'],
+		'foreign keys' => [
+			'fk_category_id' => [
+				'table'   => 'singpost_pm_category',
+				'columns' => [
+					'category_id' => 'id',
+				],
+			],
+		],
+	];
+}
+
+/**
+ * @return array
+ */
+function singpost_pm_order_table(){
+	return [
+		'fields'      => [
+			'id'                => [
+				'type'     => 'serial',
+				'unsigned' => TRUE,
+				'not null' => TRUE,
+			],
+			'name'              => [
+				'type'     => 'varchar',
+				'length'   => 255,
+				'not null' => TRUE,
+			],
+			'company_name'      => [
+				'type'   => 'varchar',
+				'length' => 255,
+			],
+			'email'             => [
+				'type'   => 'varchar',
+				'length' => 255,
+			],
+			'contact_number'    => [
+				'type'   => 'varchar',
+				'length' => 255,
+			],
+			'block_number'      => [
+				'type' => 'text',
+				'size' => 'big',
+			],
+			'street_name'       => [
+				'type' => 'text',
+				'size' => 'big',
+			],
+			'unit_number'       => [
+				'type' => 'text',
+				'size' => 'big',
+			],
+			'postal_code'       => [
+				'type' => 'text',
+				'size' => 'big',
+			],
+			'sp_account_number' => [
+				'type'   => 'varchar',
+				'length' => 255,
+			],
+			'subtotal'          => [
+				'type' => 'float',
+				'size' => 'big',
+			],
+			'total'             => [
+				'type' => 'float',
+				'size' => 'big',
+			],
+			'discount'          => [
+				'type' => 'float',
+				'size' => 'big',
+			],
+			'order_date'        => [
+				'type' => 'int',
+			]
+		],
+		'primary key' => ['id'],
+	];
+}
+
+/**
+ * @return array
+ */
+function singpost_pm_order_detail_table(){
+	return [
+		'fields'       => [
+			'order_id'   => [
+				'type'     => 'int',
+				'not null' => TRUE,
+			],
+			'product_id' => [
+				'type'     => 'int',
+				'not null' => TRUE,
+			],
+			'price'      => [
+				'type' => 'float',
+				'size' => 'big',
+			],
+			'quantity'   => [
+				'type' => 'float',
+				'size' => 'big',
+			],
+		],
+		'primary key'  => ['order_id', 'product_id'],
+		'foreign keys' => [
+			'fk_order_id'   => [
+				'table'   => 'singpost_pm_order',
+				'columns' => [
+					'order_id' => 'id',
+				],
+			],
+			'fk_product_id' => [
+				'table'   => 'singpost_pm_product',
+				'columns' => [
+					'product_id' => 'id',
+				],
+			],
+		],
+	];
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function singpost_packing_material_uninstall(){
+	$database = Drupal::database();
+
+	if ($database->schema()->tableExists('singpost_pm_order_detail')){
+		$database->schema()->dropTable('singpost_pm_order_detail');
+	}
+
+	if ($database->schema()->tableExists('singpost_pm_order')){
+		$database->schema()->dropTable('singpost_pm_order');
+	}
+
+	if ($database->schema()->tableExists('singpost_pm_product')){
+		$database->schema()->dropTable('singpost_pm_product');
+	}
+
+	if ($database->schema()->tableExists('singpost_pm_category')){
+		$database->schema()->dropTable('singpost_pm_category');
+	}
+}

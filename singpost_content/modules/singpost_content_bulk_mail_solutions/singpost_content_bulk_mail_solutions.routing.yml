@@ -1,0 +1,14 @@
+singpost.bulk_mail_solutions.config:
+  path: '/admin/config/singpost/bulk-mail-solutions'
+  defaults:
+    _form: '\Drupal\singpost_content_bulk_mail_solutions\Form\Config\BulkMailForm'
+    _title: 'Bulk Mail Solutions settings'
+  requirements:
+    _permission: 'administer bulk mail solutions configuration'
+
+singpost.bulk_mail_solutions.calculate:
+  path: '/ajax/bulk-mail-solutions/calculate'
+  defaults:
+    _controller: '\Drupal\singpost_content_bulk_mail_solutions\Controller\BulkMailCalculator::calculate'
+  requirements:
+    _access: 'TRUE'

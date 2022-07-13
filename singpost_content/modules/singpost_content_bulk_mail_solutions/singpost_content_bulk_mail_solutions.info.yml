@@ -1,0 +1,8 @@
+name: SingPost Content - Bulk Mail Calculator
+description: 'Calculator for Bulk Mail Solutions webform'
+package: SingPost
+type: module
+core_version_requirement: ^8 || ^9
+dependencies:
+  - webform
+  - singpost_content

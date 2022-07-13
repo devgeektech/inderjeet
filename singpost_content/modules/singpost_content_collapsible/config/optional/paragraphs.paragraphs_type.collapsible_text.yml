@@ -1,0 +1,10 @@
+uuid: c7243c2d-0753-4905-82fb-ef3439b4f0ca
+langcode: en
+status: true
+dependencies: { }
+id: collapsible_text
+label: 'Collapsible Text'
+icon_uuid: null
+icon_default: null
+description: 'Collapsible formatted text content'
+behavior_plugins: {  }

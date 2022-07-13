@@ -1,0 +1,6 @@
+services:
+  singpost.publication.model:
+    class: Drupal\singpost_publications\Model\Publication
+  singpost.publication.service:
+    class: Drupal\singpost_publications\Services\PublicationService
+    arguments: ['@singpost.publication.model']

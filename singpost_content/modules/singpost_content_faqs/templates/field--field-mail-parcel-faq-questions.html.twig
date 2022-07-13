@@ -1,0 +1,128 @@
+{#
+/**
+ * @file
+ * Overrides field template to add column class based on loop length.
+ *
+ * To override output, copy the "field.html.twig" from the templates directory
+ * to your theme's directory and customize it, just like customizing other
+ * Drupal templates such as page.html.twig or node.html.twig.
+ *
+ * Instead of overriding the theming for all fields, you can also just override
+ * theming for a subset of fields using
+ * @link themeable Theme hook suggestions. @endlink For example,
+ * here are some theme hook suggestions that can be used for a field_foo field
+ * on an article node type:
+ * - field--node--field-foo--article.html.twig
+ * - field--node--field-foo.html.twig
+ * - field--node--article.html.twig
+ * - field--field-foo.html.twig
+ * - field--text-with-summary.html.twig
+ * - field.html.twig
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the containing element.
+ * - label_hidden: Whether to show the field label or not.
+ * - title_attributes: HTML attributes for the title.
+ * - label: The label for the field.
+ * - multiple: TRUE if a field can contain multiple items.
+ * - items: List of all the field items. Each item contains:
+ *   - attributes: List of HTML attributes for each item.
+ *   - content: The field item's content.
+ * - entity_type: The entity type to which the field belongs.
+ * - field_name: The name of the field.
+ * - field_type: The type of the field.
+ * - label_display: The display settings for the label.
+ *
+ * @see template_preprocess_field()
+ */
+#}
+
+<div class="bg-grey-custom">
+    {{ drupal_entity('block', 'send_receive_tab_menu') }}
+    <div class="redirect-table">
+        <div class="row no-gutters">
+            <div class="col-lg-6 border-right d-lg-block d-none">
+                <ul class="nav nav-pills flex-column nav-pills" role="tablist" aria-orientation="vertical">
+                    <li class="nav-item see-all">
+                        <a class="nav-link active no-hover" id="question-all-tab" data-toggle="pill" href="#question-all" role="tab" aria-controls="question-all" aria-selected="true">{{ 'See all services'|t }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled font-weight-bold" href="#" tabindex="-1" aria-disabled="true">
+                            {{ 'Or choose a service based on your needs:'|t }}
+                        </a>
+                    </li>
+                    {%- for item in items -%}
+                        {% set question = item.content['#paragraph'] %}
+                        <li class="nav-item">
+                            <a class="nav-link no-hover" id="question-{{ question.id() }}-tab" data-toggle="pill" href="#question-{{ question.id() }}" role="tab" aria-controls="question-{{ question.id() }}" aria-selected="false">
+                                {{ question.field_faq_question_title.value }}
+                            </a>
+                        </li>
+                    {%- endfor -%}
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <div class="tab-content redirect-table-response" id="tab-content">
+                    <div class="card tab-pane fade active show" id="question-all" role="tabpanel" aria-labelledby="question-all-tab">
+                        <div class="card-header d-block d-lg-none" role="tab" id="heading-question-all">
+                            <h5 class="mb-0">
+                                <a class="no-hover" data-toggle="collapse" href="#collapse-question-all" aria-expanded="true" aria-controls="collapse-question-all">
+                                    {{ 'See all services'|t }}
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="collapse-question-all" class="collapse show" data-parent="#tab-content" role="tabpanel" aria-labelledby="heading-question-all">
+                            {%- for item in items -%}
+                                {% for answer in item.content['#paragraph'].field_faq_question_answers %}
+                                    <div class="tab-item">
+                                        {% set answer = drupal_entity('paragraph', answer.target_id)['#paragraph'] %}
+                                        <h6 class="font-weight-bold">{{ answer.field_faq_answers_title.value }}</h6>
+                                        {{ answer.field_faq_answers_content.value|raw }}
+
+                                        {% if answer.field_faq_answers_link is not empty %}
+                                            {% if answer.field_faq_answers_link_target.value != '_self' %}
+                                                {% set target = 'target=' ~ answer.field_faq_answers_link_target.value %}
+                                            {% endif %}
+
+                                            <a {{ target }} href="{{ answer.field_faq_answers_link.0.url }}" class="btn btn-outline-primary no-hover">{{ answer.field_faq_answers_link.title }}</a>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            {%- endfor -%}
+                        </div>
+                    </div>
+
+                    {%- for item in items -%}
+                        {% set question = item.content['#paragraph'] %}
+                        <div class="card tab-pane fade" id="question-{{ question.id() }}" role="tabpanel" aria-labelledby="question-{{ question.id() }}-tab">
+                            <div class="card-header d-block d-lg-none" role="tab" id="heading-question-{{ question.id() }}">
+                                <h5 class="mb-0">
+                                    <a class="collapsed" data-toggle="collapse" href="#collapse-question-{{ question.id() }}" aria-expanded="false" aria-controls="collapse-question-{{ question.id() }}">
+                                        {{ question.field_faq_question_title.value }}
+                                    </a>
+                                </h5>
+                            </div>
+                            <div id="collapse-question-{{ question.id() }}" class="collapse" data-parent="#tab-content" role="tabpanel" aria-labelledby="heading-question-{{ question.id() }}">
+                                {% for answer in item.content['#paragraph'].field_faq_question_answers %}
+                                    <div class="tab-item">
+                                        {% set answer = drupal_entity('paragraph', answer.target_id)['#paragraph'] %}
+                                        <h6 class="font-weight-bold">{{ answer.field_faq_answers_title.value }}</h6>
+                                        {{ answer.field_faq_answers_content.value|raw }}
+
+                                        {% if answer.field_faq_answers_link is not empty %}
+                                            {% if answer.field_faq_answers_link_target.value != '_self' %}
+                                                {% set target = 'target=' ~ answer.field_faq_answers_link_target.value %}
+                                            {% endif %}
+
+                                            <a {{ target }} href="{{ answer.field_faq_answers_link.0.url }}" class="btn btn-outline-primary">{{ answer.field_faq_answers_link.title }}</a>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {%- endfor -%}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

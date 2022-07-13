@@ -1,0 +1,45 @@
+uuid: 2fdb5661-fcec-4e62-a7d7-91ef725c82f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.sidebar_links.field_sidebar_links_links
+    - field.field.paragraph.sidebar_links.field_sidebar_links_title
+    - paragraphs.paragraphs_type.sidebar_links
+  module:
+    - paragraphs
+id: paragraph.sidebar_links.default
+targetEntityType: paragraph
+bundle: sidebar_links
+mode: default
+content:
+  field_sidebar_links_links:
+    type: paragraphs
+    weight: 1
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: link
+      features:
+        duplicate: duplicate
+        collapse_edit_all: collapse_edit_all
+        add_above: '0'
+    third_party_settings: {  }
+    region: content
+  field_sidebar_links_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

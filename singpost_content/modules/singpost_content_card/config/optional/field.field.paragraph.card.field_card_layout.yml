@@ -1,0 +1,23 @@
+uuid: d6434e12-fb43-412c-8b49-a5246515d53c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_card_layout
+    - paragraphs.paragraphs_type.card
+  module:
+    - options
+id: paragraph.card.field_card_layout
+field_name: field_card_layout
+entity_type: paragraph
+bundle: card
+label: Layout
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: default
+default_value_callback: ''
+settings: {  }
+field_type: list_string

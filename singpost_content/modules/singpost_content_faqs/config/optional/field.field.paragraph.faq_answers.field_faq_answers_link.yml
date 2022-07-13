@@ -1,0 +1,23 @@
+uuid: ac0193a0-3a61-47d4-8c84-232dc955c8d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_faq_answers_link
+    - paragraphs.paragraphs_type.faq_answers
+  module:
+    - link
+id: paragraph.faq_answers.field_faq_answers_link
+field_name: field_faq_answers_link
+entity_type: paragraph
+bundle: faq_answers
+label: Link
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

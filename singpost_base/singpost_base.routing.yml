@@ -1,0 +1,16 @@
+singpost.config.base:
+  path: '/admin/config/singpost'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'SingPost Configuration'
+  requirements:
+    _permission: 'administer singpost configuration'
+
+singpost.admin.base:
+  path: '/admin/singpost'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'SingPost'
+    link_id: 'singpost.admin.base'
+  requirements:
+    _access: 'TRUE'

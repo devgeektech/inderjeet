@@ -1,0 +1,22 @@
+uuid: a738f8ed-5ffb-4d82-b19a-a49b2e94ba0f
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.mailing_solutions
+  module:
+    - text
+id: taxonomy_term.mailing_solutions.default
+targetEntityType: taxonomy_term
+bundle: mailing_solutions
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  search_api_excerpt: true

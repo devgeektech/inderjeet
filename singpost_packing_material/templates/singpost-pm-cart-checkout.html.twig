@@ -1,0 +1,30 @@
+{% spaceless %}
+{% set url = url('<current>') %}
+{% set url_back = data.url_back %}
+
+{% if url_back is empty %}
+    {% set url_back = url %}
+{% endif %}
+
+
+    
+
+     <!-- checkout start  -->
+    <div class="sgp-checkout">
+        <div class="content-wrapper-small">
+            <div class="sgp-header-arrow sgp-header-arrow--center">
+                <div class="sgp-header-arrow__head-sec">
+                     <h1 class="sgp-h2">Checkout</h1>
+                </div>
+            </div>
+            <div class="sgp-checkout-fromx">
+            {{ data.form }}
+            </div>
+
+
+ 
+        </div>
+    </div>
+    <!-- checkout ends -->
+    
+{% endspaceless %}

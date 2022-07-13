@@ -1,0 +1,203 @@
+{% spaceless %}
+<!-- Page back start -->
+ 
+     <!-- Breadcrumbs strat -->
+    <div class="sgp-breadcrumbs">
+        <div class="content-wrapper">
+            <a href="{{ url('<front>') }}" title="Home" class="sgp-breadcrumbs__link">
+                <span class="sgp-breadcrumbs__link-txt">Home</span>
+                <img src="{{ url('<front>')}}{{ base_path ~ directory }}/assets/images/home-icon.svg" alt="Home icon" class="sgp-breadcrumbs__link-icon inproduct">
+            </a>
+            <a href="{{ url('<front>') }}packing-materials" title="packing-materials" class="sgp-breadcrumbs__link">Packing Materials</a>
+            
+        {% if data.product.products[0].title is not empty %}
+            <a href="#" title="{{ data.product.products[0].title|lower }}" class="sgp-breadcrumbs__link">{{ data.product.products[0].title }}</a>
+         {% endif %}
+        </div>
+    </div>
+    <!-- Breadcrumbs strat -->
+
+    <div class="sgp-page-back content-wrapper-small">
+        <a onclick="window.history.back()"  class="sgp-link-btn"><svg xmlns="http://www.w3.org/2000/svg" width="12.245" height="7" viewBox="0 0 12.245 7">
+            <path data-name="Path 1018" d="M3.745-8.641a.327.327,0,0,0-.232-.109.327.327,0,0,0-.232.109L.109-5.469A.26.26,0,0,0,0-5.25a.26.26,0,0,0,.109.219L3.276-1.859a.327.327,0,0,0,.232.109.327.327,0,0,0,.237-.109l.191-.191a.26.26,0,0,0,.109-.22.34.34,0,0,0-.109-.246l-2.3-2.27H11.917a.316.316,0,0,0,.232-.1.316.316,0,0,0,.1-.227v-.273a.316.316,0,0,0-.1-.232.316.316,0,0,0-.232-.1H1.636l2.3-2.27a.34.34,0,0,0,.109-.242.26.26,0,0,0-.109-.219Z" transform="translate(0 8.75)"/>
+          </svg>
+          Back
+        </a>
+    </div>
+    <!-- Page back end -->
+{% if data.data_check %}
+ {% if data.product is not empty %}
+  {% set pro_detail = data.product.products[0] %}
+   {% set product_all = data.product.product_all %}
+    <!-- Masthead Start -->
+     {% set per_carton = pro_detail.price/pro_detail.bundle %}
+    <div class="sgp-masthead">
+        <div class="content-wrapper-small">
+            <div class="sgp-masthead__wrapper">
+                <div class="sgp-masthead__img-outer sgp-masthead__img-slider">
+
+                     <span class="sgp-tile__tag sgp-tile__tag--offer sgp-tile__tag--round-tag"> Save
+                        <span>
+                        {{ (((pro_detail.price - pro_detail.discounted_price)/pro_detail.price)*100)|round }}% 
+                        </span>
+                        </span>
+
+                    
+                 {% if pro_detail.image_url is not empty %}
+                    <div class="sgp-masthead__img" style="background-image: url({{ pro_detail.image_url }});"></div>
+                 {% endif %}
+                </div>
+                <div class="sgp-masthead__cnt-outer ">
+                    <div class="sgp-header-arrow item-detail">
+                        <div class="sgp-header-arrow__head-sec">
+                            <p class="item-id" hidden="">{{ pro_detail.id }}</p>
+                            <p class="item-image" hidden="">{{ pro_detail.image_url }}</p>
+                             <p class="item-category" hidden="">{{ pro_detail.category_name }}</p>
+                            <p class="item-bundle" hidden="">{{ pro_detail.description_bundle }}</p>
+                            <p class="item-dimension" hidden="">{{ pro_detail.dimension }}</p>
+
+                            <p class="discounted-price" hidden="">{{ pro_detail.discounted_price }}</p>
+                            <p class="sgp-small-title ">{{ pro_detail.category_name }}</p>
+                            <h1 class="sgp-h2 item-name">{{ pro_detail.title }}</h1>
+
+                            <p class="item-discounted-price" hidden="">
+                             <span class="sgp-pdp__price-actual item-price" hidden="">{{ pro_detail.price }}</span>
+                            </p>
+
+                        </div>
+                    </div>
+                    <div class="sgp-masthead__sub-sec">
+                        <div class="sgp-pdp">
+                            <p class="sgp-pdp__desc"><span class="sgp-pdp__desc-black">Dimensions:</span><span>{{ pro_detail.dimension }}</span></p>
+                            <p class="sgp-pdp__desc"><span class="sgp-pdp__desc-black">Estimated Weight:</span><span>{{ pro_detail.estimated_weight }} per {{ pro_detail.unit }}</span></p>
+                            <!--<p class="sgp-pdp__desc"><span class="sgp-pdp__desc-black">Retail Price:</span><span> ${{ per_carton|number_format(2) }} per {{ pro_detail.unit }}</span></p>-->
+                            
+                            <p class="sgp-pdp__price ">
+                                <span class="sgp-pdp__price-actual">S${{ pro_detail.price }}</span>
+                                <span  class="sgp-pdp__price-current">S${{ pro_detail.discounted_price }}</span>
+                            </p>
+                            <p class="sgp-pdp__item-note ">{{ pro_detail.description_bundle }}</p>
+                        </div>
+                    </div>
+                    <div class="sgp-qty bundle-qty">
+                        <input class="item-qty"   type="hidden" name="qty" value="1">
+                        <button class="sgp-qty__btn qty-minus"><svg xmlns="http://www.w3.org/2000/svg" width="12.25" height="1.531" viewBox="0 0 12.25 1.531"><path d="M11.922-4.484H.328A.316.316,0,0,1,.1-4.58.316.316,0,0,1,0-4.812v-.875A.316.316,0,0,1,.1-5.92a.316.316,0,0,1,.232-.1H11.922a.316.316,0,0,1,.232.1.316.316,0,0,1,.1.232v.875a.316.316,0,0,1-.1.232A.316.316,0,0,1,11.922-4.484Z" transform="translate(0 6.016)"/></svg></button>
+                        <span class="item-qty-text">1</span>
+                        <button class="sgp-qty__btn qty-plus"><svg xmlns="http://www.w3.org/2000/svg" width="12.25" height="12.25" viewBox="0 0 12.25 12.25"><path d="M11.922-6.016a.316.316,0,0,1,.232.1.316.316,0,0,1,.1.232v.875a.316.316,0,0,1-.1.232.316.316,0,0,1-.232.1H6.891V.547a.316.316,0,0,1-.1.232.316.316,0,0,1-.232.1H5.688a.316.316,0,0,1-.232-.1.316.316,0,0,1-.1-.232V-4.484H.328A.316.316,0,0,1,.1-4.58.316.316,0,0,1,0-4.812v-.875A.316.316,0,0,1,.1-5.92a.316.316,0,0,1,.232-.1H5.359v-5.031a.316.316,0,0,1,.1-.232.316.316,0,0,1,.232-.1h.875a.316.316,0,0,1,.232.1.316.316,0,0,1,.1.232v5.031Z" transform="translate(0 11.375)"/></svg></button>
+                    </div>
+                    <div class="sgp-masthead__btns add-to-cart">
+                        <button id="add-to-cart" class="sgp-btn btn-checkout">
+                            <span class="sgp-btn__icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"><g transform="translate(-11625 16862)"><path d="M7.219-10.5a.634.634,0,0,1,.506.246.574.574,0,0,1,.123.547L6.617-4.02a.694.694,0,0,1-.232.369.6.6,0,0,1-.4.15H-2.57L-2.3-2.187H5.414a.634.634,0,0,1,.506.246.574.574,0,0,1,.123.547l-.027.137A1.671,1.671,0,0,1,6.562,0a1.691,1.691,0,0,1-.506,1.244,1.691,1.691,0,0,1-1.244.506,1.691,1.691,0,0,1-1.244-.506A1.691,1.691,0,0,1,3.062,0a1.673,1.673,0,0,1,.246-.875H-.684A1.673,1.673,0,0,1-.438,0,1.691,1.691,0,0,1-.943,1.244a1.691,1.691,0,0,1-1.244.506,1.691,1.691,0,0,1-1.244-.506A1.675,1.675,0,0,1-3.938.014,1.653,1.653,0,0,1-3.445-1.2l-1.914-9.734H-7.547a.316.316,0,0,1-.232-.1.316.316,0,0,1-.1-.232v-.656a.316.316,0,0,1,.1-.232.316.316,0,0,1,.232-.1h2.734a.635.635,0,0,1,.424.15.694.694,0,0,1,.232.369l.219,1.23ZM-2.188.656A.633.633,0,0,0-1.723.465.633.633,0,0,0-1.531,0a.633.633,0,0,0-.191-.465.633.633,0,0,0-.465-.191.633.633,0,0,0-.465.191A.633.633,0,0,0-2.844,0a.633.633,0,0,0,.191.465A.633.633,0,0,0-2.188.656Zm7,0A.633.633,0,0,0,5.277.465.633.633,0,0,0,5.469,0a.633.633,0,0,0-.191-.465.633.633,0,0,0-.465-.191.633.633,0,0,0-.465.191A.633.633,0,0,0,4.156,0a.633.633,0,0,0,.191.465A.633.633,0,0,0,4.812.656Zm.629-5.469L6.4-9.187H-3.664l.848,4.375Z" transform="translate(11640 -16842)"/><rect transform="translate(11625 -16862)" fill="none"/></g></svg>
+                            </span>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+         {% if pro_detail.tooltip_text.value is not empty %}
+            <div class="sgp-info-tab">
+                <ul class="nav nav-pills" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="additionalInformationTab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Description</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="additionalInformationTab">
+                      
+                            {{ pro_detail.tooltip_text.value|raw }}
+                      
+                    </div>
+                </div>
+            </div>
+         {% endif %}
+        </div>
+    </div>
+    <!-- Masthead End -->
+
+    <!-- Store PDP - module start -->
+ {% if product_all is not empty %}
+    <div class="sgp-pers-featured sgp-store-recom sgp-pt-6">
+        <div class="content-wrapper">
+            <div class="sgp-header-arrow">
+                <div class="sgp-header-arrow__head-sec">
+                    {# <p class="sgp-small-title">Donec quam felis</p> #}
+                    <h2 class="sgp-h2">Recommended Items</h2>
+                </div>
+                <div class="sgp-arrow">
+                    <button class="sgp-arrow__prev sgp-store-recom__prev">.</button>
+                    <button class="sgp-arrow__next sgp-store-recom__next">.</button>
+                </div>
+            </div>
+            <div class="sgp-pers-featured__wrapper sgp-store-recom__slider">
+        
+             {% for product in product_all %}
+                 {% set per_carton = product.price/product.bundle %}
+                <div class="sgp-tile sgp-tile--pdp">
+                    <div class="sgp-tile__img-sec">
+                     <a href="{{ url('<front>') }}packing-materials/product/{{product.title|lower|replace({'–':'',' ':'-'})}}/{{product.id}}" >
+                        <img src="{{ product.image_url }}" alt="{{ product.title }}">
+                    </a>
+
+                     <span class="sgp-tile__tag sgp-tile__tag--offer sgp-tile__tag--round-tag"> Save
+                        <span>
+                        {{ (((product.price - product.discounted_price)/product.price)*100)|round }}%
+                        </span>
+                        </span>
+
+                        
+                        <span class="sgp-tile__tag sgp-tile__tag--red">{{ product.category_name }}</span>
+                    </div>
+                    <div class="sgp-tile__cnt-sec">
+                    <a href="{{ url('<front>') }}packing-materials/product/{{product.title|lower|replace({'–':'',' ':'-'})}}/{{product.id}}" >
+                        <h4 class="sgp-h4">{{ product.title }}</h4>
+                    <div class="sgp-header-arrow item-detail">
+                        <div class="sgp-header-arrow__head-sec">
+                            <p class="item-id" hidden="">{{ product.id }}</p>
+                            <p class="item-image" hidden="">{{ product.image_url }}</p>
+                             <p class="item-category" hidden="">{{ product.category_name }}</p>
+                            <p class="item-bundle" hidden="">{{ product.description_bundle }}</p>
+                            <p class="item-dimension" hidden="">{{ product.dimension }}</p>
+
+                            <p class="discounted-price" hidden="">{{ product.discounted_price }}</p>
+                            <p class="sgp-small-title "  hidden="">{{ product.category_name }}</p>
+                            <h5 class="sgp-h2 item-name"  hidden="">{{ product.title }}</h5>
+
+                            <p class="item-discounted-price" hidden="">
+                             <span class="sgp-pdp__price-actual item-price" hidden="">{{ product.price }}</span>
+                            </p>
+
+                        </div>
+                    </div>
+
+                         <div class="sgp-pdp">
+                            <p class="sgp-pdp__desc"><span class="sgp-pdp__desc-black">Dimensions:</span><span>{{ product.dimension }}</span></p>
+                            <p class="sgp-pdp__desc"><span class="sgp-pdp__desc-black">Estimated Weight:</span><span>{{ product.estimated_weight }} per {{ product.unit }}</span></p>
+                            <!--<p class="sgp-pdp__desc"><span class="sgp-pdp__desc-black">Retail Price:</span><span> ${{ per_carton|number_format(2) }} per {{ product.unit }}</span></p>-->
+                            
+                            <p class="sgp-pdp__price sgp-c_c_price">
+                                <span class="sgp-pdp__price-actual">S${{ product.price }}</span>
+                                <span  class="sgp-pdp__price-current">S${{ product.discounted_price }}</span>
+                            </p>
+                            <p class="sgp-pdp__item-note">{{ product.description_bundle }}</p>
+                        </div>
+                    </a>
+                    </div>
+                    <div class="bundle-qty">
+                        <input class="item-qty" type="hidden" name="qty" value="1">
+                    </div>
+                    <div class="sgp-tile__btn-sec add-to-cart">
+                          <button  id="add-to-cart" class="sgp-link-btn sgp-link-btn--box btn-checkout"><svg xmlns="http://www.w3.org/2000/svg" width="15.746" height="14" viewBox="0 0 15.746 14" class="sgp-link-btn__icon-left"><path d="M15.094-10.5a.634.634,0,0,1,.506.246.574.574,0,0,1,.123.547L14.547-4.02a.694.694,0,0,1-.232.369.6.6,0,0,1-.4.15H4.84l.328,1.75h8.094a.675.675,0,0,1,.424.137.628.628,0,0,1,.232.355A1.713,1.713,0,0,1,14.438,0a1.691,1.691,0,0,1-.506,1.244,1.783,1.783,0,0,1-2.488,0A1.691,1.691,0,0,1,10.938,0a1.673,1.673,0,0,1,.246-.875H7.191A1.673,1.673,0,0,1,7.438,0a1.691,1.691,0,0,1-.506,1.244,1.691,1.691,0,0,1-1.244.506,1.691,1.691,0,0,1-1.244-.506A1.659,1.659,0,0,1,3.938.027a1.687,1.687,0,0,1,.465-1.2l-1.914-10.2H.328a.316.316,0,0,1-.232-.1A.316.316,0,0,1,0-11.7v-.219a.316.316,0,0,1,.1-.232.316.316,0,0,1,.232-.1H2.652a.635.635,0,0,1,.424.15.7.7,0,0,1,.232.4l.219,1.2ZM6.563,0A.841.841,0,0,0,6.3-.615a.841.841,0,0,0-.615-.26.841.841,0,0,0-.615.26A.841.841,0,0,0,4.813,0a.841.841,0,0,0,.26.615.858.858,0,0,0,1.23,0A.841.841,0,0,0,6.563,0Zm6.125.875A.841.841,0,0,0,13.3.615.841.841,0,0,0,13.563,0a.841.841,0,0,0-.26-.615.841.841,0,0,0-.615-.26.841.841,0,0,0-.615.26.841.841,0,0,0-.26.615.841.841,0,0,0,.26.615A.841.841,0,0,0,12.688.875Zm1.039-5.25,1.094-5.25H3.691l.984,5.25Z" transform="translate(0 12.25)" fill="#fff"/></svg>Add to Cart</button>
+                        
+                    </div>
+                </div>
+             {% endfor %}
+        
+            </div>
+        </div>
+    </div>
+ {% endif %}
+    <!-- Store PDP - module end -->
+ {% endif %}
+{% endif %}
+
+{% endspaceless %}

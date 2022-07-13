@@ -1,0 +1,23 @@
+uuid: 10fa383e-b4ec-470a-b49e-b694543e8616
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_card_button
+    - paragraphs.paragraphs_type.card
+  module:
+    - link
+id: paragraph.card.field_card_button
+field_name: field_card_button
+entity_type: paragraph
+bundle: card
+label: Button
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

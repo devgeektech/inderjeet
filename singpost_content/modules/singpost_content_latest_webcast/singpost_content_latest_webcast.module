@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function singpost_content_latest_webcast_theme($existing, $type, $theme, $path){
+	return [
+		'paragraph__latest_webcast' => [
+			'base hook' => 'paragraph'
+		]
+	];
+}

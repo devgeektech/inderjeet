@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ *
+ * @param $existing
+ * @param $type
+ * @param $theme
+ * @param $path
+ *
+ * @return array
+ */
+function singpost_content_card_theme($existing, $type, $theme, $path){
+	return [
+		'paragraph__card_container'        => [
+			'base hook' => 'paragraph'
+		],
+		'paragraph__card'                  => [
+			'base hook' => 'paragraph'
+		],
+		'paragraph__card__thumbnail-left'  => [
+			'base hook' => 'paragraph'
+		],
+		'paragraph__card__thumbnail-right' => [
+			'base hook' => 'paragraph'
+		],
+		'singpost_sidebar_card'            => [
+			'template'  => 'singpost-sidebar-card',
+			'variables' => [
+				'config' => []
+			]
+		]
+	];
+}
+
+
+/**
+ * Implements hook_theme_suggestions_alter().
+ *
+ * @param array $suggestions
+ * @param array $variables
+ * @param $hook
+ */
+function singpost_content_card_theme_suggestions_alter(
+	array &$suggestions,
+	array $variables,
+	$hook){
+	/**
+	 * @var \Drupal\paragraphs\Entity\Paragraph $paragraph
+	 */
+	if (isset($variables['elements']['#paragraph'])){
+		$paragraph = $variables['elements']['#paragraph'];
+		if ($paragraph && $paragraph->getType() == 'card'){
+			if ($paragraph->get('field_card_layout')->value != 'default'){
+				$suggestions[] = 'paragraph__card__' . $paragraph->get('field_card_layout')->value;
+			}
+		}
+	}
+}

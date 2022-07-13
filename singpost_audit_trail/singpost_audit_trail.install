@@ -1,0 +1,84 @@
+<?php
+
+/**
+ * @return mixed
+ */
+function singpost_audit_trail_schema(){
+	$database = Drupal::database();
+
+	$schema = [];
+
+	if (!$database->schema()->tableExists('audit_trail')){
+		$schema['audit_trail'] = singpost_audit_trail_table();
+	}
+
+	return $schema;
+}
+
+function singpost_audit_trail_table(){
+	return [
+		'fields'      => [
+			'id'           => [
+				'type'     => 'serial',
+				'unsigned' => TRUE,
+				'not null' => TRUE,
+			],
+			'action'       => [
+				'type'     => 'varchar',
+				'length'   => 255,
+				'not null' => TRUE,
+			],
+			'type'         => [
+				'type'     => 'varchar',
+				'length'   => 255,
+				'not null' => TRUE,
+			],
+			'link'         => [
+				'type'     => 'varchar',
+				'length'   => 255,
+				'not null' => TRUE,
+			],
+			'request'      => [
+				'type'     => 'text',
+				'size'     => 'big',
+				'not null' => TRUE,
+			],
+			'response'     => [
+				'type'     => 'text',
+				'size'     => 'big',
+				'not null' => TRUE,
+			],
+			'created_at'   => [
+				'type'     => 'int',
+				'not null' => TRUE,
+				'default'  => 0,
+			],
+			'created_by'   => [
+				'type' => 'int',
+			],
+			'requested_at' => [
+				'type'      => 'numeric',
+				'size'      => 'normal',
+				'precision' => 12,
+				'scale'     => 2,
+				'not null'  => TRUE
+			],
+			'responded_at' => [
+				'type'      => 'numeric',
+				'size'      => 'normal',
+				'precision' => 12,
+				'scale'     => 2,
+				'not null'  => TRUE
+			],
+		],
+		'primary key' => ['id'],
+	];
+}
+
+function singpost_audit_trail_uninstall(){
+	$database = Drupal::database();
+
+	if ($database->schema()->tableExists('audit_trail')){
+		$database->schema()->dropTable('audit_trail');
+	}
+}

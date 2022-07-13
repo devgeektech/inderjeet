@@ -1,0 +1,261 @@
+{% spaceless %}
+ 
+ {% set default_counter = (data.title.default_counter ) ? data.title.default_counter : '15' %}
+ {% set item_counter    = (data.title.item_counter ) ? data.title.item_counter : '15' %}
+
+<div class="sgp-tile-box sgp-tile-box--pos sgp-pb-6 ">
+    <div class="content-wrapper-small sgp-tile-box__inner sgp-tile-box__inner--no-shadow">
+        <div class="sgp-header-arrow">
+            <div class="sgp-header-arrow__head-sec">
+            {% if data.title.pm_nav_above.value %}
+                <p class="sgp-small-title">{{ data.title.pm_nav_above.value|striptags|raw }}</p>
+             {% endif %}
+             {% if data.title.pm_nav_under.value %}
+                <h1 class="sgp-h2">{{ data.title.pm_nav_under.value|striptags|raw }}</h1>
+              {% endif %}
+             {% if data.notice.value %}
+                 <p class="sgp-body-normal">{{ data.notice.value|t()}}</p>
+             {% endif %}
+            </div>
+        </div>
+
+        <div class="sgp-service sgp-order-bulk">
+            <div class="sgp-order-bulk__sort">
+                <div class="sgp-sort">
+                    <button class="sgp-link-btn sgp-link-btn--box sgp-link-btn--left-icon sgp-filter__btn"><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.34 21.29">
+                            <g id="Layer_2" data-name="Layer 2">
+                                <g id="Layer_1-2" data-name="Layer 1">
+                                    <g id="Layer_1-2-2" data-name="Layer 1-2">
+                                        <rect x="10.78" y="3.39" width="12.56" height="1" />
+                                        <rect y="3.39" width="7.3" height="1" />
+                                        <path d="M11.28,7.78H6.8V0h4.48Zm-3.48-1h2.48V1H7.8Z" />
+                                        <rect x="8.77" y="16.9" width="14.57" height="1" />
+                                        <rect y="16.9" width="5.3" height="1" />
+                                        <path d="M9.27,21.29H4.8V13.52H9.27Zm-3.47-1H8.27V14.52H5.8Z" />
+                                        <rect x="18.8" y="10.15" width="4.54" height="1" />
+                                        <rect y="10.15" width="15.32" height="1" />
+                                        <path d="M19.3,14.53H14.82V6.76H19.3Zm-3.48-1H18.3V7.76H15.82Z" />
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>Filter</button>
+                    <p class="sgp-sort__label">Sort By :</p>
+                    <select class="sgp-select sort-by" id="sort_by_id">
+                        <option value="">Select</option>
+                        <option value="price-asc">Price : Lowest to Highest</option>
+                        <option value="price-desc"> Price : Highest to Lowest</option>
+                        <option value="Alphabetical">Alphabetical</option>
+                    </select>
+                    <select class="sgp-select sort-by-category">
+                        <option value="">Categories</option>
+                        {% if data.new_category is not empty %}
+                        {% for category in data.new_category.category_name %}
+                        {#{ category|lower|replace({' ':'-'}) }#}
+                        {#{category|lower}#}
+                            <option value="{{ category }}">{{
+                                category|capitalize }}</option>
+                        {% endfor %}
+                        {% endif %}
+                    </select>
+                    <div class="sgp-search-input">
+                        <input type="text" class="sgp-input-text" placeholder="Search by keywords">
+                        <button class="sgp-search-input__btn"><svg xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 35 35">
+                                <g transform="translate(22946 24144)">
+                                    <rect width="35" height="35" transform="translate(-22946 -24144)" fill="none">
+                                    </rect>
+                                    <path
+                                        d="M19.883,1.328A.422.422,0,0,1,20,1.641a.571.571,0,0,1-.117.352l-.391.352a.486.486,0,0,1-.352.156.371.371,0,0,1-.312-.156L13.789-2.7a.371.371,0,0,1-.156-.312V-3.4a8.014,8.014,0,0,1-2.52,1.582,8.02,8.02,0,0,1-2.988.566A7.891,7.891,0,0,1,4.043-2.344,8.209,8.209,0,0,1,1.094-5.293,7.891,7.891,0,0,1,0-9.375a7.891,7.891,0,0,1,1.094-4.082,8.209,8.209,0,0,1,2.949-2.949A7.891,7.891,0,0,1,8.125-17.5a7.891,7.891,0,0,1,4.082,1.094,8.209,8.209,0,0,1,2.949,2.949A7.891,7.891,0,0,1,16.25-9.375a8.02,8.02,0,0,1-.566,2.988A8.014,8.014,0,0,1,14.1-3.867h.391a.486.486,0,0,1,.352.156ZM8.125-2.5a6.767,6.767,0,0,0,3.457-.918,6.773,6.773,0,0,0,2.5-2.5A6.767,6.767,0,0,0,15-9.375a6.767,6.767,0,0,0-.918-3.457,6.773,6.773,0,0,0-2.5-2.5,6.767,6.767,0,0,0-3.457-.918,6.767,6.767,0,0,0-3.457.918,6.773,6.773,0,0,0-2.5,2.5A6.767,6.767,0,0,0,1.25-9.375a6.767,6.767,0,0,0,.918,3.457,6.773,6.773,0,0,0,2.5,2.5A6.767,6.767,0,0,0,8.125-2.5Z"
+                                        transform="translate(-22938 -24118.5)"></path>
+                                </g>
+                            </svg></button>
+                    </div>
+
+                    <div class="sgp-filter__sidebar">
+                        <div class="sgp-filter__sidebar-head">
+                            <p>Filter</p>
+                            <button class="sgp-filter__close"><img
+                                    src="/{{ base_path ~ directory }}/assets/images/close-white-icon.svg"
+                                    alt="close button"></button>
+                        </div>
+                        <div class="sgp-filter__item">
+                            <p class="sgp-filter__item-label">Quick Search</p>
+                            <input type="text" class="sgp-input-text" placeholder="Search by keywords">
+                        </div>
+                        <div class="sgp-filter__item">
+                            <p class="sgp-filter__item-label">Sort by</p>
+                            <select class="sgp-select sgp-sort-by__sidebar">
+                                <option value="">Select</option>
+                                <option value="Alphabetical">Alphabetical</option>
+                                <option value="Popular">Popular</option>
+                            </select>
+                        </div>
+
+                        <div class="sgp-filter__item">
+                            <p class="sgp-filter__item-label">Categories</p>
+                            <select class="sgp-select sgp-sort-by-cat__sidebar">
+                                <option value="">All Category</option>
+                                {% if data.categories is not empty %}
+                                {% for category in data.categories %}
+                                <option value="{{ category.category_name }}">{{
+                                    category.category_name }}</option>
+                                {% endfor %}
+                                {% endif %}
+                            </select>
+                        </div>
+
+                        <div class="sgp-filter__sidebar-head">
+                            <button class="sgp-link-btn sgp-filter__clear">CLEAR ALL</button>
+                            <button class="sgp-btn sgp-btn--white sgp-filter__submit">
+                                <span class="sgp-btn__icon">
+                                    <svg viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M36.9608 53.3546L52.6381 37.6773L36.9608 22L34.901 24.1743L48.2896 37.6773L34.901 51.1803L36.9608 53.3546Z" />
+                                        <path d="M50.4639 36.0752H23V39.2793H50.4639V36.0752Z" />
+                                    </svg>
+                                </span>SEARCH NOW
+                            </button>
+                        </div>
+
+                    </div>
+                    <div class="sgp-filter__overlay"></div>
+
+                </div>
+                <a href="{{ url('<front>') }}packing-materials/compare"
+                    class="sgp-link-btn sgp-pm-compare_btn sgp-link-btn--box">Compare</a>
+            </div>
+
+            {% set ix = 0 %}
+            {% if data.categories is not empty %}
+            <div class="sgp-service__wrapper sgp-compare__packing-material">
+                {% for category in data.categories %}
+
+                 {% if category.products %}
+
+                {% for product in category.products %}
+                {% set per_carton = product.price/product.bundle %}
+                <div class="sgp-tile sgp-tile--pdp sgp-load-more__item" data-index="{{ ix }}"
+                    data-id="{{ category.category_name|lower|replace({' ':'-'}) }}">
+                    <div class="sgp-tile__img-sec">
+                        <label class="sgp-checkbox" prod-id="{{product.id}}">
+                            <input type="checkbox" />
+                            <svg viewBox="0 0 24 24" filter="url(#goo-light)">
+                                <defs>
+                                    <filter id="goo-light" x="-50%" width="200%" y="-50%" height="200%"
+                                        color-interpolation-filters="sRGB">
+                                        <feGaussianBlur in="SourceGraphic" stdDeviation="1.25" result="blur" />
+                                        <feColorMatrix in="blur" mode="matrix"
+                                            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -7" result="cm" />
+                                    </filter>
+                                </defs>
+                                <path class="tick" d="M4.5 10L10.5 16L24.5 1" />
+                                <circle class="dot" cx="10.5" cy="15.5" r="1.5" />
+                                <circle class="drop" cx="25" cy="-1" r="2" />
+                            </svg>
+                            <span class="sgp-checkbox__tooltip">Select to compare</span>
+                        </label>
+                        <a href="{{ url('<front>') }}packing-materials/product/{{product.title|lower|replace({'–':'',' ':'-'})}}/{{product.id}}"
+                            class="">
+                            <img src="{{ product.image_url }}" alt="{{ product.title }}">
+                        </a>
+
+                        <div class="sgp-tile__tag sgp-tile__tag--offer sgp-tile__tag--round-tag"> Save
+                        <span>
+                         {{ (((product.price -
+                            product.discounted_price)/product.price)*100)|round }}% 
+                        </span>
+                        </div>
+                        <span class="sgp-tile__tag sgp-tile__tag--red">{{ category.category_name|lower }}</span>
+                    </div>
+                    <div class="sgp-tile__cnt-sec item-detail">
+
+                        <div class="sgp-header-arrow__head-sec">
+                            <p class="item-id" hidden="">{{ product.id }}</p>
+                            <p class="item-image" hidden="">{{ product.image_url }}</p>
+                            <p class="item-category" hidden="">{{ category.category_name|lower|replace({'padded envelopes':'Padded and rigid envelopes','rigid envelopes':'Padded and rigid envelopes'}) }}</p>
+                            <p class="item-bundle" hidden="">{{ product.description_bundle }}</p>
+                            <p class="item-dimension" hidden="">{{ product.dimension }}</p>
+                            <p class="discounted-price" hidden="">{{ product.discounted_price }}</p>
+                            <p class="item-name" hidden="">{{ product.title }}</p>
+                            <p class="item-discounted-price" hidden="">
+                                <span class="sgp-pdp__price-actual item-price" hidden="">{{ product.price }}</span>
+                            </p>
+                        </div>
+                        <a href="{{ url('<front>') }}packing-materials/product/{{product.title|lower|replace({'–':'',' ':'-'})}}/{{product.id}}"
+                            class="">
+                            <h4 class="sgp-h4 ">{{ product.title }}</h4>
+                            <div class="sgp-pdp">
+                                <p class="sgp-pdp__desc"><span class="sgp-pdp__desc-black">Dimensions:</span><span>{{
+                                        product.dimension }}</span></p>
+                                <p class="sgp-pdp__desc"><span class="sgp-pdp__desc-black">Estimated Weight:</span><span>{{
+                                        product.estimated_weight }} per {{ product.unit }}</span></p>
+                                <!--<p class="sgp-pdp__desc"><span class="sgp-pdp__desc-black">Retail Price:</span><span>${{
+                                        (per_carton matches '/^\\d+$/') ? per_carton :
+                                        per_carton|number_format(2) }} per {{ product.unit }}</span></p>-->
+
+                                <p class="sgp-pdp__price sgp-c_c_price">
+                                    <span class="sgp-pdp__price-actual">S${{ (product.price matches '/^\\d+$/') ?
+                                        product.price : product.price|number_format(2) }}</span>
+                                    <span class="sgp-pdp__price-current">S${{ (product.discounted_price matches
+                                        '/^\\d+$/') ? product.discounted_price :
+                                        product.discounted_price|number_format(2) }}</span>
+                                </p>
+                                <p class="sgp-pdp__item-note">({{ product.description_bundle }})</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="bundle-qty">
+                        <input class="item-qty" type="hidden" name="qty" value="1">
+                    </div>
+                    <div class="sgp-tile__btn-sec add-to-cart">
+                        <button id="add-to-cart" class=" btn-checkout sgp-link-btn sgp-link-btn--box">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15.746" height="14" viewBox="0 0 15.746 14"
+                                class="sgp-link-btn__icon-left">
+                                <path
+                                    d="M15.094-10.5a.634.634,0,0,1,.506.246.574.574,0,0,1,.123.547L14.547-4.02a.694.694,0,0,1-.232.369.6.6,0,0,1-.4.15H4.84l.328,1.75h8.094a.675.675,0,0,1,.424.137.628.628,0,0,1,.232.355A1.713,1.713,0,0,1,14.438,0a1.691,1.691,0,0,1-.506,1.244,1.783,1.783,0,0,1-2.488,0A1.691,1.691,0,0,1,10.938,0a1.673,1.673,0,0,1,.246-.875H7.191A1.673,1.673,0,0,1,7.438,0a1.691,1.691,0,0,1-.506,1.244,1.691,1.691,0,0,1-1.244.506,1.691,1.691,0,0,1-1.244-.506A1.659,1.659,0,0,1,3.938.027a1.687,1.687,0,0,1,.465-1.2l-1.914-10.2H.328a.316.316,0,0,1-.232-.1A.316.316,0,0,1,0-11.7v-.219a.316.316,0,0,1,.1-.232.316.316,0,0,1,.232-.1H2.652a.635.635,0,0,1,.424.15.7.7,0,0,1,.232.4l.219,1.2ZM6.563,0A.841.841,0,0,0,6.3-.615a.841.841,0,0,0-.615-.26.841.841,0,0,0-.615.26A.841.841,0,0,0,4.813,0a.841.841,0,0,0,.26.615.858.858,0,0,0,1.23,0A.841.841,0,0,0,6.563,0Zm6.125.875A.841.841,0,0,0,13.3.615.841.841,0,0,0,13.563,0a.841.841,0,0,0-.26-.615.841.841,0,0,0-.615-.26.841.841,0,0,0-.615.26.841.841,0,0,0-.26.615.841.841,0,0,0,.26.615A.841.841,0,0,0,12.688.875Zm1.039-5.25,1.094-5.25H3.691l.984,5.25Z"
+                                    transform="translate(0 12.25)" fill="#fff" />
+                            </svg>Add to Cart</button>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+                <!-- <div class="back-to-top text-right"><a href="#">Back to Top</a></div> -->
+                {% endfor %}
+                <!-- Load less end -->
+                <div class="w-100 sgp-load-more" data-load-more-counter="{{ item_counter }}" data-default-load="{{ default_counter }}">
+                    <!-- <span id="loadMore" class="sgp-load-more__label">Load more</span> -->
+                    <span class="sgp-btn sgp-load-more__show">
+                        <span class="sgp-btn__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                                <g id="Layer_2" data-name="Layer 2">
+                                    <g id="Layer_1-2" data-name="Layer 1">
+                                        <path
+                                            d="M20.8,14.24a.3.3,0,0,1,.23.1.33.33,0,0,1,.1.23v.87a.37.37,0,0,1-.1.24.34.34,0,0,1-.23.1h-5v5a.34.34,0,0,1-.33.33h-.87a.34.34,0,0,1-.33-.33v-5h-5a.34.34,0,0,1-.23-.1.33.33,0,0,1-.1-.23v-.87a.34.34,0,0,1,.34-.34h5v-5a.33.33,0,0,1,.1-.23.3.3,0,0,1,.23-.1h.88a.34.34,0,0,1,.33.33v5Z" />
+                                    </g>
+                                </g>
+                            </svg>
+                        </span>Load More
+                    </span>
+
+                    <span class="sgp-btn sgp-load-more__hide" data-load-more-counter="{{ item_counter }}" data-default-load="{{ default_counter }}">
+                        <span class="sgp-btn__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                                <g id="Layer_2" data-name="Layer 2">
+                                    <g id="Layer_1-2" data-name="Layer 1">
+                                        <path
+                                            d="M20.92,14.36a.34.34,0,0,1,.33.33v.88a.3.3,0,0,1-.1.23.33.33,0,0,1-.23.1H9.33a.33.33,0,0,1-.23-.1.37.37,0,0,1-.1-.24v-.87a.37.37,0,0,1,.1-.24.28.28,0,0,1,.23-.09Z" />
+                                    </g>
+                                </g>
+                            </svg>
+                        </span>Load Less
+                    </span>
+                    <!-- <span id="showLess" class="sgp-load-more__label sgp-load-less">Show less</span> -->
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</div>
+{% endspaceless %}
